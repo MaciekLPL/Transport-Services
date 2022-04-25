@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e1467467dadd4f3f8ab6affa5fcc5e0f" Name="Diagram1">
+        <EntityTypeShape EntityType="ServiceDBModel.Customers" Width="1.5" PointX="13.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceDBModel.Drivers" Width="1.5" PointX="6.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceDBModel.Licenses" Width="1.5" PointX="3.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceDBModel.Status" Width="1.5" PointX="13.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceDBModel.Transports" Width="1.5" PointX="10" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceDBModel.Users" Width="1.5" PointX="10" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceDBModel.Vehicle_types" Width="1.5" PointX="3.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceDBModel.Vehicles" Width="1.5" PointX="6.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="ServiceDBModel.FK_customer_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceDBModel.FK_driver_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceDBModel.FK_driver_licences_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceDBModel.FK_vehicle_type_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceDBModel.FK_status_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceDBModel.FK_user_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceDBModel.FK_vehicle_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceDBModel.FK_type_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

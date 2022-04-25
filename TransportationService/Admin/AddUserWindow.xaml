@@ -1,0 +1,22 @@
+﻿<Window x:Class="TransportationService.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportationService"
+        mc:Ignorable="d"
+        Title="Add user to the system" Height="420" Width="300">
+    <StackPanel Margin="20" VerticalAlignment="Stretch">
+        <Label Content="Create new user" HorizontalAlignment="Center" FontSize="25"/>
+        <Separator></Separator>
+        <Label Content="Username"/>
+        <TextBox Name="unameTextBox" FontSize="18"/>
+        <Label Content="Password"/>
+        <PasswordBox Name="passwdTextBox" FontSize="18"/>
+        <Label Content="Repeat password"/>
+        <PasswordBox Name="passwdRepTextBox" FontSize="18"/>
+        <RadioButton Name="userRadioBtn" Content="User" Margin="0 10 0 0" IsChecked="True"/>
+        <RadioButton Name="adminRadioBtn" Content="Administrator"/>
+        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 10" Click="submitBtn_Click"/>
+    </StackPanel>
+</Window>

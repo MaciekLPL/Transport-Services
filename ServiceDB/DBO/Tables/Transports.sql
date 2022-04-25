@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Transports]
 (
-	[id] INT NOT NULL PRIMARY KEY,
+	[id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	[user_id] INT,
 	[driver_id] INT,
 	[vehicle_id] INT,

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Licenses]
 (
-	[id] INT NOT NULL PRIMARY KEY,
+	[id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	[driver_id] INT NOT NULL, 
 	[vehicle_type_id] INT NOT NULL,
 
