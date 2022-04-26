@@ -5,10 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Admin Dashboard" Height="450" Width="800">
+        Title="Administrator dashboard" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="119,125,119,183"/>
-        <Label Name ="unameLabel" Content="" VerticalAlignment="Top" HorizontalAlignment="Right" Width="350" HorizontalContentAlignment="Right"/>
-        <Button Name ="addUserBtn" Content="Dodaj użytkownika" HorizontalAlignment="Left" Margin="95,325,0,0" VerticalAlignment="Top" Height="39" Width="136" Click="addUserBtn_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="0" Name ="logoutBtn" Content="Logout" Height="20" Width="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Click="logoutBtn_Click" />
+        <DataGrid Grid.ColumnSpan="3" Grid.Row="1" Name="dataGrid" />
+        <Label Grid.Column="2" Grid.Row="0" Name ="unameLabel" Content="" VerticalAlignment="Top" HorizontalAlignment="Right" Width="350" HorizontalContentAlignment="Right"/>
+        <Button Grid.Column="0" Grid.Row="2" Name ="addUserBtn" Content="Add user" Height="39" Width="136" Click="addUserBtn_Click"/>
+        <Button Grid.Column="1" Grid.Row="2" Name ="addVehicleBtn" Content="Add vehicle" Height="39" Width="136" Click="addVehicleBtn_Click"/>
+        <Button Grid.Column="2" Grid.Row="2" Name ="addVehicleTypeBtn" Content="Add vehicle type"  Height="39" Width="136" Click="addVehicleTypeBtn_Click"/>
     </Grid>
 </Window>

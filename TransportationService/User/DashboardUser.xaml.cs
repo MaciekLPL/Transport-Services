@@ -34,5 +34,10 @@ namespace TransportationService {
             unameLabel.Content = $"Logged as {username}";
         }
 
+        private void logoutBtn_Click(object sender, RoutedEventArgs e) {
+            SignInWindow signInWindow = new SignInWindow();
+            signInWindow.Show();
+            this.Close();
+        }
     }
 }

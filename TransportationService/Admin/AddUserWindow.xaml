@@ -17,6 +17,6 @@
         <PasswordBox Name="passwdRepTextBox" FontSize="18"/>
         <RadioButton Name="userRadioBtn" Content="User" Margin="0 10 0 0" IsChecked="True"/>
         <RadioButton Name="adminRadioBtn" Content="Administrator"/>
-        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 10" Click="submitBtn_Click"/>
+        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
     </StackPanel>
 </Window>

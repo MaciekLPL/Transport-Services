@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace TransportationService {
     /// <summary>
@@ -37,6 +27,22 @@ namespace TransportationService {
         private void addUserBtn_Click(object sender, RoutedEventArgs e) {
             AddUserWindow addUserWindow = new AddUserWindow();
             addUserWindow.Show();
+        }
+
+        private void addVehicleBtn_Click(object sender, RoutedEventArgs e) {
+            AddVehicleWindow addVehicleWindow = new AddVehicleWindow();
+            addVehicleWindow.Show();
+        }
+
+        private void addVehicleTypeBtn_Click(object sender, RoutedEventArgs e) {
+            AddVehicleTypeWindow addVehicleTypeWindow = new AddVehicleTypeWindow();
+            addVehicleTypeWindow.Show();
+        }
+
+        private void logoutBtn_Click(object sender, RoutedEventArgs e) {
+            SignInWindow signInWindow = new SignInWindow();
+            signInWindow.Show();
+            this.Close();
         }
     }
 }

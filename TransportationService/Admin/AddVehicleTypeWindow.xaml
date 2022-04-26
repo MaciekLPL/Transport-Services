@@ -1,0 +1,18 @@
+﻿<Window x:Class="TransportationService.AddVehicleTypeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportationService"
+        mc:Ignorable="d"
+        Title="Add vehicle type" Height="320" Width="600">
+    <StackPanel Margin="20" VerticalAlignment="Stretch">
+        <Label Content="Add new vehicle type" HorizontalAlignment="Center" FontSize="25"/>
+        <Separator></Separator>
+        <Label Content="Name"/>
+        <TextBox Name="nameTextBox" FontSize="18"/>
+        <Label Content="Max load"/>
+        <TextBox Name="loadTextBox" FontSize="18" PreviewTextInput="NumberValidation"/>
+        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="40 40" Click="submitBtn_Click" Height="30" Width="200"/>
+    </StackPanel>
+</Window>
