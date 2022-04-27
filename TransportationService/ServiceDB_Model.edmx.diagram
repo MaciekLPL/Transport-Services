@@ -6,13 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="e1467467dadd4f3f8ab6affa5fcc5e0f" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="ServiceDBModel.Customers" Width="1.5" PointX="3" PointY="13.875" />
-        <EntityTypeShape EntityType="ServiceDBModel.Drivers" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="ServiceDBModel.Licenses" Width="1.5" PointX="3" PointY="3.375" />
-        <EntityTypeShape EntityType="ServiceDBModel.Status" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="ServiceDBModel.Transports" Width="1.5" PointX="5.25" PointY="5.875" />
-        <EntityTypeShape EntityType="ServiceDBModel.Users" Width="1.5" PointX="3" PointY="11.125" />
-        <EntityTypeShape EntityType="ServiceDBModel.Vehicle_types" Width="1.5" PointX="0.75" PointY="4.375" />
-        <EntityTypeShape EntityType="ServiceDBModel.Vehicles" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="ServiceDBModel.Drivers" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="ServiceDBModel.Licenses" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="ServiceDBModel.Status" Width="1.5" PointX="3" PointY="11.5" />
+        <EntityTypeShape EntityType="ServiceDBModel.Transports" Width="1.5" PointX="5.25" PointY="6.875" />
+        <EntityTypeShape EntityType="ServiceDBModel.Users" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="ServiceDBModel.Vehicle_types" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="ServiceDBModel.Vehicles" Width="1.5" PointX="3" PointY="7.75" />
         <AssociationConnector Association="ServiceDBModel.FK_customer_id" />
         <AssociationConnector Association="ServiceDBModel.FK_driver_id" />
         <AssociationConnector Association="ServiceDBModel.FK_driver_licences_id" />
