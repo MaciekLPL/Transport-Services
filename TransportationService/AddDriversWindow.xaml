@@ -1,0 +1,20 @@
+﻿<Window x:Class="TransportationService.AddDriversWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportationService"
+        mc:Ignorable="d"
+        Title="AddDriversWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="submitButton" Content="Submit" HorizontalAlignment="Left" Margin="329,361,0,0" VerticalAlignment="Top" Width="134" Height="37" FontSize="24" Click="Button_Click"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="23" Margin="33,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="33,56,0,0" VerticalAlignment="Top" Width="72"/>
+        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="23" Margin="33,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="33,128,0,0" VerticalAlignment="Top" Width="72"/>
+        <TextBox x:Name="ageTextBox" HorizontalAlignment="Left" Height="23" Margin="33,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719"/>
+        <Label Content="Age" HorizontalAlignment="Left" Margin="33,204,0,0" VerticalAlignment="Top" Width="72"/>
+        <TextBox x:Name="hourlyRateTextBox" HorizontalAlignment="Left" Height="23" Margin="33,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719"/>
+        <Label Content="Hourly rate" HorizontalAlignment="Left" Margin="33,279,0,0" VerticalAlignment="Top" Width="72"/>
+    </Grid>
+</Window>

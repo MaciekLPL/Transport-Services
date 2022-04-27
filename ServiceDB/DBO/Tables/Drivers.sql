@@ -4,5 +4,5 @@
 	[name] NVARCHAR(50) NOT NULL,
 	[surname] NVARCHAR(50) NOT NULL,
 	[age] INT NOT NULL,
-	[hourly_rate] DECIMAL NOT NULL,
+	[hourly_rate] DECIMAL(18, 2) NOT NULL,
 )

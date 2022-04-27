@@ -44,5 +44,11 @@ namespace TransportationService {
             signInWindow.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddDriversWindow addDriversWindow = new AddDriversWindow();
+            addDriversWindow.Show();
+        }
     }
 }

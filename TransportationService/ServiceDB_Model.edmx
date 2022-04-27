@@ -20,7 +20,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="age" Type="int" Nullable="false" />
-          <Property Name="hourly_rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="hourly_rate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Licenses">
           <Key>
@@ -274,7 +274,7 @@
             <End Role="Vehicle_types" EntitySet="Vehicle_types" />
             <End Role="Vehicles" EntitySet="Vehicles" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="LogIn_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="login" Nullable="true" MaxLength="30" />
@@ -295,7 +295,7 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="age" Type="Int32" Nullable="false" />
-          <Property Name="hourly_rate" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="hourly_rate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="Transports" Relationship="ServiceDBModel.FK_driver_id" FromRole="Drivers" ToRole="Transports" />
           <NavigationProperty Name="Licenses" Relationship="ServiceDBModel.FK_driver_licences_id" FromRole="Drivers" ToRole="Licenses" />
         </EntityType>
@@ -469,7 +469,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -569,7 +569,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
