@@ -12,32 +12,79 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TransportationService {
+namespace TransportationService.User
+{
     /// <summary>
     /// Interaction logic for DashboardUser.xaml
     /// </summary>
-    public partial class DashboardUser : Window {
-
-        ServiceDBEntities db;
-        private int userID;
-        private string username;
-
-        public DashboardUser(int _userID, string _username) : base() {
-            userID = _userID;
-            username = _username;
-            db = new ServiceDBEntities();
-            
+    public partial class DashboardUser : Window
+    {
+        Button activePanel;
+        public DashboardUser(int _userID, string _username)
+        {
             InitializeComponent();
-            
-            var res = from d in db.Users select d;
-            dataGrid.ItemsSource = res.ToList();
-            unameLabel.Content = $"Logged as {username}";
+            usernameText.Text = "@" + _username;
+            //erPanelFrame.Content = new ap_userPage();
+            activePanel = B1;
         }
 
-        private void logoutBtn_Click(object sender, RoutedEventArgs e) {
+        private void B1_Click(object sender, RoutedEventArgs e)
+        {
+            //UserPanelFrame.Content = ;
+            if (activePanel != B1)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = B1;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+            }
+        }
+        private void B2_Click(object sender, RoutedEventArgs e)
+        {
+            //UserPanelFrame.Content = ;
+            if (activePanel != B2)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = B2;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+            }
+        }
+        private void B3_Click(object sender, RoutedEventArgs e)
+        {
+            //UserPanelFrame.Content = ;
+            if (activePanel != B3)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = B3;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+            }
+        }
+        private void B4_Click(object sender, RoutedEventArgs e)
+        {
+            //UserPanelFrame.Content = ;
+            if (activePanel != B4)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = B4;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+            }
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
             SignInWindow signInWindow = new SignInWindow();
             signInWindow.Show();
             this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

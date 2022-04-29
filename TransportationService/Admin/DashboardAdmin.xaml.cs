@@ -1,54 +1,98 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
-
-namespace TransportationService {
+namespace TransportationService.Admin
+{
     /// <summary>
     /// Interaction logic for DashboardAdmin.xaml
     /// </summary>
-    public partial class DashboardAdmin : Window {
-        
-        ServiceDBEntities db;
-        private int userID;
-        private string username;
+    public partial class DashboardAdmin : Window
+    {
 
-        public DashboardAdmin(int _userID, string _username) {
-            userID = _userID;
-            username = _username;
-            db = new ServiceDBEntities();
-
+        private Button activePanel;
+        public DashboardAdmin(int _userID, string _username)
+        {
             InitializeComponent();
-
-            var res = from d in db.Users select d;
-            dataGrid.ItemsSource = res.ToList();
-            unameLabel.Content = $"(admin) Logged as {username}";
+            usernameText.Text = "@" + _username;
+            AdminPanel.Content = new PageUsers();
+            activePanel = UsersButton;
         }
 
-        private void addUserBtn_Click(object sender, RoutedEventArgs e) {
-            AddUserWindow addUserWindow = new AddUserWindow();
-            addUserWindow.Show();
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
 
-        private void addVehicleBtn_Click(object sender, RoutedEventArgs e) {
-            AddVehicleWindow addVehicleWindow = new AddVehicleWindow();
-            addVehicleWindow.Show();
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
-        private void addVehicleTypeBtn_Click(object sender, RoutedEventArgs e) {
-            AddVehicleTypeWindow addVehicleTypeWindow = new AddVehicleTypeWindow();
-            addVehicleTypeWindow.Show();
-        }
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
 
-        private void logoutBtn_Click(object sender, RoutedEventArgs e) {
             SignInWindow signInWindow = new SignInWindow();
             signInWindow.Show();
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void UsersButton_Click(object sender, RoutedEventArgs e)
         {
-            AddDriversWindow addDriversWindow = new AddDriversWindow();
-            addDriversWindow.Show();
+            if (activePanel != UsersButton)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = UsersButton;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+                AdminPanel.Content = new PageUsers();
+            }
         }
+        private void DriversButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (activePanel != DriversButton)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = DriversButton;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+                AdminPanel.Content = new PageDrivers();
+            }
+        }
+
+        private void VehiclesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (activePanel != VehiclesButton)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = VehiclesButton;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+                AdminPanel.Content = new PageVehicles();
+            }
+        }
+
+        private void PricesButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (activePanel != PricesButton)
+            {
+                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
+                activePanel = PricesButton;
+                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+                AdminPanel.Content = new PagePrices();
+            }
+        }
+
+
     }
 }

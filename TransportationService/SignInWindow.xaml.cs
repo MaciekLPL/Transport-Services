@@ -26,12 +26,12 @@ namespace TransportationService {
                 if (user.password == passwdTextBox.Password) {
 
                     if(user.type == 0) {
-                        DashboardUser dashboardWindow = new DashboardUser(user.id, user.login);
+                        User.DashboardUser dashboardWindow = new User.DashboardUser(user.id, user.login);
                         dashboardWindow.Show();
                         this.Close();
 
                     } else if (user.type == 1){
-                        DashboardAdmin dashboardWindow = new DashboardAdmin(user.id, user.login);
+                        Admin.DashboardAdmin dashboardWindow = new Admin.DashboardAdmin(user.id, user.login);
                         dashboardWindow.Show();
                         this.Close();
 

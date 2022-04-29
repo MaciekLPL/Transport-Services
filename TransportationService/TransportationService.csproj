@@ -44,11 +44,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.4.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.4\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -79,14 +83,23 @@
     <Compile Include="Admin\AddVehicleWindow.xaml.cs">
       <DependentUpon>AddVehicleWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Customers.cs">
-      <DependentUpon>ServiceDB_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Admin\DashboardAdmin.xaml.cs">
       <DependentUpon>DashboardAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User\DashboardUser.xaml.cs">
-      <DependentUpon>DashboardUser.xaml</DependentUpon>
+    <Compile Include="Admin\PageDrivers.xaml.cs">
+      <DependentUpon>PageDrivers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PagePrices.xaml.cs">
+      <DependentUpon>PagePrices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PageUsers.xaml.cs">
+      <DependentUpon>PageUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PageVehicles.xaml.cs">
+      <DependentUpon>PageVehicles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.cs">
+      <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Drivers.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
@@ -121,6 +134,9 @@
     <Compile Include="Users.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="User\DashboardUser.xaml.cs">
+      <DependentUpon>DashboardUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vehicles.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>
@@ -147,7 +163,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User\DashboardUser.xaml">
+    <Page Include="Admin\PageDrivers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\PagePrices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\PageUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\PageVehicles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +191,10 @@
       <DependentUpon>SignInWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="User\DashboardUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

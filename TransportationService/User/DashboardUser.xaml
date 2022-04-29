@@ -1,25 +1,124 @@
-﻿<Window x:Class="TransportationService.DashboardUser"
+﻿<Window x:Class="TransportationService.User.DashboardUser"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="User dashboard" Height="450" Width="800">
+        Height="720" Width="1280" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown"
+>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
 
-        <Button Grid.Column="0" Grid.Row="0" Name = "logoutBtn" Content="Logout" Height="20" Width="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Click="logoutBtn_Click" />
-        <DataGrid Grid.ColumnSpan="4" Grid.Row="1" Name="dataGrid" />
-        <Label Grid.Column="2" Grid.Row="0" Name ="unameLabel" Content="" VerticalAlignment="Top" HorizontalAlignment="Right" Width="350" HorizontalContentAlignment="Right" Grid.ColumnSpan="2" Height="26"/>
+        <!--Menu-->
+        <Border CornerRadius="20 0 0 20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5,1">
+                    <GradientStop Color ="#223266" Offset="0"/>
+                    <GradientStop Color ="#27396b" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Image/>
+        </Border>
+        <!--Main-->
+        <Border Grid.Column="1" CornerRadius="0 20 20 0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1, 0" EndPoint="0,1">
+                    <GradientStop Color ="#222222" Offset="0"/>
+                    <GradientStop Color ="#2c386c" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 15 20 0">
+                    <Button Style="{StaticResource topMenuButton}" Background="DimGray" Width="32" Click="LogoutButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="PowerOff" Foreground="#ffffff" Width="20" Margin="5 0 5 0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource topMenuButton}" Background="Red" Width="32" Click="ExitButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Times" Foreground="#ffffff" Width="20" Margin="5 0 5 0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <Grid Grid.Row="1" Margin=" 30 20 30 40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border CornerRadius="20" Padding="35 25" Background="#243771">
+                        <Frame x:Name="UserPanelFrame" NavigationUIVisibility="Hidden"/>
+
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+
+
+
+
+        <!--User-->
+        <StackPanel>
+            <StackPanel  Orientation="Horizontal"  Margin="10">
+                <Border CornerRadius="15" Width="40" Height="40">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0, 0" EndPoint="1,2">
+                            <GradientStop Color ="#117cf1" Offset="0"/>
+                            <GradientStop Color ="#f5b7ff" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <fa:IconImage Icon="UserAlt" Foreground ="#ffffff" Width="25" Height="25"/>
+
+                </Border>
+                <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
+                    <TextBlock Text="User" FontSize="11" Foreground="#7788bf" FontWeight="SemiBold"/>
+                    <TextBlock Text="Dawid Pasieka" x:Name="usernameText" FontSize="15" Foreground="#c2cfff" FontWeight="Bold"/>
+
+                </StackPanel>
+
+            </StackPanel>
+            <Separator Height = "0.8" Margin="10 0 10 10" Background="#46558a"/>
+            <!--Menu Bar-->
+            <Button x:Name ="B1" Style="{StaticResource menuButtonActive}" Click="B1_Click">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="users" Style="{StaticResource menuButtonIcon}"/>
+                    <TextBlock Text="B1" Style="{StaticResource menuButtonText}"/>
+
+                </StackPanel>
+            </Button>
+            <Button x:Name ="B2" Style="{StaticResource menuButton}" Click="B2_Click">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
+                    <TextBlock Text="B2" Style="{StaticResource menuButtonText}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="B3" Style="{StaticResource menuButton}" Click="B3_Click">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
+                    <TextBlock Text="B3" Style="{StaticResource menuButtonText}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="B4" Style="{StaticResource menuButton}" Click="B4_Click">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
+                    <TextBlock Text="B4" Style="{StaticResource menuButtonText}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+
     </Grid>
+
 </Window>
+
