@@ -20,9 +20,35 @@ namespace TransportationService.Admin
     /// </summary>
     public partial class PageDrivers : Page
     {
+
+        ServiceDBEntities db;
         public PageDrivers()
         {
             InitializeComponent();
+
+            db = new ServiceDBEntities();
+            db.Drivers.ToList();
+            this.DataContext = db.Drivers.Local;
+
         }
+
+        private void AddDriver_Click(object sender, RoutedEventArgs e) {
+            AddDriversWindow addUserWindow = new AddDriversWindow(db);
+            addUserWindow.ShowDialog();
+        }
+
+        private void dataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            var row = sender as DataGridRow;
+
+            if (row != null) {
+                var item = row.DataContext as Drivers;
+
+                if (item != null) {
+                    MessageBox.Show($"{item.id} {item.name} {item.surname}");
+                }
+
+            }
+        }
+
     }
 }

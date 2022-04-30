@@ -27,6 +27,7 @@ namespace TransportationService
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Drivers> Drivers { get; set; }
         public virtual DbSet<Licenses> Licenses { get; set; }

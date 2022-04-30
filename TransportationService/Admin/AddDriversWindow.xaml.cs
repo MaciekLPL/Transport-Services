@@ -20,10 +20,10 @@ namespace TransportationService
     public partial class AddDriversWindow : Window
     {
         ServiceDBEntities db;
-        public AddDriversWindow()
+        public AddDriversWindow(ServiceDBEntities _db)
         {
             InitializeComponent();
-            db = new ServiceDBEntities();
+            db = _db;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

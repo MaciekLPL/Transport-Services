@@ -28,7 +28,7 @@ namespace TransportationService.Admin
             InitializeComponent();
 
             db = new ServiceDBEntities();
-            db.Users.Load();
+            db.Users.ToList();
             this.DataContext = db.Users.Local;
 
         }
@@ -36,13 +36,13 @@ namespace TransportationService.Admin
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
             AddUserWindow addUserWindow = new AddUserWindow(db);
-            addUserWindow.Show();
+            addUserWindow.ShowDialog();
         }
 
         private void AddVehicle_Click(object sender, RoutedEventArgs e)
         {
             AddVehicleWindow addVehicleWindow = new AddVehicleWindow();
-            addVehicleWindow.Show();
+            addVehicleWindow.ShowDialog();
         }
 
         private void AddVehicleType_Click(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace TransportationService.Admin
                 var item = row.DataContext as Users;
 
                 if (item != null) {
-                    MessageBox.Show($"{item.id} {item.login} {item.password}");
+                    MessageBox.Show($"{item.id} {item.login}");
                 }
 
             }

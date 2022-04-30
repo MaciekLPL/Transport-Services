@@ -101,6 +101,9 @@
     <Compile Include="Customers.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>ServiceDB_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Drivers.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>

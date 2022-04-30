@@ -5,6 +5,12 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ServiceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="id" />
@@ -184,6 +190,7 @@
           <Parameter Name="Login" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="ServiceDBModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Licenses" EntityType="Self.Licenses" Schema="dbo" store:Type="Tables" />
@@ -233,6 +240,7 @@
           <FunctionImport Name="LogIn" ReturnType="Collection(ServiceDBModel.LogIn_Result)">
           <Parameter Name="Login" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="C__RefactorLog" EntityType="ServiceDBModel.C__RefactorLog" />
           <EntitySet Name="Customers" EntityType="ServiceDBModel.Customers" />
           <EntitySet Name="Drivers" EntityType="ServiceDBModel.Drivers" />
           <EntitySet Name="Licenses" EntityType="ServiceDBModel.Licenses" />
@@ -278,6 +286,12 @@
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="login" Nullable="true" MaxLength="30" />
         </ComplexType>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="id" />
@@ -483,6 +497,13 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="ServiceDBModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ServiceDBModel.Customers">
               <MappingFragment StoreEntitySet="Customers">
