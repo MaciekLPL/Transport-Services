@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +24,18 @@ namespace TransportationService.Admin
         ServiceDBEntities db;
         public PageUsers()
         {
-            db = new ServiceDBEntities();
 
             InitializeComponent();
 
-            var res = from d in db.Users select d;
-            dataGrid.ItemsSource = res.ToList();
+            db = new ServiceDBEntities();
+            db.Users.Load();
+            this.DataContext = db.Users.Local;
+
         }
+
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
-            AddUserWindow addUserWindow = new AddUserWindow();
+            AddUserWindow addUserWindow = new AddUserWindow(db);
             addUserWindow.Show();
         }
 
@@ -45,7 +48,21 @@ namespace TransportationService.Admin
         private void AddVehicleType_Click(object sender, RoutedEventArgs e)
         {
             AddVehicleTypeWindow addVehicleTypeWindow = new AddVehicleTypeWindow();
-            addVehicleTypeWindow.Show();
+            addVehicleTypeWindow.ShowDialog();
+        }
+
+
+        private void dataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            var row = sender as DataGridRow;
+
+            if (row != null) {
+                var item = row.DataContext as Users;
+
+                if (item != null) {
+                    MessageBox.Show($"{item.id} {item.login} {item.password}");
+                }
+
+            }
         }
     }
 }

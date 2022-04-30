@@ -19,9 +19,10 @@ namespace TransportationService {
     public partial class AddUserWindow : Window {
 
         ServiceDBEntities db;
-        public AddUserWindow() {
+        public AddUserWindow(ServiceDBEntities _db) {
             InitializeComponent();
-            db = new ServiceDBEntities();
+            db = _db;
+
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
@@ -38,6 +39,8 @@ namespace TransportationService {
                 else
                     newUser.type = 1;
 
+
+                
                 db.Users.Add(newUser);
                 db.SaveChanges();
 

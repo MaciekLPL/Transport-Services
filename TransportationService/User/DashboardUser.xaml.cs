@@ -83,7 +83,7 @@ namespace TransportationService.User
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
         }
     }
