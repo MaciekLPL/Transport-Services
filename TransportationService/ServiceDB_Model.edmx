@@ -61,8 +61,9 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="nvarchar" MaxLength="30" />
-          <Property Name="password" Type="nvarchar" MaxLength="30" />
-          <Property Name="type" Type="int" />
+          <Property Name="sha256" Type="nvarchar" MaxLength="64" />
+          <Property Name="salt" Type="nvarchar" MaxLength="44" />
+          <Property Name="type" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Vehicle_types">
           <Key>
@@ -181,7 +182,6 @@
         </Association>
         <Function Name="LogIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Login" Type="nvarchar" Mode="In" />
-          <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="ServiceDBModelStoreContainer">
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
@@ -231,8 +231,7 @@
       <Schema Namespace="ServiceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ServiceDBEntities" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="LogIn" ReturnType="Collection(ServiceDBModel.LogIn_Result)">
-            <Parameter Name="Login" Mode="In" Type="String" />
-            <Parameter Name="Password" Mode="In" Type="String" />
+          <Parameter Name="Login" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Customers" EntityType="ServiceDBModel.Customers" />
           <EntitySet Name="Drivers" EntityType="ServiceDBModel.Drivers" />
@@ -346,8 +345,9 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="type" Type="Int32" />
+          <Property Name="sha256" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="salt" Type="String" MaxLength="44" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Transports" Relationship="ServiceDBModel.FK_user_id" FromRole="Users" ToRole="Transports" />
         </EntityType>
         <EntityType Name="Vehicle_types">
@@ -542,7 +542,8 @@
             <EntityTypeMapping TypeName="ServiceDBModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
+                <ScalarProperty Name="sha256" ColumnName="sha256" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
