@@ -36,17 +36,13 @@ namespace TransportationService
         public virtual DbSet<Vehicle_types> Vehicle_types { get; set; }
         public virtual DbSet<Vehicles> Vehicles { get; set; }
     
-        public virtual ObjectResult<LogIn_Result> LogIn(string login, string password)
+        public virtual ObjectResult<LogIn_Result> LogIn(string login)
         {
             var loginParameter = login != null ?
                 new ObjectParameter("Login", login) :
                 new ObjectParameter("Login", typeof(string));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LogIn_Result>("LogIn", loginParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LogIn_Result>("LogIn", loginParameter);
         }
     }
 }

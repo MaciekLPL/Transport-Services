@@ -22,8 +22,9 @@ namespace TransportationService
     
         public int id { get; set; }
         public string login { get; set; }
-        public string password { get; set; }
-        public Nullable<int> type { get; set; }
+        public string sha256 { get; set; }
+        public string salt { get; set; }
+        public int type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transports> Transports { get; set; }

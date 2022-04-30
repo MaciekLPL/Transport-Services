@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,7 +32,18 @@ namespace TransportationService {
 
                 Users newUser = new Users();
                 newUser.login = unameTextBox.Text;
-                newUser.password = passwdTextBox.Password;
+
+
+
+                var buff = new byte[32];
+                RandomNumberGenerator.Create().GetBytes(buff);
+                newUser.salt = Convert.ToBase64String(buff);
+                
+                byte[] bytes = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(passwdTextBox.Password + newUser.salt));
+                var sb = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                    sb.Append(bytes[i].ToString("x2"));
+                newUser.sha256 = sb.ToString();
 
                 if (userRadioBtn.IsChecked == true)
                     newUser.type = 0;
