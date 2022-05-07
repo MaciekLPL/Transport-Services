@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,55 +13,47 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TransportationService.Admin
+namespace TransportationService
 {
     /// <summary>
-    /// Interaction logic for PageUsers.xaml
+    /// Interaction logic for PageVehicles.xaml
     /// </summary>
-    public partial class PageUsers : Page
+    public partial class PageVehicles : Page
     {
-        ServiceDBEntities db;
-        public PageUsers()
-        {
 
+        ServiceDBEntities db;
+        
+        public PageVehicles()
+        {
             InitializeComponent();
 
             db = new ServiceDBEntities();
-            db.Users.ToList();
-            this.DataContext = db.Users.Local;
-
+            db.Vehicles.ToList();
+            this.DataContext = db.Vehicles.Local;
         }
 
-        private void AddUser_Click(object sender, RoutedEventArgs e)
-        {
-            AddUserWindow addUserWindow = new AddUserWindow(db);
-            addUserWindow.ShowDialog();
-        }
-
-        private void AddVehicle_Click(object sender, RoutedEventArgs e)
-        {
-            AddVehicleWindow addVehicleWindow = new AddVehicleWindow();
+        private void AddVehicle_Click(object sender, RoutedEventArgs e) {
+            AddVehicleWindow addVehicleWindow = new AddVehicleWindow(db);
             addVehicleWindow.ShowDialog();
         }
 
-        private void AddVehicleType_Click(object sender, RoutedEventArgs e)
-        {
-            AddVehicleTypeWindow addVehicleTypeWindow = new AddVehicleTypeWindow();
+        private void AddVehicleType_Click(object sender, RoutedEventArgs e) {
+            AddVehicleTypeWindow addVehicleTypeWindow = new AddVehicleTypeWindow(db);
             addVehicleTypeWindow.ShowDialog();
         }
-
 
         private void dataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
             var row = sender as DataGridRow;
 
             if (row != null) {
-                var item = row.DataContext as Users;
+                var item = row.DataContext as Vehicles;
 
                 if (item != null) {
-                    MessageBox.Show($"{item.id} {item.login}");
+                    MessageBox.Show($"{item.id} {item.make} {item.model}");
                 }
 
             }
         }
+
     }
 }

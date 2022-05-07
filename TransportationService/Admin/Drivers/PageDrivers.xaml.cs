@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TransportationService.Admin
+namespace TransportationService
 {
     /// <summary>
     /// Interaction logic for PageDrivers.xaml

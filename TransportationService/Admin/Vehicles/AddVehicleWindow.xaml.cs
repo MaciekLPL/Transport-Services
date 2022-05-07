@@ -12,15 +12,17 @@ namespace TransportationService {
         ServiceDBEntities db;
 
         List<Vehicle_types> vehicleTypes;
-        public AddVehicleWindow() {
+        public AddVehicleWindow(ServiceDBEntities _db) {
             InitializeComponent();
-            db = new ServiceDBEntities();
+            db = _db;
 
             vehicleTypes = db.Vehicle_types.ToList();
             populateComboBox();
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
+
+            double avgFuelConsumption;
 
             if (makeTextBox.Text.Length == 0) {
                 MessageBox.Show("Enter vehicle make");
@@ -45,11 +47,10 @@ namespace TransportationService {
             if (vehicleTypeComboBox.SelectedIndex == -1) {
                 MessageBox.Show("Select vehicle type");
                 return;
-            }
-
-            var regex = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
-            if (!regex.IsMatch(fuelTextBox.Text)) {
-                MessageBox.Show("Fuel consumption value is invalid");
+            } 
+            
+            if (!double.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
+                MessageBox.Show("Entered average fuel consumption of the vehicle is invalid!");
                 return;
             }
 
@@ -57,10 +58,9 @@ namespace TransportationService {
             newVehicle.make = makeTextBox.Text;
             newVehicle.model = modelTextBox.Text;
             newVehicle.registration = registrationTextBox.Text;
-            newVehicle.avg_fuel_consumption = double.Parse(fuelTextBox.Text);
+            newVehicle.avg_fuel_consumption = avgFuelConsumption;               //do poprawy w bazie na decimale (+ w transportach poprawa przecinków w decimalach)
 
-            Vehicle_types type = db.Vehicle_types.FirstOrDefault(t => t.name.Equals(vehicleTypeComboBox.SelectedValue.ToString()));
-            newVehicle.Vehicle_types = type;
+            newVehicle.Vehicle_types = db.Vehicle_types.FirstOrDefault(t => t.name.Equals(vehicleTypeComboBox.SelectedValue.ToString()));
 
             db.Vehicles.Add(newVehicle);
             db.SaveChanges();

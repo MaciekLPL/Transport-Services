@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace TransportationService.Admin
+namespace TransportationService
 {
     /// <summary>
     /// Interaction logic for DashboardAdmin.xaml

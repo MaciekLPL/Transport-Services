@@ -63,6 +63,7 @@ namespace TransportationService
                 MessageBox.Show("Entered driver's hourly rate is invalid!");
                 return;
             }
+
             Drivers newDriver = new Drivers();
             newDriver.name = nameTextBox.Text;
             newDriver.surname = surnameTextBox.Text;

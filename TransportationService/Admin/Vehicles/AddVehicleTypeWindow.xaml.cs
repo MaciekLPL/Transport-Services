@@ -9,10 +9,10 @@ namespace TransportationService {
     public partial class AddVehicleTypeWindow : Window {
 
         ServiceDBEntities db;
-        public AddVehicleTypeWindow() {
+        public AddVehicleTypeWindow(ServiceDBEntities _db) {
 
             InitializeComponent();
-            db = new ServiceDBEntities();
+            db = _db;
 
         }
 

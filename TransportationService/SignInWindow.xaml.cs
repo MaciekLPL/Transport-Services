@@ -43,7 +43,7 @@ namespace TransportationService
                     }
                     else if (user.type == 1)
                     {
-                        Admin.DashboardAdmin dashboardWindow = new Admin.DashboardAdmin(user.id, user.login);
+                        DashboardAdmin dashboardWindow = new DashboardAdmin(user.id, user.login);
                         dashboardWindow.Show();
                         this.Close();
 
