@@ -1,4 +1,4 @@
-﻿<Page x:Class="TransportationService.PageUsers"
+﻿<Page x:Name="horizontal_alignment" x:Class="TransportationService.PageUsers"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
@@ -19,12 +19,24 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}">
+        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" 
+                  Background="Transparent" RowBackground="Transparent" Foreground="AliceBlue" 
+                  FontFamily="Calibri" FontSize="13"
+                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" UseLayoutRounding="False"  >
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
                 </Style>
             </DataGrid.RowStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
         </DataGrid>
         <Button Grid.Column="1" Grid.Row="1" Name ="AddUser" Content="Add user" Height="39" Width="136" Click="AddUser_Click"/>
     </Grid>
