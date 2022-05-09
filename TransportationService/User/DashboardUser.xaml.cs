@@ -24,28 +24,28 @@ namespace TransportationService
         {
             InitializeComponent();
             usernameText.Text = "@" + _username;
-            //erPanelFrame.Content = new ap_userPage();
-            activePanel = B1;
+            UserPanel.Content = new PageTransports();
+            activePanel = TransportsButton;
         }
 
-        private void B1_Click(object sender, RoutedEventArgs e)
+        private void TransportsButton_Click(object sender, RoutedEventArgs e)
         {
-            //UserPanelFrame.Content = ;
-            if (activePanel != B1)
+            if (activePanel != TransportsButton)
             {
                 activePanel.Style = (Style)Application.Current.Resources["menuButton"];
-                activePanel = B1;
+                activePanel = TransportsButton;
                 activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+                UserPanel.Content = new PageTransports();
             }
         }
-        private void B2_Click(object sender, RoutedEventArgs e)
+        private void ReportsButton_Click(object sender, RoutedEventArgs e)
         {
-            //UserPanelFrame.Content = ;
-            if (activePanel != B2)
+            if (activePanel != ReportsButton)
             {
                 activePanel.Style = (Style)Application.Current.Resources["menuButton"];
-                activePanel = B2;
+                activePanel = ReportsButton;
                 activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
+                UserPanel.Content = new PageReports();
             }
         }
         private void B3_Click(object sender, RoutedEventArgs e)

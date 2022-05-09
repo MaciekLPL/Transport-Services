@@ -57,7 +57,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Border CornerRadius="20" Padding="35 25" Background="#243771">
-                        <Frame x:Name="UserPanelFrame" NavigationUIVisibility="Hidden"/>
+                        <Frame x:Name="UserPanel" NavigationUIVisibility="Hidden"/>
 
                     </Border>
                 </Grid>
@@ -90,17 +90,17 @@
             </StackPanel>
             <Separator Height = "0.8" Margin="10 0 10 10" Background="#46558a"/>
             <!--Menu Bar-->
-            <Button x:Name ="B1" Style="{StaticResource menuButtonActive}" Click="B1_Click">
+            <Button x:Name ="TransportsButton" Style="{StaticResource menuButtonActive}" Click="TransportsButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="users" Style="{StaticResource menuButtonIcon}"/>
-                    <TextBlock Text="B1" Style="{StaticResource menuButtonText}"/>
+                    <TextBlock Text="Transports" Style="{StaticResource menuButtonText}"/>
 
                 </StackPanel>
             </Button>
-            <Button x:Name ="B2" Style="{StaticResource menuButton}" Click="B2_Click">
+            <Button x:Name ="ReportsButton" Style="{StaticResource menuButton}" Click="ReportsButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
-                    <TextBlock Text="B2" Style="{StaticResource menuButtonText}"/>
+                    <TextBlock Text="Reports" Style="{StaticResource menuButtonText}"/>
                 </StackPanel>
             </Button>
             <Button x:Name ="B3" Style="{StaticResource menuButton}" Click="B3_Click">
