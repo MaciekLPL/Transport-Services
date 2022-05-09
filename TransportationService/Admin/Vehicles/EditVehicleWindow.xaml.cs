@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace TransportationService {
     /// <summary>
@@ -86,6 +76,8 @@ namespace TransportationService {
                 changed = true;
             }
 
+
+            //Dodać zmianę zużycia (rzutowanie - do tego zmienić w bazie typ na decimal)
             /*if (fuelTextBox.Text != vehicle.avg_fuel_consumption.ToString()) {
                 
                 if(!double.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
