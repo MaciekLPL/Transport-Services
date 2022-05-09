@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TransportationService.User
+namespace TransportationService
 {
     /// <summary>
     /// Interaction logic for DashboardUser.xaml

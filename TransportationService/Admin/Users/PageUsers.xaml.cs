@@ -46,7 +46,8 @@ namespace TransportationService
                 var item = row.DataContext as Users;
 
                 if (item != null) {
-                    MessageBox.Show($"{item.id} {item.login}");
+                    EditUserWindow editUserWindow = new EditUserWindow(db, item.id);
+                    editUserWindow.ShowDialog();
                 }
 
             }

@@ -45,7 +45,7 @@
                     <!-- Logout Button-->
                     <Button Style="{StaticResource topMenuButton}" Background="DimGray" Width="30" Click="LogoutButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="PowerOff" Foreground="#ffffff" Width="20" Margin="5 0 5 0"/>
+                            <fa:IconImage Icon="SignOutAlt" Foreground="#ffffff" Width="20" Margin="5 0 5 0"/>
                         </StackPanel>
                     </Button>
 

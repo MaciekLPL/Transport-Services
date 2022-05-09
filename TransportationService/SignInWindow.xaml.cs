@@ -18,6 +18,7 @@ namespace TransportationService
         {
             InitializeComponent();
             db = new ServiceDBEntities();
+            db.Users.ToList();
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e)
@@ -30,13 +31,13 @@ namespace TransportationService
             if (user != null)
             {
 
-                bool authenticationToken = authentication(user.sha256, user.salt);
+                bool authenticationToken = Hash.authentication(user.sha256, user.salt, passwdTextBox.Password);
                 if (authenticationToken)
                 {
 
                     if (user.type == 0)
                     {
-                        User.DashboardUser dashboardWindow = new User.DashboardUser(user.id, user.login);
+                        DashboardUser dashboardWindow = new DashboardUser(user.id, user.login);
                         dashboardWindow.Show();
                         this.Close();
 
@@ -68,18 +69,6 @@ namespace TransportationService
                 unameTextBox.Text = "";
                 passwdTextBox.Password = "";
             }
-        }
-
-        bool authentication(string _hashedPassword, string _salt)
-        {
-            byte[] bytes = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(passwdTextBox.Password + _salt));
-            var sb = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
-                sb.Append(bytes[i].ToString("x2"));
-            string hashedPassword = sb.ToString();
-            if (hashedPassword == _hashedPassword)
-                return true;
-            return false;
         }
     }
 }
