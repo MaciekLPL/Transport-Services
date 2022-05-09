@@ -111,6 +111,9 @@
       <DependentUpon>EditUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users\Hash.cs" />
+    <Compile Include="Admin\Vehicles\EditVehicleWindow.xaml.cs">
+      <DependentUpon>EditVehicleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Licenses.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin\Users\EditUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\Vehicles\EditVehicleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

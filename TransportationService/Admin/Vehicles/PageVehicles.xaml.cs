@@ -49,7 +49,8 @@ namespace TransportationService
                 var item = row.DataContext as Vehicles;
 
                 if (item != null) {
-                    MessageBox.Show($"{item.id} {item.make} {item.model}");
+                    EditVehicleWindow editVehicleWindow = new EditVehicleWindow(db, item.id);
+                    editVehicleWindow.ShowDialog();
                 }
 
             }

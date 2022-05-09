@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Add vehicle type" Height="320" Width="600">
+        Title="Add vehicle type" Height="300" Width="300">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Add new vehicle type" HorizontalAlignment="Center" FontSize="25"/>
         <Separator></Separator>
@@ -13,6 +13,6 @@
         <TextBox Name="nameTextBox" FontSize="18"/>
         <Label Content="Max load"/>
         <TextBox Name="loadTextBox" FontSize="18" PreviewTextInput="NumberValidation"/>
-        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="40 40" Click="submitBtn_Click" Height="30" Width="200"/>
+        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="0 30 0 0 " Click="submitBtn_Click" Height="30" Width="200"/>
     </StackPanel>
 </Window>

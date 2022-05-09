@@ -48,9 +48,7 @@ namespace TransportationService {
                     userRadioBtn.IsChecked = true;
                     suspendChkBox.IsChecked = true;
                 }
-
             }
-
         }
 
 
@@ -74,7 +72,7 @@ namespace TransportationService {
 
             bool changed = false;
 
-            if(user.login != unameTextBox.Text) {
+            if(user.login != unameTextBox.Text && unameTextBox.Text.Length > 1) {
                 user.login = unameTextBox.Text;
                 changed = true;
             }
@@ -82,8 +80,11 @@ namespace TransportationService {
             if (suspendChkBox.IsChecked.Value && user.type < 2) {
                 user.type = 2;
                 changed = true;
-            }
-
+            } 
+            else if (!suspendChkBox.IsChecked.Value && user.type > 1) {
+                user.type = userRadioBtn.IsChecked.Value ? 0 : 1;
+                changed = true;
+            } 
             else if (user.type == 0 && adminRadioBtn.IsChecked.Value) {
                 user.type = 1;
                 changed = true;
@@ -91,12 +92,7 @@ namespace TransportationService {
             else if (user.type == 1 && userRadioBtn.IsChecked.Value) {
                 user.type = 0;
                 changed = true;
-            } 
-            else if (!suspendChkBox.IsChecked.Value && user.type > 1) {
-                user.type = userRadioBtn.IsChecked.Value ? 0 : 1;
-                changed = true;
             }
-
 
             if (passwdTextBox.Password != "") {
 
