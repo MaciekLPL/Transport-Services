@@ -159,6 +159,7 @@
     <Compile Include="User\Transports\PageTransports.xaml.cs">
       <DependentUpon>PageTransports.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validate.cs" />
     <Compile Include="Vehicles.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>

@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 
+
 namespace TransportationService {
     /// <summary>
     /// Interaction logic for AddUserWindow.xaml
@@ -10,35 +11,47 @@ namespace TransportationService {
     public partial class AddUserWindow : Window {
 
         ServiceDBEntities db;
+        Validate v;
         public AddUserWindow(ServiceDBEntities _db) {
             InitializeComponent();
+            v = new Validate(_db);
             db = _db;
 
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
 
+            if(!v.checkUserExists(unameTextBox.Text))
+            {
+                if (passwdTextBox.Password == passwdRepTextBox.Password)
+                {
 
-            if (passwdTextBox.Password == passwdRepTextBox.Password) {
+                    Users newUser = new Users();
+                    newUser.login = unameTextBox.Text;
+                    newUser.salt = Hash.generateSalt();
+                    newUser.sha256 = Hash.generateHash(passwdTextBox.Password, newUser.salt);
 
-                Users newUser = new Users();
-                newUser.login = unameTextBox.Text;
-                newUser.salt = Hash.generateSalt();
-                newUser.sha256 = Hash.generateHash(passwdTextBox.Password, newUser.salt);
-
-                if (userRadioBtn.IsChecked == true)
-                    newUser.type = 0;
-                else
-                    newUser.type = 1;
+                    if (userRadioBtn.IsChecked == true)
+                        newUser.type = 0;
+                    else
+                        newUser.type = 1;
 
 
-                
-                db.Users.Add(newUser);
-                db.SaveChanges();
+                    db.Users.Add(newUser);
+                    db.SaveChanges();
 
-                this.Close();
-                MessageBox.Show("Dodano użytkownika");
+                    this.Close();
+                    MessageBox.Show("Dodano użytkownika");
+                }
             }
+            else
+            {
+                MessageBox.Show("User already exists");
+            }
+           
+
+
+            
 
         }
     }
