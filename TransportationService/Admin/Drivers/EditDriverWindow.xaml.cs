@@ -27,7 +27,7 @@ namespace TransportationService {
 
                 nameTextBox.Text = driver.name;
                 surnameTextBox.Text = driver.surname;
-                ageTextBox.Text = driver.age.ToString();
+                birthDatePicker.SelectedDate = driver.birth_date;
                 hourlyRateTextBox.Text = driver.hourly_rate.ToString();
 
             }
@@ -40,7 +40,7 @@ namespace TransportationService {
             if (wasChanged) {
                 db.SaveChanges();
                 this.Close();
-                MessageBox.Show("Vehicle edited successfuly");
+                MessageBox.Show("Driver edited successfuly");
             } else {
                 MessageBox.Show("No changes made");
             }
@@ -49,7 +49,7 @@ namespace TransportationService {
         private bool updateDriver() {
 
             bool changed = false;
-
+            decimal hourlyRate;
 
             if (nameTextBox.Text != driver.name) {
                 driver.name = nameTextBox.Text;
@@ -61,12 +61,21 @@ namespace TransportationService {
                 changed = true;
             }
 
-            //dodać sprawdzanie zmian dla wieku i stawki (rzutowanie)
+            if (birthDatePicker.SelectedDate != driver.birth_date)
+            {
+                driver.birth_date = birthDatePicker.SelectedDate.Value;
+                changed = true;
+            }
 
+            if (hourlyRateTextBox.Text != driver.hourly_rate.ToString())
+            {
+                if (decimal.TryParse(hourlyRateTextBox.Text, out hourlyRate))
+                {
+                    driver.hourly_rate = hourlyRate;
+                    changed = true;
+                }
+            }
             return changed;
-
         }
-
-        
     }
 }

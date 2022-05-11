@@ -13,8 +13,8 @@
         <TextBox Name="nameTextBox" FontSize="18"/>
         <Label Content="Surname"/>
         <TextBox Name="surnameTextBox" FontSize="18"/>
-        <Label Content="Age"/>
-        <TextBox Name="ageTextBox" FontSize="18"/>
+        <Label Content="Birth date"/>
+        <DatePicker Name="birthDatePicker" FontSize="18"/>
         <Label Content="Hourly rate"/>
         <TextBox Name="hourlyRateTextBox" FontSize="18"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>

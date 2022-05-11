@@ -22,7 +22,7 @@ namespace TransportationService {
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
 
-            double avgFuelConsumption;
+            decimal avgFuelConsumption;
 
             if (makeTextBox.Text.Length == 0) {
                 MessageBox.Show("Enter vehicle make");
@@ -49,7 +49,7 @@ namespace TransportationService {
                 return;
             } 
             
-            if (!double.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
+            if (!decimal.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
                 MessageBox.Show("Entered average fuel consumption of the vehicle is invalid!");
                 return;
             }

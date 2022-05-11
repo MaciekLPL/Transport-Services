@@ -18,7 +18,6 @@ namespace TransportationService
 
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
-            int age = 0;
             decimal hourlyRate;
             if (nameTextBox.Text.Length == 0)
             {
@@ -32,14 +31,9 @@ namespace TransportationService
                 return;
             }
 
-            if (ageTextBox.Text.Length == 0)
+            if (birthDatePicker.SelectedDate == null)
             {
-                MessageBox.Show("Enter driver's age");
-                return;
-            }
-            else if (!int.TryParse(ageTextBox.Text, out age))
-            {
-                MessageBox.Show("Entered driver's age is invalid!");
+                MessageBox.Show("Enter driver's birth date");
                 return;
             }
 
@@ -57,7 +51,7 @@ namespace TransportationService
             Drivers newDriver = new Drivers();
             newDriver.name = nameTextBox.Text;
             newDriver.surname = surnameTextBox.Text;
-            newDriver.age = age;
+            newDriver.birth_date = birthDatePicker.SelectedDate.Value;
             newDriver.hourly_rate = hourlyRate;
 
 

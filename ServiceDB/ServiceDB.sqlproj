@@ -58,7 +58,6 @@
     <Folder Include="Properties" />
     <Folder Include="DBO" />
     <Folder Include="DBO\Tables" />
-    <Folder Include="Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="DBO\Tables\Users.sql" />
@@ -69,12 +68,14 @@
     <Build Include="DBO\Tables\Vehicle_types.sql" />
     <Build Include="DBO\Tables\Licenses.sql" />
     <Build Include="DBO\Tables\Status.sql" />
-    <Build Include="Stored Procedures\LogIn.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ServiceDB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ServiceDB.refactorlog" />
   </ItemGroup>
 </Project>

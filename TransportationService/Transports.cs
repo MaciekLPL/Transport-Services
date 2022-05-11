@@ -15,18 +15,18 @@ namespace TransportationService
     public partial class Transports
     {
         public int id { get; set; }
-        public Nullable<int> user_id { get; set; }
-        public Nullable<int> driver_id { get; set; }
-        public Nullable<int> vehicle_id { get; set; }
-        public Nullable<int> customer_id { get; set; }
+        public int user_id { get; set; }
+        public int driver_id { get; set; }
+        public int vehicle_id { get; set; }
+        public int customer_id { get; set; }
         public string origin { get; set; }
         public string destination { get; set; }
-        public Nullable<int> distance { get; set; }
-        public Nullable<int> status_id { get; set; }
-        public Nullable<System.DateTime> start_date { get; set; }
-        public Nullable<System.DateTime> end_date { get; set; }
-        public Nullable<decimal> income { get; set; }
-        public Nullable<decimal> cost { get; set; }
+        public int distance { get; set; }
+        public int status_id { get; set; }
+        public System.DateTime start_date { get; set; }
+        public System.DateTime end_date { get; set; }
+        public decimal income { get; set; }
+        public decimal cost { get; set; }
     
         public virtual Customers Customers { get; set; }
         public virtual Drivers Drivers { get; set; }

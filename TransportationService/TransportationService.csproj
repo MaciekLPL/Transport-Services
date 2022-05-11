@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="User\AddTransportWindow.xaml.cs">
+      <DependentUpon>AddTransportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Drivers\AddDriversWindow.xaml.cs">
       <DependentUpon>AddDriversWindow.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
     <Compile Include="Vehicle_types.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>
+    <Page Include="User\AddTransportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin\Drivers\AddDriversWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

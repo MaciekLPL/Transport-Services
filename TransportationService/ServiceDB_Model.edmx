@@ -16,7 +16,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Drivers">
           <Key>
@@ -25,7 +25,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="birth_date" Type="date" Nullable="false" />
           <Property Name="hourly_rate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Licenses">
@@ -41,34 +41,34 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Transports">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="user_id" Type="int" />
-          <Property Name="driver_id" Type="int" />
-          <Property Name="vehicle_id" Type="int" />
-          <Property Name="customer_id" Type="int" />
-          <Property Name="origin" Type="nvarchar" MaxLength="50" />
-          <Property Name="destination" Type="nvarchar" MaxLength="50" />
-          <Property Name="distance" Type="int" />
-          <Property Name="status_id" Type="int" />
-          <Property Name="start_date" Type="datetime" />
-          <Property Name="end_date" Type="datetime" />
-          <Property Name="income" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="cost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="driver_id" Type="int" Nullable="false" />
+          <Property Name="vehicle_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="origin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="destination" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="distance" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Nullable="false" />
+          <Property Name="income" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="cost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="login" Type="nvarchar" MaxLength="30" />
-          <Property Name="sha256" Type="nvarchar" MaxLength="64" />
-          <Property Name="salt" Type="nvarchar" MaxLength="44" />
+          <Property Name="login" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="sha256" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="salt" Type="nvarchar" MaxLength="44" Nullable="false" />
           <Property Name="type" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Vehicle_types">
@@ -76,8 +76,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="max_load" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="max_load" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Vehicles">
           <Key>
@@ -88,10 +88,10 @@
           <Property Name="model" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="type_id" Type="int" Nullable="false" />
           <Property Name="registration" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="avg_fuel_consumption" Type="float" Nullable="false" />
+          <Property Name="avg_fuel_consumption" Type="decimal" Precision="18" Scale="1" Nullable="false" />
         </EntityType>
         <Association Name="FK_customer_id">
-          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
           <End Role="Transports" Type="Self.Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -103,7 +103,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_driver_id">
-          <End Role="Drivers" Type="Self.Drivers" Multiplicity="0..1" />
+          <End Role="Drivers" Type="Self.Drivers" Multiplicity="1" />
           <End Role="Transports" Type="Self.Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Drivers">
@@ -127,7 +127,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_status_id">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Transports" Type="Self.Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
@@ -151,7 +151,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_id">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Transports" Type="Self.Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -163,7 +163,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_vehicle_id">
-          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="0..1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
           <End Role="Transports" Type="Self.Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vehicles">
@@ -186,9 +186,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="LogIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Login" Type="nvarchar" Mode="In" />
-        </Function>
         <EntityContainer Name="ServiceDBModelStoreContainer">
           <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
@@ -297,7 +294,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Transports" Relationship="ServiceDBModel.FK_customer_id" FromRole="Customers" ToRole="Transports" />
         </EntityType>
         <EntityType Name="Drivers">
@@ -307,7 +304,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="birth_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="hourly_rate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="Transports" Relationship="ServiceDBModel.FK_driver_id" FromRole="Drivers" ToRole="Transports" />
           <NavigationProperty Name="Licenses" Relationship="ServiceDBModel.FK_driver_licences_id" FromRole="Drivers" ToRole="Licenses" />
@@ -327,7 +324,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Transports" Relationship="ServiceDBModel.FK_status_id" FromRole="Status" ToRole="Transports" />
         </EntityType>
         <EntityType Name="Transports">
@@ -335,18 +332,18 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="user_id" Type="Int32" />
-          <Property Name="driver_id" Type="Int32" />
-          <Property Name="vehicle_id" Type="Int32" />
-          <Property Name="customer_id" Type="Int32" />
-          <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="destination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="distance" Type="Int32" />
-          <Property Name="status_id" Type="Int32" />
-          <Property Name="start_date" Type="DateTime" Precision="3" />
-          <Property Name="end_date" Type="DateTime" Precision="3" />
-          <Property Name="income" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="cost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="driver_id" Type="Int32" Nullable="false" />
+          <Property Name="vehicle_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="origin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="destination" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="distance" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="income" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="Customers" Relationship="ServiceDBModel.FK_customer_id" FromRole="Transports" ToRole="Customers" />
           <NavigationProperty Name="Drivers" Relationship="ServiceDBModel.FK_driver_id" FromRole="Transports" ToRole="Drivers" />
           <NavigationProperty Name="Status" Relationship="ServiceDBModel.FK_status_id" FromRole="Transports" ToRole="Status" />
@@ -358,9 +355,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="sha256" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="salt" Type="String" MaxLength="44" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="sha256" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="salt" Type="String" Nullable="false" MaxLength="44" FixedLength="false" Unicode="true" />
           <Property Name="type" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Transports" Relationship="ServiceDBModel.FK_user_id" FromRole="Users" ToRole="Transports" />
         </EntityType>
@@ -369,8 +366,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="max_load" Type="Int32" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="max_load" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Licenses" Relationship="ServiceDBModel.FK_vehicle_type_id" FromRole="Vehicle_types" ToRole="Licenses" />
           <NavigationProperty Name="Vehicles" Relationship="ServiceDBModel.FK_type_id" FromRole="Vehicle_types" ToRole="Vehicles" />
         </EntityType>
@@ -383,12 +380,12 @@
           <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="type_id" Type="Int32" Nullable="false" />
           <Property Name="registration" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="avg_fuel_consumption" Type="Double" Nullable="false" />
+          <Property Name="avg_fuel_consumption" Type="Decimal" Nullable="false" Precision="18" Scale="1" />
           <NavigationProperty Name="Transports" Relationship="ServiceDBModel.FK_vehicle_id" FromRole="Vehicles" ToRole="Transports" />
           <NavigationProperty Name="Vehicle_types" Relationship="ServiceDBModel.FK_type_id" FromRole="Vehicles" ToRole="Vehicle_types" />
         </EntityType>
         <Association Name="FK_customer_id">
-          <End Type="ServiceDBModel.Customers" Role="Customers" Multiplicity="0..1" />
+          <End Type="ServiceDBModel.Customers" Role="Customers" Multiplicity="1" />
           <End Type="ServiceDBModel.Transports" Role="Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -400,7 +397,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_driver_id">
-          <End Type="ServiceDBModel.Drivers" Role="Drivers" Multiplicity="0..1" />
+          <End Type="ServiceDBModel.Drivers" Role="Drivers" Multiplicity="1" />
           <End Type="ServiceDBModel.Transports" Role="Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Drivers">
@@ -436,7 +433,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_status_id">
-          <End Type="ServiceDBModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="ServiceDBModel.Status" Role="Status" Multiplicity="1" />
           <End Type="ServiceDBModel.Transports" Role="Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
@@ -448,7 +445,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_user_id">
-          <End Type="ServiceDBModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="ServiceDBModel.Users" Role="Users" Multiplicity="1" />
           <End Type="ServiceDBModel.Transports" Role="Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -460,7 +457,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_vehicle_id">
-          <End Type="ServiceDBModel.Vehicles" Role="Vehicles" Multiplicity="0..1" />
+          <End Type="ServiceDBModel.Vehicles" Role="Vehicles" Multiplicity="1" />
           <End Type="ServiceDBModel.Transports" Role="Transports" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vehicles">
@@ -489,14 +486,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ServiceDBModelStoreContainer" CdmEntityContainer="ServiceDBEntities">
-          <FunctionImportMapping FunctionImportName="LogIn" FunctionName="ServiceDBModel.Store.LogIn">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ServiceDBModel.LogIn_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="login" ColumnName="login" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="C__RefactorLog">
             <EntityTypeMapping TypeName="ServiceDBModel.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">
@@ -516,7 +505,7 @@
             <EntityTypeMapping TypeName="ServiceDBModel.Drivers">
               <MappingFragment StoreEntitySet="Drivers">
                 <ScalarProperty Name="hourly_rate" ColumnName="hourly_rate" />
-                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
                 <ScalarProperty Name="surname" ColumnName="surname" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -591,7 +580,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

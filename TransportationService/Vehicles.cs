@@ -25,7 +25,7 @@ namespace TransportationService
         public string model { get; set; }
         public int type_id { get; set; }
         public string registration { get; set; }
-        public double avg_fuel_consumption { get; set; }
+        public decimal avg_fuel_consumption { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transports> Transports { get; set; }
