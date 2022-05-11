@@ -19,12 +19,19 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}">
+        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
                 </Style>
             </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Make" Binding="{Binding make}"/>
+                <DataGridTextColumn Header="Model" Binding="{Binding model}"/>
+                <DataGridTextColumn Header="Registration" Binding="{Binding registration}"/>
+                <DataGridTextColumn Header="Fuel consumption" Binding="{Binding avg_fuel_consumption}"/>
+                <DataGridTextColumn Header="Vehicle type" Binding="{Binding Vehicle_types.name}"/>
+            </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Column="0" Grid.Row="1" Name ="AddVehicle" Content="Add vehicle" Height="39" Width="136" Click="AddVehicle_Click"/>
         <Button Grid.Column="2" Grid.Row="1" Name ="AddVehicleType" Content="Add vehicle type"  Height="39" Width="136" Click="AddVehicleType_Click"/>

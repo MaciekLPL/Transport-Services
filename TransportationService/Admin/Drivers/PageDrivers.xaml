@@ -18,12 +18,18 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}">
+        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
                 </Style>
             </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding surname}"/>
+                <DataGridTextColumn Header="Birth date" Binding="{Binding birth_date}"/>
+                <DataGridTextColumn Header="Hourly rate" Binding="{Binding hourly_rate}"/>
+            </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Column="1" Grid.Row="1" Name ="AddDriver" Content="Add driver" Height="39" Width="136" Click="AddDriver_Click"/>
     </Grid>

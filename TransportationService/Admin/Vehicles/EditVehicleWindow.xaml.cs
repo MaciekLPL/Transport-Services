@@ -59,7 +59,7 @@ namespace TransportationService {
         public bool updateVehicle() {
 
             bool changed = false;
-            //double avgFuelConsumption;
+            decimal avgFuelConsumption;
 
             if (makeTextBox.Text != vehicle.make) {
                 vehicle.make = makeTextBox.Text;
@@ -76,16 +76,14 @@ namespace TransportationService {
                 changed = true;
             }
 
-
-            //Dodać zmianę zużycia (rzutowanie - do tego zmienić w bazie typ na decimal)
-            /*if (fuelTextBox.Text != vehicle.avg_fuel_consumption.ToString()) {
+            if (fuelTextBox.Text != vehicle.avg_fuel_consumption.ToString()) {
                 
-                if(!double.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
+                if(decimal.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
 
                     vehicle.avg_fuel_consumption = avgFuelConsumption;
                     changed = true;
                 }
-            }*/
+            }
 
             if (vehicleTypeComboBox.SelectedIndex != -1)
                 vehicle.Vehicle_types = db.Vehicle_types.FirstOrDefault(t => t.name.Equals(vehicleTypeComboBox.SelectedValue.ToString()));
