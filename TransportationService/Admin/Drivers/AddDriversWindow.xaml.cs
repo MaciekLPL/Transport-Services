@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Windows;
 
 
@@ -10,9 +10,11 @@ namespace TransportationService
     public partial class AddDriversWindow : Window
     {
         ServiceDBEntities db;
+        Validate v;
         public AddDriversWindow(ServiceDBEntities _db)
         {
             InitializeComponent();
+            v = new Validate(_db);
             db = _db;
         }
 
@@ -47,19 +49,31 @@ namespace TransportationService
                 MessageBox.Show("Entered driver's hourly rate is invalid!");
                 return;
             }
+            if(!v.checkDriverExists(nameTextBox.Text, surnameTextBox.Text, birthDatePicker.SelectedDate.Value))
+            {
+                Drivers newDriver = new Drivers();
+                newDriver.name = nameTextBox.Text;
+                newDriver.surname = surnameTextBox.Text;
+                newDriver.birth_date = birthDatePicker.SelectedDate.Value;
+                newDriver.hourly_rate = hourlyRate;
 
-            Drivers newDriver = new Drivers();
-            newDriver.name = nameTextBox.Text;
-            newDriver.surname = surnameTextBox.Text;
-            newDriver.birth_date = birthDatePicker.SelectedDate.Value;
-            newDriver.hourly_rate = hourlyRate;
 
+                db.Drivers.Add(newDriver);
+                db.SaveChanges();
 
-            db.Drivers.Add(newDriver);
-            db.SaveChanges();
-
-            this.Close();
-            MessageBox.Show("Successfully added a new driver");
+                this.Close();
+                MessageBox.Show("Successfully added a new driver");
+            }
+            else
+            {
+                String msg = String.Format("Driver {0} already exists", nameTextBox.Text);
+                nameTextBox.Text = "";
+                surnameTextBox.Text = "";
+                hourlyRateTextBox.Text = "";
+                birthDatePicker.SelectedDate = null;
+                MessageBox.Show(msg);
+            }
+            
         }
     }
 
