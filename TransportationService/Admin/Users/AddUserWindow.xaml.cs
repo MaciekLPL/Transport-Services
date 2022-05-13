@@ -46,7 +46,11 @@ namespace TransportationService {
             }
             else
             {
-                MessageBox.Show("User already exists");
+                String msg = String.Format("User {0} already exists", unameTextBox.Text);
+                unameTextBox.Text = "";
+                passwdTextBox.Password = "";
+                passwdRepTextBox.Password = "";
+                MessageBox.Show(msg);
             }
            
 

@@ -25,6 +25,17 @@ namespace TransportationService
             }
             return false;
         }
+        public bool checkDriverExists(String _name, String _surname, DateTime _birthDate)
+        {
+            foreach(var u in db.Drivers)
+            {
+                if(u.name == _name && u.surname == _surname && u.birth_date == _birthDate)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
 
     }
