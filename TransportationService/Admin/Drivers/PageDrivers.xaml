@@ -27,7 +27,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Surname" Binding="{Binding surname}"/>
-                <DataGridTextColumn Header="Birth date" Binding="{Binding birth_date}"/>
+                <DataGridTextColumn Header="Birth date" Binding="{Binding birth_date, StringFormat=\{0:dd.MM.yyyy\}}"/>
                 <DataGridTextColumn Header="Hourly rate" Binding="{Binding hourly_rate}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
+using System;
 
 namespace TransportationService {
     /// <summary>
@@ -11,13 +12,12 @@ namespace TransportationService {
     public partial class AddVehicleWindow : Window {
         ServiceDBEntities db;
 
-        List<Vehicle_types> vehicleTypes;
         public AddVehicleWindow(ServiceDBEntities _db) {
             InitializeComponent();
             db = _db;
 
-            vehicleTypes = db.Vehicle_types.ToList();
-            populateComboBox();
+            vehicleTypeComboBox.ItemsSource = db.Vehicle_types.ToList();
+
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
@@ -58,9 +58,10 @@ namespace TransportationService {
             newVehicle.make = makeTextBox.Text;
             newVehicle.model = modelTextBox.Text;
             newVehicle.registration = registrationTextBox.Text;
-            newVehicle.avg_fuel_consumption = avgFuelConsumption;               //do poprawy w bazie na decimale (+ w transportach poprawa przecinków w decimalach)
+            newVehicle.avg_fuel_consumption = avgFuelConsumption;
 
-            newVehicle.Vehicle_types = db.Vehicle_types.FirstOrDefault(t => t.name.Equals(vehicleTypeComboBox.SelectedValue.ToString()));
+            int id = Convert.ToInt32(vehicleTypeComboBox.SelectedValue.ToString());
+            newVehicle.Vehicle_types = db.Vehicle_types.FirstOrDefault(t => t.id == id);
 
             db.Vehicles.Add(newVehicle);
             db.SaveChanges();
@@ -68,12 +69,6 @@ namespace TransportationService {
             this.Close();
             MessageBox.Show("Pomyslnie dodano pojazd");
 
-        }
-
-        private void populateComboBox() {
-
-            foreach (var vehicle in vehicleTypes)
-                vehicleTypeComboBox.Items.Add(vehicle.name);
         }
     }
 }

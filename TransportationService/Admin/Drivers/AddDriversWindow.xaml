@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="AddDriversWindow" Height="420" Width="300">
+        Title="Add new driver" Height="420" Width="300">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
-        <Label Content="Create new driver" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Add new driver" HorizontalAlignment="Center" FontSize="25"/>
         <Separator></Separator>
         <Label Content="Name"/>
         <TextBox Name="nameTextBox" FontSize="18"/>

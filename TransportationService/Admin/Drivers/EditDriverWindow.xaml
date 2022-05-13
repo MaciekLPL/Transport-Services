@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Edit driver information" Height="420" Width="300" Loaded="Window_Loaded">
+        Title="Edit driver information" Height="520" Width="300" Loaded="Window_Loaded">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Edit driver" HorizontalAlignment="Center" FontSize="25"/>
         <Separator></Separator>
@@ -17,6 +17,28 @@
         <DatePicker Name="birthDatePicker" FontSize="18"/>
         <Label Content="Hourly rate"/>
         <TextBox Name="hourlyRateTextBox" FontSize="18"/>
-        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
+        <Label Content="Licences" FontSize="18"/>
+        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="100" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Vehicle type" Binding="{Binding Name.name}" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Owner" Binding="{Binding Owner, Mode=OneWay}" />
+                <DataGridTemplateColumn Header="Grant">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnGrant" Content="Grant" Click="btnGrant_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Revoke">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnRevoke" Content="Revoke" Click="btnRevoke_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
     </StackPanel>
 </Window>

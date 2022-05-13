@@ -18,7 +18,7 @@
         <Label Content="Fuel consumption"/>
         <TextBox Name="fuelTextBox" FontSize="18"/>
         <Label Content="Vehicle type"/>
-        <ComboBox Name="vehicleTypeComboBox" HorizontalAlignment="Stretch"/>
+        <ComboBox Name="vehicleTypeComboBox" HorizontalAlignment="Stretch" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="id"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="20 10" Click="submitBtn_Click" Height="30" Width="200"/>
     </StackPanel>
 </Window>

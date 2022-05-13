@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
@@ -11,21 +12,18 @@ namespace TransportationService {
         ServiceDBEntities db;
         int vehicleID;
         Vehicles vehicle;
-        List<Vehicle_types> vehicleTypes;
 
         public EditVehicleWindow(ServiceDBEntities _db, int _vehicleID) {
             InitializeComponent();
 
             db = _db;
             vehicleID = _vehicleID;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
-            vehicleTypes = db.Vehicle_types.ToList();
-            foreach (var vehicle in vehicleTypes)
-                vehicleTypeComboBox.Items.Add(vehicle.name);
-
+            vehicleTypeComboBox.ItemsSource = db.Vehicle_types.ToList();
             vehicle = db.Vehicles.Where(i => i.id == vehicleID).SingleOrDefault();
 
             if (vehicle == null) {
@@ -39,7 +37,6 @@ namespace TransportationService {
 
             }
         }
-
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
 
@@ -85,8 +82,12 @@ namespace TransportationService {
                 }
             }
 
-            if (vehicleTypeComboBox.SelectedIndex != -1)
-                vehicle.Vehicle_types = db.Vehicle_types.FirstOrDefault(t => t.name.Equals(vehicleTypeComboBox.SelectedValue.ToString()));
+            if (vehicleTypeComboBox.SelectedIndex != -1) {
+                int id = Convert.ToInt32(vehicleTypeComboBox.SelectedValue.ToString());
+                vehicle.Vehicle_types = db.Vehicle_types.FirstOrDefault(t => t.id == id);
+                changed = true;
+            }
+
 
             return changed;
         }
