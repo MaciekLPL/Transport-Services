@@ -36,6 +36,14 @@ namespace TransportationService
             }
             return false;
         }
+        public bool checkIfNull(String s)
+        {
+            if (s.Length == 0)
+            {
+                return true;
+            }         
+            return false;
+        }
 
 
     }

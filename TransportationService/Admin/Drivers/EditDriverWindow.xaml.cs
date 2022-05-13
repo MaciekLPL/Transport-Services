@@ -15,10 +15,11 @@ namespace TransportationService {
         int driverID;
         Drivers driver;
         bool changed = false;
+        Validate v;
 
         public EditDriverWindow(ServiceDBEntities _db, int _driverID) {
             InitializeComponent();
-
+            v = new Validate(_db);
             db = _db;
             driverID = _driverID;
         }
@@ -50,7 +51,7 @@ namespace TransportationService {
                 this.Close();
                 MessageBox.Show("Driver edited successfuly");
             } else {
-                MessageBox.Show("No changes made");
+                MessageBox.Show("Wrong changes made");
             }
         }
 
@@ -58,12 +59,12 @@ namespace TransportationService {
 
             decimal hourlyRate;
 
-            if (nameTextBox.Text != driver.name) {
+            if (nameTextBox.Text != driver.name && !v.checkIfNull(nameTextBox.Text)) {
                 driver.name = nameTextBox.Text;
                 changed = true;
             }
 
-            if (surnameTextBox.Text != driver.surname) {
+            if (surnameTextBox.Text != driver.surname && !v.checkIfNull(surnameTextBox.Text)) {
                 driver.surname = surnameTextBox.Text;
                 changed = true;
             }
@@ -74,7 +75,7 @@ namespace TransportationService {
                 changed = true;
             }
 
-            if (hourlyRateTextBox.Text != driver.hourly_rate.ToString())
+            if (hourlyRateTextBox.Text != driver.hourly_rate.ToString() && !v.checkIfNull(hourlyRateTextBox.Text))
             {
                 if (decimal.TryParse(hourlyRateTextBox.Text, out hourlyRate))
                 {

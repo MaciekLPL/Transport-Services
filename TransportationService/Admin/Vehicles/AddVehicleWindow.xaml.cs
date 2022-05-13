@@ -11,9 +11,11 @@ namespace TransportationService {
     /// </summary>
     public partial class AddVehicleWindow : Window {
         ServiceDBEntities db;
+        Validate v;
 
         public AddVehicleWindow(ServiceDBEntities _db) {
             InitializeComponent();
+            v = new Validate(_db);
             db = _db;
 
             vehicleTypeComboBox.ItemsSource = db.Vehicle_types.ToList();
@@ -24,22 +26,22 @@ namespace TransportationService {
 
             decimal avgFuelConsumption;
 
-            if (makeTextBox.Text.Length == 0) {
+            if (v.checkIfNull(makeTextBox.Text)) {
                 MessageBox.Show("Enter vehicle make");
                 return;
             }
 
-            if (modelTextBox.Text.Length == 0) {
+            if (v.checkIfNull(modelTextBox.Text)) {
                 MessageBox.Show("Enter vehicle model");
                 return;
             }
 
-            if (registrationTextBox.Text.Length == 0) {
+            if (v.checkIfNull(registrationTextBox.Text)) {
                 MessageBox.Show("Enter vehicle registration");
                 return;
             }
 
-            if (fuelTextBox.Text.Length == 0) {
+            if (v.checkIfNull(fuelTextBox.Text)) {
                 MessageBox.Show("Enter vehicle fuel consumption");
                 return;
             }

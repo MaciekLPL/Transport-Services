@@ -21,13 +21,13 @@ namespace TransportationService
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
             decimal hourlyRate;
-            if (nameTextBox.Text.Length == 0)
+            if (v.checkIfNull(nameTextBox.Text))
             {
                 MessageBox.Show("Enter driver's name");
                 return;
             }
 
-            if (surnameTextBox.Text.Length == 0)
+            if (v.checkIfNull(surnameTextBox.Text))
             {
                 MessageBox.Show("Enter driver's surname");
                 return;
@@ -39,9 +39,9 @@ namespace TransportationService
                 return;
             }
 
-            if (hourlyRateTextBox.Text.Length == 0)
+            if (v.checkIfNull(hourlyRateTextBox.Text))
             {
-                MessageBox.Show("Enter driver's name");
+                MessageBox.Show("Enter driver's hourly rate");
                 return;
             }
             else if (!decimal.TryParse(hourlyRateTextBox.Text, out hourlyRate))

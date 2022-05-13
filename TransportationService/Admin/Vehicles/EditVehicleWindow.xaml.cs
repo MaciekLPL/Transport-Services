@@ -12,10 +12,11 @@ namespace TransportationService {
         ServiceDBEntities db;
         int vehicleID;
         Vehicles vehicle;
+        Validate v;
 
         public EditVehicleWindow(ServiceDBEntities _db, int _vehicleID) {
             InitializeComponent();
-
+            v = new Validate(_db);
             db = _db;
             vehicleID = _vehicleID;
 
@@ -47,7 +48,7 @@ namespace TransportationService {
                 this.Close();
                 MessageBox.Show("Vehicle edited successfuly");
             } else {
-                MessageBox.Show("No changes made");
+                MessageBox.Show("Wrong changes made");
             }
 
         }
@@ -58,22 +59,22 @@ namespace TransportationService {
             bool changed = false;
             decimal avgFuelConsumption;
 
-            if (makeTextBox.Text != vehicle.make) {
+            if (makeTextBox.Text != vehicle.make && !v.checkIfNull(makeTextBox.Text)) {
                 vehicle.make = makeTextBox.Text;
                 changed = true;
             }
 
-            if (modelTextBox.Text != vehicle.model) {
+            if (modelTextBox.Text != vehicle.model && !v.checkIfNull(modelTextBox.Text)) {
                 vehicle.model = makeTextBox.Text;
                 changed = true;
             }
 
-            if (registrationTextBox.Text != vehicle.registration) {
+            if (registrationTextBox.Text != vehicle.registration && !v.checkIfNull(registrationTextBox.Text)) {
                 vehicle.registration = registrationTextBox.Text;
                 changed = true;
             }
 
-            if (fuelTextBox.Text != vehicle.avg_fuel_consumption.ToString()) {
+            if (fuelTextBox.Text != vehicle.avg_fuel_consumption.ToString() && !v.checkIfNull(fuelTextBox.Text)) {
                 
                 if(decimal.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
 

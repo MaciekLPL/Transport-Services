@@ -23,26 +23,33 @@ namespace TransportationService {
 
             if(!v.checkUserExists(unameTextBox.Text))
             {
-                if (passwdTextBox.Password == passwdRepTextBox.Password)
+                if(!(v.checkIfNull(unameTextBox.Text) && v.checkIfNull(passwdTextBox.Password)))
                 {
+                    if (passwdTextBox.Password == passwdRepTextBox.Password)
+                    {
+                        Users newUser = new Users();
+                        newUser.login = unameTextBox.Text;
+                        newUser.salt = Hash.generateSalt();
+                        newUser.sha256 = Hash.generateHash(passwdTextBox.Password, newUser.salt);
 
-                    Users newUser = new Users();
-                    newUser.login = unameTextBox.Text;
-                    newUser.salt = Hash.generateSalt();
-                    newUser.sha256 = Hash.generateHash(passwdTextBox.Password, newUser.salt);
-
-                    if (userRadioBtn.IsChecked == true)
-                        newUser.type = 0;
-                    else
-                        newUser.type = 1;
+                        if (userRadioBtn.IsChecked == true)
+                            newUser.type = 0;
+                        else
+                            newUser.type = 1;
 
 
-                    db.Users.Add(newUser);
-                    db.SaveChanges();
+                        db.Users.Add(newUser);
+                        db.SaveChanges();
 
-                    this.Close();
-                    MessageBox.Show("Dodano użytkownika");
+                        this.Close();
+                        MessageBox.Show("User added successfully");
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Enter all user data");
+                }
+                
             }
             else
             {

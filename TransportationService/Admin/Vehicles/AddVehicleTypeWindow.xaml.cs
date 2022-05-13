@@ -9,9 +9,11 @@ namespace TransportationService {
     public partial class AddVehicleTypeWindow : Window {
 
         ServiceDBEntities db;
+        Validate v;
         public AddVehicleTypeWindow(ServiceDBEntities _db) {
 
             InitializeComponent();
+            v = new Validate(_db);
             db = _db;
 
         }
@@ -19,12 +21,12 @@ namespace TransportationService {
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
 
 
-            if (nameTextBox.Text.Equals("")) {
+            if (v.checkIfNull(nameTextBox.Text)) {
                 MessageBox.Show("Enter vehicle type name");
                 return;
             }
 
-            if (nameTextBox.Text.Equals("")) {
+            if (v.checkIfNull(loadTextBox.Text)) {
                 MessageBox.Show("Enter vehicle type max load");
                 return;
             }

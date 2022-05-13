@@ -13,7 +13,6 @@ namespace TransportationService
     {
 
         ServiceDBEntities db;
-
         public SignInWindow()
         {
             InitializeComponent();
