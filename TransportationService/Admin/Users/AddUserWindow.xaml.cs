@@ -25,7 +25,7 @@ namespace TransportationService {
             {
                 if(!(v.checkIfNull(unameTextBox.Text) && v.checkIfNull(passwdTextBox.Password)))
                 {
-                    if (passwdTextBox.Password == passwdRepTextBox.Password)
+                    if (passwdTextBox.Password == passwdRepTextBox.Password && v.validatePassword(passwdTextBox.Password))
                     {
                         Users newUser = new Users();
                         newUser.login = unameTextBox.Text;
@@ -43,6 +43,11 @@ namespace TransportationService {
 
                         this.Close();
                         MessageBox.Show("User added successfully");
+                    }
+                    else
+                    {
+                        passwdTextBox.Password = "";
+                        passwdRepTextBox.Password = "";
                     }
                 }
                 else

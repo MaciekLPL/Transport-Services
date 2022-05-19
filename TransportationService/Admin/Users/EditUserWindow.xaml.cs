@@ -21,9 +21,10 @@ namespace TransportationService {
         ServiceDBEntities db;
         int userID;
         Users user;
+        Validate v;
         public EditUserWindow(ServiceDBEntities _db, int _userID) {
             InitializeComponent();
-
+            v = new Validate(_db);
             db = _db;
             userID = _userID;
         }
@@ -94,12 +95,18 @@ namespace TransportationService {
                 changed = true;
             }
 
-            if (passwdTextBox.Password != "") {
+            if (!v.checkIfNull(passwdTextBox.Password)) {
 
-                if(passwdRepTextBox.Password == passwdTextBox.Password) {
+                if(passwdRepTextBox.Password == passwdTextBox.Password && v.validatePassword(passwdTextBox.Password)) {
                     user.salt = Hash.generateSalt();
                     user.sha256 = Hash.generateHash(passwdTextBox.Password, user.salt);
                     changed = true;
+                }
+                else
+                {
+                    passwdTextBox.Password = "";
+                    passwdRepTextBox.Password = "";
+                    updateAccount();
                 }
             }
 
