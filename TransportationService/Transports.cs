@@ -22,6 +22,7 @@ namespace TransportationService
         public string origin { get; set; }
         public string destination { get; set; }
         public int distance { get; set; }
+        public int weight { get; set; }
         public int status_id { get; set; }
         public System.DateTime start_date { get; set; }
         public System.DateTime end_date { get; set; }

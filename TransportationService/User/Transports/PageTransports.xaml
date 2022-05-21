@@ -19,12 +19,22 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}">
+        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
                 </Style>
             </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Employee" Binding="{Binding Users.login}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status.name}"/>
+                <DataGridTextColumn Header="From" Binding="{Binding origin}"/>
+                <DataGridTextColumn Header="To" Binding="{Binding destination}"/>
+                <DataGridTextColumn Header="Date Start" Binding="{Binding start_date, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                <DataGridTextColumn Header="Date End" Binding="{Binding end_date, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                <DataGridTextColumn Header="Weight" Binding="{Binding weight}"/>
+                <DataGridTextColumn Header="Customer" Binding="{Binding Customers.name}"/>
+            </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Column="1" Grid.Row="1" Name ="AddTransport" Content="Add transport" Height="39" Width="136" Click="AddTransport_Click"/>
     </Grid>

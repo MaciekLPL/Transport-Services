@@ -71,13 +71,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="User\AddTransportWindow.xaml.cs">
+    <Compile Include="User\Transports\SelectCustomerWindow.xaml.cs">
+      <DependentUpon>SelectCustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Transports\SelectVehicleWindow.xaml.cs">
+      <DependentUpon>SelectVehicleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Transports\SelectDriverWindow.xaml.cs">
+      <DependentUpon>SelectDriverWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Transports\AddTransportWindow.xaml.cs">
       <DependentUpon>AddTransportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Admin\Drivers\AddDriversWindow.xaml.cs">
       <DependentUpon>AddDriversWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin\PagePrices.xaml.cs">
+    <Compile Include="Admin\Prices\PagePrices.xaml.cs">
       <DependentUpon>PagePrices.xaml</DependentUpon>
     </Compile>
     <Compile Include="Admin\Vehicles\AddVehicleTypeWindow.xaml.cs">
@@ -166,7 +175,19 @@
     <Compile Include="Vehicle_types.cs">
       <DependentUpon>ServiceDB_Model.tt</DependentUpon>
     </Compile>
-    <Page Include="User\AddTransportWindow.xaml">
+    <Page Include="User\Transports\SelectCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Transports\SelectVehicleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Transports\SelectDriverWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Transports\AddTransportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,7 +195,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin\PagePrices.xaml">
+    <Page Include="Admin\Prices\PagePrices.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

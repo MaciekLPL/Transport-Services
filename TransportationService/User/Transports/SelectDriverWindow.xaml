@@ -1,0 +1,29 @@
+﻿<Window x:Class="TransportationService.SelectDriverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportationService"
+        mc:Ignorable="d"
+        Title="SelectDriverWindow" Height="420" Width="300" Loaded="Window_Loaded">
+
+    <StackPanel Margin="20" VerticalAlignment="Stretch">
+        <Label Content="Select driver" HorizontalAlignment="Center" FontSize="25"/>
+        <Separator></Separator>
+
+        <Label Content="Filter data"/>
+        <TextBox Name="filterTextBox" FontSize="18" Margin="0 0 0 15" TextChanged="filterTextBox_TextChanged"/>
+
+        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Surnme" Binding="{Binding surname}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Window>

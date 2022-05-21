@@ -55,6 +55,7 @@
           <Property Name="origin" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="destination" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="distance" Type="int" Nullable="false" />
+          <Property Name="weight" Type="int" Nullable="false" />
           <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="start_date" Type="datetime" Nullable="false" />
           <Property Name="end_date" Type="datetime" Nullable="false" />
@@ -339,6 +340,7 @@
           <Property Name="origin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="destination" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="distance" Type="Int32" Nullable="false" />
+          <Property Name="weight" Type="Int32" Nullable="false" />
           <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
@@ -537,6 +539,7 @@
                 <ScalarProperty Name="end_date" ColumnName="end_date" />
                 <ScalarProperty Name="start_date" ColumnName="start_date" />
                 <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
                 <ScalarProperty Name="distance" ColumnName="distance" />
                 <ScalarProperty Name="destination" ColumnName="destination" />
                 <ScalarProperty Name="origin" ColumnName="origin" />

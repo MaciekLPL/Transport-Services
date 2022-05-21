@@ -32,8 +32,9 @@ namespace TransportationService
 
         private void AddTransport_Click(object sender, RoutedEventArgs e)
         {
-            //AddDriversWindow addUserWindow = new AddDriversWindow(db);
-            //addUserWindow.ShowDialog();
+            DashboardUser parentWindow = (DashboardUser)Window.GetWindow(this);
+            AddTransportWindow addTransportWindow = new AddTransportWindow(db, parentWindow.userID);
+            addTransportWindow.ShowDialog();
         }
 
         private void dataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)

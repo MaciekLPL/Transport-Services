@@ -69,7 +69,7 @@ namespace TransportationService {
             db.SaveChanges();
 
             this.Close();
-            MessageBox.Show("Pomyslnie dodano pojazd");
+            MessageBox.Show("Vehicle added successfuly");
 
         }
     }

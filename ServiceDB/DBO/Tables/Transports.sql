@@ -8,6 +8,7 @@
 	[origin] NVARCHAR(50) NOT NULL,
 	[destination] NVARCHAR(50) NOT NULL,
 	[distance] INT NOT NULL,
+	[weight] INT NOT NULL,
 	[status_id] INT NOT NULL,
 	[start_date] DATETIME NOT NULL,
 	[end_date] DATETIME NOT NULL,

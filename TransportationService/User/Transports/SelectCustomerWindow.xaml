@@ -1,0 +1,35 @@
+﻿<Window x:Class="TransportationService.SelectCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportationService"
+        mc:Ignorable="d"
+        Title="SelectCustomerWindow" Height="420" Width="300" Loaded="Window_Loaded">
+    
+    <StackPanel Margin="20" VerticalAlignment="Stretch">
+        <Label Content="Select customer" HorizontalAlignment="Center" FontSize="25"/>
+        <Separator></Separator>
+        
+        <Label Content="Filter data"/>
+        <TextBox Name="filterTextBox" FontSize="18" Margin="0 0 0 15" TextChanged="filterTextBox_TextChanged"/>
+        
+        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Customer not listed?" Margin="0 15 0 0"/>
+
+        <DockPanel LastChildFill="True">
+            <Button Name="selectCustomer" Content="Add and select" DockPanel.Dock="Right" Click="addAndSelect_Click"/>
+            <TextBox Name="customerTextBox" FontSize="18"/>
+        </DockPanel>
+    </StackPanel>
+</Window>

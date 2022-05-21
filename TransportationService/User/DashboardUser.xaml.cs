@@ -20,10 +20,12 @@ namespace TransportationService
     public partial class DashboardUser : Window
     {
         Button activePanel;
+        public int userID { get; private set; }
         public DashboardUser(int _userID, string _username)
         {
             InitializeComponent();
             usernameText.Text = "@" + _username;
+            userID = _userID;
             UserPanel.Content = new PageTransports();
             activePanel = TransportsButton;
         }
