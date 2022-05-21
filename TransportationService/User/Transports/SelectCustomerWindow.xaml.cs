@@ -43,9 +43,11 @@ namespace TransportationService {
                 newCustomer.name = customerTextBox.Text;
                 db.Customers.Add(newCustomer);
                 db.SaveChanges();
+
+                parent.customer = newCustomer;
+                parent.customerTextBox.Text = newCustomer.name;
                 this.Close();
             }
-
         }
 
         private void dataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e) {

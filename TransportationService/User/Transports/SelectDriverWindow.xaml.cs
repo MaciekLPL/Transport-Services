@@ -31,7 +31,21 @@ namespace TransportationService {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
-            var list = db.Drivers.ToList();
+            Vehicles choosenVehicle = parent.vehicle;
+            
+            DateTime start = parent.startDatePicker.SelectedDate.Value;
+            DateTime end = parent.endDatePicker.SelectedDate.Value;
+
+            /*
+             * TODO: Walidacja czy wszystko ustawione
+             */
+
+            var query = from d in db.Drivers
+                        where (db.Licenses.Any(l => (l.driver_id == d.id) && (l.vehicle_type_id == choosenVehicle.type_id)))
+                        && (!db.Transports.Any(t => (t.driver_id == d.id) && (t.start_date <= end) && (start <= t.end_date)))
+                        select d;
+
+            var list = query.ToList();
             view = CollectionViewSource.GetDefaultView(list);
             dataGrid.ItemsSource = view;
         }

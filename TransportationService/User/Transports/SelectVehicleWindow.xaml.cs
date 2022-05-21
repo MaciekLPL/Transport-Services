@@ -31,7 +31,24 @@ namespace TransportationService {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
-            var list = db.Vehicles.ToList();
+            int weight;
+            if (!int.TryParse(parent.weightTextBox.Text, out weight)) {
+                this.Close();
+            }
+
+            DateTime start = parent.startDatePicker.SelectedDate.Value;
+            DateTime end = parent.endDatePicker.SelectedDate.Value;
+
+            /*
+             * TODO: Walidacja czy waga i daty są ustawione
+             */
+
+            var query = from v in db.Vehicles
+                        where (v.Vehicle_types.max_load > weight) 
+                        && (!db.Transports.Any(t => (t.vehicle_id == v.id) && (t.start_date <= end) && (start <= t.end_date)))
+                        select v;
+
+            var list = query.ToList();
             view = CollectionViewSource.GetDefaultView(list);
             dataGrid.ItemsSource = view;
         }
@@ -43,11 +60,9 @@ namespace TransportationService {
                 var item = row.DataContext as Vehicles;
 
                 if (item != null) {
-
                     parent.vehicle = item;
                     parent.vehicleTextBox.Text = $"{item.make} {item.model} {item.registration}";
                     this.Close();
-
                 }
             }
         }
