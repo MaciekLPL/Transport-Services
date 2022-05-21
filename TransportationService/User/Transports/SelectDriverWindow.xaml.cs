@@ -31,7 +31,7 @@ namespace TransportationService {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
-            Vehicles choosenVehicle = parent.vehicle;
+            Vehicles choosenVehicle = parent.selectedVehicle;
             
             DateTime start = parent.startDatePicker.SelectedDate.Value;
             DateTime end = parent.endDatePicker.SelectedDate.Value;
@@ -58,7 +58,7 @@ namespace TransportationService {
 
                 if (item != null) {
 
-                    parent.driver = item;
+                    parent.selectedDriver = item;
                     parent.driverTextBox.Text = $"{item.name} {item.surname}";
                     this.Close();
 

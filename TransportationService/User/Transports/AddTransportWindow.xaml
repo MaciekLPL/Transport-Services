@@ -32,13 +32,13 @@
             <Label Content="To"/>
             <TextBox Name="destinationTextBox" FontSize="18"/>
             <Label Content="Distance"/>
-            <TextBox Name="distanceTextBox" FontSize="18"/>
+            <TextBox Name="distanceTextBox" FontSize="18" PreviewTextInput="NumberValidation"/>
             <Label Content="Weight"/>
-            <TextBox Name="weightTextBox" FontSize="18"/>
+            <TextBox Name="weightTextBox" FontSize="18" PreviewTextInput="NumberValidation" TextChanged="weightTextBox_TextChanged"/>
             <Label Content="Start date"/>
-            <DatePicker Name="startDatePicker" FontSize="14"/>
+            <DatePicker Name="startDatePicker" FontSize="14" SelectedDateChanged="startDatePicker_SelectedDateChanged"/>
             <Label Content="End date"/>
-            <DatePicker Name="endDatePicker" FontSize="14"/>
+            <DatePicker Name="endDatePicker" FontSize="14" SelectedDateChanged="endDatePicker_SelectedDateChanged"/>
         </StackPanel>
 
         <!-- Column 1, Row 1 -->

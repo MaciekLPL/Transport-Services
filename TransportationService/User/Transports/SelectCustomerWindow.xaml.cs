@@ -44,7 +44,7 @@ namespace TransportationService {
                 db.Customers.Add(newCustomer);
                 db.SaveChanges();
 
-                parent.customer = newCustomer;
+                parent.selectedCustomer = newCustomer;
                 parent.customerTextBox.Text = newCustomer.name;
                 this.Close();
             }
@@ -58,7 +58,7 @@ namespace TransportationService {
 
                 if (item != null) {
 
-                    parent.customer = item;
+                    parent.selectedCustomer = item;
                     parent.customerTextBox.Text = item.name;
                     this.Close();
 

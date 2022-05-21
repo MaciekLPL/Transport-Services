@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,11 +21,11 @@ namespace TransportationService
     public partial class AddTransportWindow : Window {
 
         ServiceDBEntities db;
-        
+
         public Users user { get; set; }
-        public Customers customer { get; set; }
-        public Vehicles vehicle { get; set; }
-        public Drivers driver { get; set; }
+        public Customers selectedCustomer { get; set; }
+        public Vehicles selectedVehicle { get; set; }
+        public Drivers selectedDriver { get; set; }
 
         int userID;
 
@@ -76,7 +77,7 @@ namespace TransportationService
             if (true /* TODO: Walidacja */) {
                 Transports newTransport = new Transports();
                 Status status = db.Status.Where(i => i.name.Equals("active")).FirstOrDefault();
-                
+
                 newTransport.Status = status;
                 newTransport.origin = originTextBox.Text;
                 newTransport.destination = destinationTextBox.Text;
@@ -85,9 +86,9 @@ namespace TransportationService
                 newTransport.start_date = startDatePicker.SelectedDate.Value;
                 newTransport.end_date = endDatePicker.SelectedDate.Value;
                 newTransport.Users = user;
-                newTransport.Customers = customer;
-                newTransport.Vehicles = vehicle;
-                newTransport.Drivers = driver;
+                newTransport.Customers = selectedCustomer;
+                newTransport.Vehicles = selectedVehicle;
+                newTransport.Drivers = selectedDriver;
                 newTransport.cost = cost;
                 newTransport.income = income;
 
@@ -99,19 +100,63 @@ namespace TransportationService
 
         }
 
-        private void selectDriver_Click(object sender, RoutedEventArgs e) {
-            SelectDriverWindow selectDriverWindow = new SelectDriverWindow(this, db);
-            selectDriverWindow.ShowDialog();
+        private void selectVehicle_Click(object sender, RoutedEventArgs e) {
+           
+            if (startDatePicker.SelectedDate != null && endDatePicker.SelectedDate != null && int.TryParse(weightTextBox.Text, out int test)) {
+                SelectVehicleWindow selectVehicleWindow = new SelectVehicleWindow(this, db);
+                selectVehicleWindow.ShowDialog();
+            } else {
+                MessageBox.Show("Fill in the dates and weight to be able to select a vehicle");
+            }
         }
 
-        private void selectVehicle_Click(object sender, RoutedEventArgs e) {
-            SelectVehicleWindow selectVehicleWindow = new SelectVehicleWindow(this, db);
-            selectVehicleWindow.ShowDialog();
+        private void selectDriver_Click(object sender, RoutedEventArgs e) {
+            if (selectedVehicle != null) {
+                SelectDriverWindow selectDriverWindow = new SelectDriverWindow(this, db);
+                selectDriverWindow.ShowDialog();
+            } else {
+                MessageBox.Show("Select a vehicle to be able to select a driver");
+            }
         }
+
 
         private void selectCustomer_Click(object sender, RoutedEventArgs e) {
             SelectCustomerWindow selectCustomerWindow = new SelectCustomerWindow(this, db);
             selectCustomerWindow.ShowDialog();
+        }
+
+        private void NumberValidation(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void startDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
+            validateDate();
+        }
+
+        private void endDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
+            validateDate();
+        }
+
+        private void validateDate() {
+
+            if (startDatePicker.SelectedDate == null || endDatePicker.SelectedDate == null) {
+                return;
+            }
+
+            if (startDatePicker.SelectedDate > endDatePicker.SelectedDate) {
+                endDatePicker.SelectedDate = null;
+            }
+
+            selectedVehicle = null;
+            vehicleTextBox.Text = "";
+        }
+
+        private void weightTextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            selectedVehicle = null;
+            vehicleTextBox.Text = "";
+            selectedDriver = null;
+            driverTextBox.Text = "";
         }
     }
 }

@@ -60,7 +60,7 @@ namespace TransportationService {
                 var item = row.DataContext as Vehicles;
 
                 if (item != null) {
-                    parent.vehicle = item;
+                    parent.selectedVehicle = item;
                     parent.vehicleTextBox.Text = $"{item.make} {item.model} {item.registration}";
                     this.Close();
                 }
