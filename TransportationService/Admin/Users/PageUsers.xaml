@@ -19,10 +19,9 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" 
+        <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}"  AutoGenerateColumns="False"
                   Background="Transparent" RowBackground="Transparent" Foreground="AliceBlue" 
-                  FontFamily="Calibri" FontSize="13"
-                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" UseLayoutRounding="False" AutoGenerateColumns="False" >
+                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" >
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
@@ -34,7 +33,6 @@
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="FontWeight" Value="Bold"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
-
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
