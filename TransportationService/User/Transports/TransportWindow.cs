@@ -15,6 +15,7 @@ namespace TransportationService {
         public Customers selectedCustomer { get; set; }
         public Vehicles selectedVehicle { get; set; }
         public Drivers selectedDriver { get; set; }
+        public Transports transport { get; set; }
 
         public TextBox driverTextbox;
         public TextBox vehicleTextbox;
@@ -74,15 +75,14 @@ namespace TransportationService {
 
         public void validateDate() {
 
-            if (startDate.SelectedDate == null || endDate.SelectedDate == null) {
-                return;
-            }
+            selectedVehicle = null;
+            vehicleTextbox.Text = "";
 
-            if (startDate.SelectedDate > endDate.SelectedDate) {
+            if (startDate.SelectedDate == null || endDate.SelectedDate == null)
+                return;
+
+            if (startDate.SelectedDate > endDate.SelectedDate)
                 endDate.SelectedDate = null;
-                selectedVehicle = null;
-                vehicleTextbox.Text = "";
-            }
         }
 
         public void NumberValidation(object sender, TextCompositionEventArgs e) {

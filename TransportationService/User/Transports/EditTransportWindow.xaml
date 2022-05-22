@@ -27,7 +27,7 @@
 
 
         <!-- Column 0, Row 1 -->
-        <StackPanel Grid.Column="0" Grid.Row="1"  Margin="20 0">
+        <StackPanel Grid.Column="0" Grid.Row="1"  Margin="20 0" Name="panelLeft">
             <Label Content="From"/>
             <TextBox Name="originTextBox" FontSize="18"/>
             <Label Content="To"/>
@@ -43,16 +43,16 @@
         </StackPanel>
 
         <!-- Column 1, Row 1 -->
-        <StackPanel Margin="20 0" Grid.Column="1" Grid.Row="1" >
+        <StackPanel Margin="20 0" Grid.Column="1" Grid.Row="1" Name="panelMiddle">
             <Label Content="Employee's name"/>
             <TextBox Name="userTextBox" FontSize="18" IsReadOnly="True"/>
             <Label Content="Vehicle"/>
-            <DockPanel LastChildFill="True">
+            <DockPanel LastChildFill="True" Name="panelVehicle">
                 <Button Name="selectVehicle" Content="Select" DockPanel.Dock="Right" Click="selectVehicle_Click"/>
                 <TextBox Name="vehicleTextBox" FontSize="18" IsReadOnly="True" TextChanged="vehicleTextBox_TextChanged"/>
             </DockPanel>
-            <Label Content="Driver's name"/>
-            <DockPanel LastChildFill="True">
+            <Label Content="Driver's name" />
+            <DockPanel LastChildFill="True" Name="panelDriver">
                 <Button Name="selectDriver" Content="Select" DockPanel.Dock="Right" Click="selectDriver_Click"/>
                 <TextBox Name="driverTextBox" FontSize="18" IsReadOnly="True" />
             </DockPanel>
@@ -64,7 +64,7 @@
         </StackPanel>
 
         <!-- Column 2, Row 1 -->
-        <StackPanel Margin="20 0" Grid.Column="2" Grid.Row="1" >
+        <StackPanel Margin="20 0" Grid.Column="2" Grid.Row="1" Name="panelRight">
             <Label Content="Cost"/>
             <TextBox Name="costTextBox" FontSize="18"/>
             <Label Content="Income"/>

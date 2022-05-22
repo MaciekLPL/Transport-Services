@@ -44,8 +44,8 @@ namespace TransportationService {
              */
 
             var query = from v in db.Vehicles
-                        where (v.Vehicle_types.max_load > weight) 
-                        && (!db.Transports.Any(t => (t.vehicle_id == v.id) && (t.start_date <= end) && (start <= t.end_date)))
+                        where (v.Vehicle_types.max_load > weight)
+                        && (!db.Transports.Any(t => (t.vehicle_id == v.id) && (t.start_date <= end) && (start <= t.end_date) && t.Status.name == "active"))
                         select v;
 
             var list = query.ToList();

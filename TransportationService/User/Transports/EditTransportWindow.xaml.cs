@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace TransportationService {
     /// <summary>
@@ -20,7 +10,6 @@ namespace TransportationService {
     public partial class EditTransportWindow : TransportWindow {
 
         int transportID;
-        Transports transport;
         bool changed;
         Validate v;
         private RadioButton checkedRadioButton;
@@ -82,12 +71,15 @@ namespace TransportationService {
             switch (transport.Status.name.ToLower()) {
                 case "active":
                     activeRadio.IsChecked = true;
+                    disablePartially();
                     break;
                 case "finished":
                     finishedRadio.IsChecked = true;
+                    disableAll();
                     break;
                 case "canceled":
                     canceledRadio.IsChecked = true;
+                    disableAll();
                     break;
                 default:
                     this.Close();
@@ -197,9 +189,15 @@ namespace TransportationService {
 
         private void checkRadioButtons() {
 
+            if(finishedRadio.IsChecked.Value || canceledRadio.IsChecked.Value) {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Lock Transport Confirmation", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult != MessageBoxResult.Yes) {
+                    return;
+                }
+            }
             string statusContent = checkedRadioButton.Content.ToString().ToLower();
-            if (transport.Status.name != statusContent) {
 
+            if (transport.Status.name != statusContent) {
                 Status newStatus = db.Status.Where(s => s.name == statusContent).SingleOrDefault();
                 if (newStatus != null) {
                     transport.Status = newStatus;
@@ -215,6 +213,26 @@ namespace TransportationService {
             RadioButton ck = sender as RadioButton;
             if (ck.IsChecked.Value)
                 checkedRadioButton = ck;
+        }
+
+
+        private void disablePartially() {
+
+            startDatePicker.IsEnabled = false;
+            endDatePicker.IsEnabled = false;
+            weightTextBox.IsEnabled = false;
+            panelVehicle.IsEnabled = false;
+            panelDriver.IsEnabled = false;
+
+        }
+
+        private void disableAll() {
+
+            panelLeft.IsEnabled = false;
+            panelMiddle.IsEnabled = false;
+            panelRight.IsEnabled = false;
+            submitBtn.IsEnabled = false;
+
         }
     }
 }
