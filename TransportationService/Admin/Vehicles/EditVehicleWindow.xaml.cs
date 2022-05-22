@@ -48,7 +48,7 @@ namespace TransportationService {
                 this.Close();
                 MessageBox.Show("Vehicle edited successfuly");
             } else {
-                MessageBox.Show("Wrong changes made");
+                MessageBox.Show("No changes made");
             }
 
         }

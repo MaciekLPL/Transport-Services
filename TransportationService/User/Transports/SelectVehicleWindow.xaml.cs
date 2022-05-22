@@ -61,7 +61,7 @@ namespace TransportationService {
 
                 if (item != null) {
                     parent.selectedVehicle = item;
-                    parent.vehicleTextbox.Text = $"{item.make} {item.model} {item.registration}";
+                    parent.vehicleTextbox.Text = $"{item.registration} {item.Vehicle_types.name}";
                     this.Close();
                 }
             }

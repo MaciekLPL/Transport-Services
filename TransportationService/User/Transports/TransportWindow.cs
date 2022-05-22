@@ -65,6 +65,9 @@ namespace TransportationService {
         public void weightTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             selectedVehicle = null;
             vehicleTextbox.Text = "";
+        }
+
+        public void vehicleTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             selectedDriver = null;
             driverTextbox.Text = "";
         }
@@ -77,10 +80,9 @@ namespace TransportationService {
 
             if (startDate.SelectedDate > endDate.SelectedDate) {
                 endDate.SelectedDate = null;
+                selectedVehicle = null;
+                vehicleTextbox.Text = "";
             }
-
-            selectedVehicle = null;
-            vehicleTextbox.Text = "";
         }
 
         public void NumberValidation(object sender, TextCompositionEventArgs e) {

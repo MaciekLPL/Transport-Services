@@ -45,7 +45,7 @@ namespace TransportationService
                 var item = row.DataContext as Transports;
                 
                 if (item != null) {
-                    EditTransportWindow editTransportsWindow = new EditTransportWindow(db);
+                    EditTransportWindow editTransportsWindow = new EditTransportWindow(db, item.id);
                     editTransportsWindow.ShowDialog();
                 }
 

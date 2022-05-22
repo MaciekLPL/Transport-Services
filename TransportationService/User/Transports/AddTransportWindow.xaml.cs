@@ -67,11 +67,11 @@ namespace TransportationService
                 MessageBox.Show("Entered weight is invalid!");
                 return;
             }
-            if (!decimal.TryParse(weightTextBox.Text, out cost)) {
+            if (!decimal.TryParse(costTextBox.Text, out cost)) {
                 MessageBox.Show("Entered cost is invalid!");
                 return;
             }
-            if (!decimal.TryParse(weightTextBox.Text, out income)) {
+            if (!decimal.TryParse(incomeTextBox.Text, out income)) {
                 MessageBox.Show("Entered income is invalid!");
                 return;
             }

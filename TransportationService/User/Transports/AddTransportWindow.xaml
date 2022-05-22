@@ -51,7 +51,7 @@
             <Label Content="Vehicle"/>
             <DockPanel LastChildFill="True">
                 <Button Name="selectVehicle" Content="Select" DockPanel.Dock="Right" Click="selectVehicle_Click"/>
-                <TextBox Name="vehicleTextBox" FontSize="18" IsReadOnly="True"/>
+                <TextBox Name="vehicleTextBox" FontSize="18" IsReadOnly="True" TextChanged="vehicleTextBox_TextChanged"/>
             </DockPanel>
             <Label Content="Driver's name"/>
             <DockPanel LastChildFill="True">

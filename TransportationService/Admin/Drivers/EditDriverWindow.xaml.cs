@@ -15,6 +15,7 @@ namespace TransportationService {
         int driverID;
         Drivers driver;
         bool changed = false;
+        bool licensesChanged = false;
         Validate v;
 
         public EditDriverWindow(ServiceDBEntities _db, int _driverID) {
@@ -44,14 +45,14 @@ namespace TransportationService {
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
             
-            bool wasChanged = updateDriver();
+            updateDriver();
 
-            if (wasChanged) {
+            if (changed || licensesChanged) {
                 db.SaveChanges();
                 this.Close();
                 MessageBox.Show("Driver edited successfuly");
             } else {
-                MessageBox.Show("Wrong changes made");
+                MessageBox.Show("No changes made");
             }
         }
 
@@ -69,7 +70,7 @@ namespace TransportationService {
                 changed = true;
             }
 
-            if (birthDatePicker.SelectedDate != driver.birth_date)
+            if (birthDatePicker.SelectedDate != null && birthDatePicker.SelectedDate.Value != driver.birth_date)
             {
                 driver.birth_date = birthDatePicker.SelectedDate.Value;
                 changed = true;
@@ -120,6 +121,7 @@ namespace TransportationService {
                     db.Licenses.Remove(license);
                     db.SaveChanges();
                     reloadLicences();
+                    licensesChanged = true;
                 }
             }
         }
@@ -135,13 +137,13 @@ namespace TransportationService {
                 Licenses license = db.Licenses.Where(l => l.vehicle_type_id == vt.id && l.driver_id == driverID).FirstOrDefault();
 
                 if (license == null) {
-
                     Licenses newLicense = new Licenses();
                     newLicense.vehicle_type_id = vt.id;
                     newLicense.driver_id = driverID;
                     db.Licenses.Add(newLicense);
                     db.SaveChanges();
                     reloadLicences();
+                    licensesChanged = true;
                 }
             }
         }
