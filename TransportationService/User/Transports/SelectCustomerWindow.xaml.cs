@@ -21,9 +21,9 @@ namespace TransportationService {
 
         ServiceDBEntities db;
         ICollectionView view;
-        AddTransportWindow parent;
+        TransportWindow parent;
 
-        public SelectCustomerWindow(AddTransportWindow _parent, ServiceDBEntities _db) {
+        public SelectCustomerWindow(TransportWindow _parent, ServiceDBEntities _db) {
             InitializeComponent();
             parent = _parent;
             db = _db;
@@ -45,7 +45,7 @@ namespace TransportationService {
                 db.SaveChanges();
 
                 parent.selectedCustomer = newCustomer;
-                parent.customerTextBox.Text = newCustomer.name;
+                parent.customerTextbox.Text = newCustomer.name;
                 this.Close();
             }
         }
@@ -59,7 +59,7 @@ namespace TransportationService {
                 if (item != null) {
 
                     parent.selectedCustomer = item;
-                    parent.customerTextBox.Text = item.name;
+                    parent.customerTextbox.Text = item.name;
                     this.Close();
 
                 }

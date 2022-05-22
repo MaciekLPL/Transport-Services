@@ -21,9 +21,9 @@ namespace TransportationService {
 
         ServiceDBEntities db;
         ICollectionView view;
-        AddTransportWindow parent;
+        TransportWindow parent;
 
-        public SelectVehicleWindow(AddTransportWindow _parent, ServiceDBEntities _db) {
+        public SelectVehicleWindow(TransportWindow _parent, ServiceDBEntities _db) {
             InitializeComponent();
             parent = _parent;
             db = _db;
@@ -32,12 +32,12 @@ namespace TransportationService {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
             int weight;
-            if (!int.TryParse(parent.weightTextBox.Text, out weight)) {
+            if (!int.TryParse(parent.weightTextbox.Text, out weight)) {
                 this.Close();
             }
 
-            DateTime start = parent.startDatePicker.SelectedDate.Value;
-            DateTime end = parent.endDatePicker.SelectedDate.Value;
+            DateTime start = parent.startDate.SelectedDate.Value;
+            DateTime end = parent.endDate.SelectedDate.Value;
 
             /*
              * TODO: Walidacja czy waga i daty są ustawione
@@ -61,7 +61,7 @@ namespace TransportationService {
 
                 if (item != null) {
                     parent.selectedVehicle = item;
-                    parent.vehicleTextBox.Text = $"{item.make} {item.model} {item.registration}";
+                    parent.vehicleTextbox.Text = $"{item.make} {item.model} {item.registration}";
                     this.Close();
                 }
             }

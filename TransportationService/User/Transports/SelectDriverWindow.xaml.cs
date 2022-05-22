@@ -21,9 +21,9 @@ namespace TransportationService {
 
         ServiceDBEntities db;
         ICollectionView view;
-        AddTransportWindow parent;
+        TransportWindow parent;
 
-        public SelectDriverWindow(AddTransportWindow _parent, ServiceDBEntities _db) {
+        public SelectDriverWindow(TransportWindow _parent, ServiceDBEntities _db) {
             InitializeComponent();
             parent = _parent;
             db = _db;
@@ -33,8 +33,8 @@ namespace TransportationService {
 
             Vehicles choosenVehicle = parent.selectedVehicle;
             
-            DateTime start = parent.startDatePicker.SelectedDate.Value;
-            DateTime end = parent.endDatePicker.SelectedDate.Value;
+            DateTime start = parent.startDate.SelectedDate.Value;
+            DateTime end = parent.endDate.SelectedDate.Value;
 
             /*
              * TODO: Walidacja czy wszystko ustawione
@@ -59,7 +59,7 @@ namespace TransportationService {
                 if (item != null) {
 
                     parent.selectedDriver = item;
-                    parent.driverTextBox.Text = $"{item.name} {item.surname}";
+                    parent.driverTextbox.Text = $"{item.name} {item.surname}";
                     this.Close();
 
                 }

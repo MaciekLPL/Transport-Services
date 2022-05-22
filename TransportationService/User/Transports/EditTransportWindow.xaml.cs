@@ -13,19 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TransportationService
-{
+namespace TransportationService {
     /// <summary>
-    /// Interaction logic for AddTransportWindow.xaml
+    /// Interaction logic for EditTransportWindow.xaml
     /// </summary>
-    public partial class AddTransportWindow : TransportWindow {
+    public partial class EditTransportWindow : TransportWindow {
 
-        int userID;
-        private Users user { get; set; }
 
-        public AddTransportWindow(ServiceDBEntities _db, int _userID) : base(_db) {
+        public EditTransportWindow(ServiceDBEntities _db) : base(_db) {
+            
             InitializeComponent();
-
+            
             customerTextbox = customerTextBox;
             driverTextbox = driverTextBox;
             vehicleTextbox = vehicleTextBox;
@@ -33,19 +31,13 @@ namespace TransportationService
 
             startDate = startDatePicker;
             endDate = endDatePicker;
-
-            userID = _userID;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            user = db.Users.Where(u => u.id == userID).FirstOrDefault();
 
-            if (user == null) {
-                this.Close();
-                MessageBox.Show("Unknown error occured");
-            } else {
-                userTextBox.Text = user.login;
-            }
+            /*
+             * TODO
+             */
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e) {
@@ -76,8 +68,8 @@ namespace TransportationService
                 return;
             }
 
-            if (true /* TODO: Walidacja */) {
-                Transports newTransport = new Transports();
+            if (false /* TODO: Walidacja */) {
+                /*Transports newTransport = new Transports();
                 Status status = db.Status.Where(i => i.name.Equals("active")).FirstOrDefault();
 
                 newTransport.Status = status;
@@ -97,7 +89,7 @@ namespace TransportationService
                 db.Transports.Add(newTransport);
                 db.SaveChanges();
                 this.Close();
-                MessageBox.Show("Transport added successfuly");
+                MessageBox.Show("Transport added successfuly");*/
             }
         }
     }

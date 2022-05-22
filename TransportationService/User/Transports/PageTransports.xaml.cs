@@ -40,14 +40,13 @@ namespace TransportationService
         private void dataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var row = sender as DataGridRow;
-
-            if (row != null)
-            {
-                var item = row.DataContext as Drivers;
-
-                if (item != null)
-                {
-
+            
+            if (row != null) {
+                var item = row.DataContext as Transports;
+                
+                if (item != null) {
+                    EditTransportWindow editTransportsWindow = new EditTransportWindow(db);
+                    editTransportsWindow.ShowDialog();
                 }
 
             }
