@@ -39,9 +39,9 @@
             <Label Content="Weight"/>
             <TextBox Name="weightTextBox" FontSize="18" PreviewTextInput="NumberValidation" TextChanged="weightTextBox_TextChanged"/>
             <Label Content="Start date"/>
-            <DatePicker Name="startDatePicker" FontSize="14" SelectedDateChanged="startDatePicker_SelectedDateChanged"/>
+            <DatePicker Name="startDatePicker" FontSize="14" SelectedDateChanged="startDatePicker_SelectedDateChanged" Focusable="False"/>
             <Label Content="End date"/>
-            <DatePicker Name="endDatePicker" FontSize="14" SelectedDateChanged="endDatePicker_SelectedDateChanged"/>
+            <DatePicker Name="endDatePicker" FontSize="14" SelectedDateChanged="endDatePicker_SelectedDateChanged" Focusable="False"/>
         </StackPanel>
 
         <!-- Column 1, Row 1 -->

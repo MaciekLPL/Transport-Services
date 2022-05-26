@@ -71,7 +71,7 @@ namespace TransportationService {
             switch (transport.Status.name.ToLower()) {
                 case "active":
                     activeRadio.IsChecked = true;
-                    disablePartially();
+                    //disablePartially();
                     break;
                 case "finished":
                     finishedRadio.IsChecked = true;

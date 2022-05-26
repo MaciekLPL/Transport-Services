@@ -40,10 +40,20 @@ namespace TransportationService {
              * TODO: Walidacja czy wszystko ustawione
              */
 
-            var query = from d in db.Drivers
+
+            IQueryable<Drivers> query;
+
+            if (parent.transport != null) {
+                query = from d in db.Drivers
+                        where (db.Licenses.Any(l => (l.driver_id == d.id) && (l.vehicle_type_id == choosenVehicle.type_id)))
+                        && (!db.Transports.Any(t => (t.driver_id == d.id) && (t.id != parent.transport.id) && (t.start_date <= end) && (start <= t.end_date) && t.Status.name == "active"))
+                        select d;
+            } else {
+                query = from d in db.Drivers
                         where (db.Licenses.Any(l => (l.driver_id == d.id) && (l.vehicle_type_id == choosenVehicle.type_id)))
                         && (!db.Transports.Any(t => (t.driver_id == d.id) && (t.start_date <= end) && (start <= t.end_date) && t.Status.name == "active"))
                         select d;
+            }
 
             var list = query.ToList();
             view = CollectionViewSource.GetDefaultView(list);

@@ -43,14 +43,26 @@ namespace TransportationService {
              * TODO: Walidacja czy waga i daty są ustawione
              */
 
-            var query = from v in db.Vehicles
-                        where (v.Vehicle_types.max_load > weight)
-                        && (!db.Transports.Any(t => (t.vehicle_id == v.id) && (t.start_date <= end) && (start <= t.end_date) && t.Status.name == "active"))
-                        select v;
+            IQueryable<Vehicles> query;
 
+            if (parent.transport != null) {
+                query = from v in db.Vehicles
+                            where (v.Vehicle_types.max_load > weight)
+                            //&& (v.id == parent.transport.vehicle_id && parent.transport.start_date == start && parent.transport.end_date == end)
+                            && (!db.Transports.Any(t => (t.vehicle_id == v.id) && (t.id != parent.transport.id) && (t.start_date <= end) && (start <= t.end_date) && t.Status.name == "active"))
+                            select v;
+            }
+            else {
+                query = from v in db.Vehicles
+                            where (v.Vehicle_types.max_load > weight)
+                            && (!db.Transports.Any(t => (t.vehicle_id == v.id) && (t.start_date <= end) && (start <= t.end_date) && t.Status.name == "active"))
+                            select v;
+            }
+                
             var list = query.ToList();
             view = CollectionViewSource.GetDefaultView(list);
             dataGrid.ItemsSource = view;
+
         }
 
         private void dataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e) {

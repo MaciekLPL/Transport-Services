@@ -81,7 +81,7 @@ namespace TransportationService {
             if (startDate.SelectedDate == null || endDate.SelectedDate == null)
                 return;
 
-            if (startDate.SelectedDate > endDate.SelectedDate)
+            if (startDate.SelectedDate.Value > endDate.SelectedDate.Value)
                 endDate.SelectedDate = null;
         }
 
