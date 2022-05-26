@@ -24,10 +24,6 @@ namespace TransportationService
         public PageTransports()
         {
             InitializeComponent();
-
-            db = new ServiceDBEntities();
-            db.Transports.ToList();
-            this.DataContext = db.Transports.Local;
         }
 
         private void AddTransport_Click(object sender, RoutedEventArgs e)
@@ -45,11 +41,22 @@ namespace TransportationService
                 var item = row.DataContext as Transports;
                 
                 if (item != null) {
-                    EditTransportWindow editTransportsWindow = new EditTransportWindow(db, item.id);
+                    EditTransportWindow editTransportsWindow = new EditTransportWindow(db, item.id, this);
                     editTransportsWindow.ShowDialog();
                 }
 
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
+            db = new ServiceDBEntities();
+            loadDataGrid();
+        }
+
+        public void loadDataGrid() {
+            db.Transports.ToList();
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = db.Transports.Local;
         }
     }
 }

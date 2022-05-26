@@ -13,8 +13,9 @@ namespace TransportationService {
         bool changed;
         Validate v;
         private RadioButton checkedRadioButton;
+        PageTransports parent;
 
-        public EditTransportWindow(ServiceDBEntities _db, int _transportID) : base(_db) {
+        public EditTransportWindow(ServiceDBEntities _db, int _transportID, PageTransports _parent) : base(_db) {
 
             InitializeComponent();
 
@@ -27,6 +28,7 @@ namespace TransportationService {
             endDate = endDatePicker;
 
             transportID = _transportID;
+            parent = _parent;
             v = new Validate(_db);
         }
 
@@ -98,6 +100,7 @@ namespace TransportationService {
 
             if (changed) {
                 db.SaveChanges();
+                parent.loadDataGrid();
                 this.Close();
                 MessageBox.Show("Transport edited successfuly");
             } else {
@@ -213,17 +216,6 @@ namespace TransportationService {
             RadioButton ck = sender as RadioButton;
             if (ck.IsChecked.Value)
                 checkedRadioButton = ck;
-        }
-
-
-        private void disablePartially() {
-
-            startDatePicker.IsEnabled = false;
-            endDatePicker.IsEnabled = false;
-            weightTextBox.IsEnabled = false;
-            panelVehicle.IsEnabled = false;
-            panelDriver.IsEnabled = false;
-
         }
 
         private void disableAll() {

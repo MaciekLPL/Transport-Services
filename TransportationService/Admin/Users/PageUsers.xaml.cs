@@ -27,10 +27,6 @@ namespace TransportationService
 
             InitializeComponent();
 
-            db = new ServiceDBEntities();
-            db.Users.ToList();
-            this.DataContext = db.Users.Local;
-
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
@@ -46,11 +42,22 @@ namespace TransportationService
                 var item = row.DataContext as Users;
 
                 if (item != null) {
-                    EditUserWindow editUserWindow = new EditUserWindow(db, item.id);
+                    EditUserWindow editUserWindow = new EditUserWindow(db, item.id, this);
                     editUserWindow.ShowDialog();
                 }
 
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
+            db = new ServiceDBEntities();
+            loadDataGrid();
+        }
+
+        public void loadDataGrid() {
+            db.Users.ToList();
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = db.Users.Local;
         }
     }
 }

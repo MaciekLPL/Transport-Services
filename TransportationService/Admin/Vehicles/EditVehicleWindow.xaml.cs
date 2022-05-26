@@ -13,13 +13,14 @@ namespace TransportationService {
         int vehicleID;
         Vehicles vehicle;
         Validate v;
+        PageVehicles parent;
 
-        public EditVehicleWindow(ServiceDBEntities _db, int _vehicleID) {
+        public EditVehicleWindow(ServiceDBEntities _db, int _vehicleID, PageVehicles _parent) {
             InitializeComponent();
             v = new Validate(_db);
             db = _db;
             vehicleID = _vehicleID;
-
+            parent = _parent;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
@@ -45,6 +46,7 @@ namespace TransportationService {
 
             if (wasChanged) {
                 db.SaveChanges();
+                parent.loadDataGrid();
                 this.Close();
                 MessageBox.Show("Vehicle edited successfuly");
             } else {

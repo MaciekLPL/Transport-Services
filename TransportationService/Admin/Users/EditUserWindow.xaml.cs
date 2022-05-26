@@ -22,11 +22,13 @@ namespace TransportationService {
         int userID;
         Users user;
         Validate v;
-        public EditUserWindow(ServiceDBEntities _db, int _userID) {
+        PageUsers parent;
+        public EditUserWindow(ServiceDBEntities _db, int _userID, PageUsers _parent) {
             InitializeComponent();
             v = new Validate(_db);
             db = _db;
             userID = _userID;
+            parent = _parent;
         }
 
 
@@ -59,6 +61,7 @@ namespace TransportationService {
 
             if (wasChanged) {
                 db.SaveChanges();
+                parent.loadDataGrid();
                 this.Close();
                 MessageBox.Show("Account edited successfuly");
             }

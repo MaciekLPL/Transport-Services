@@ -18,11 +18,6 @@ namespace TransportationService
         public PageDrivers()
         {
             InitializeComponent();
-
-            db = new ServiceDBEntities();
-            db.Drivers.ToList();
-            this.DataContext = db.Drivers.Local;
-
         }
 
         private void AddDriver_Click(object sender, RoutedEventArgs e) {
@@ -37,12 +32,23 @@ namespace TransportationService
                 var item = row.DataContext as Drivers;
 
                 if (item != null) {
-                    EditDriverWindow editDriverWindow = new EditDriverWindow(db, item.id);
+
+                    EditDriverWindow editDriverWindow = new EditDriverWindow(db, item.id, this);
                     editDriverWindow.ShowDialog();
                 }
 
             }
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
+            db = new ServiceDBEntities();
+            loadDataGrid();
+        }
+
+        public void loadDataGrid() {
+            db.Drivers.ToList();
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = db.Drivers.Local;
+        }
     }
 }

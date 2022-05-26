@@ -12,18 +12,23 @@ namespace TransportationService {
     public partial class EditDriverWindow : Window {
 
         ServiceDBEntities db;
+        Validate v;
         int driverID;
         Drivers driver;
+        PageDrivers parent;
+
         bool changed = false;
         bool licensesChanged = false;
-        Validate v;
 
-        public EditDriverWindow(ServiceDBEntities _db, int _driverID) {
+
+        public EditDriverWindow(ServiceDBEntities _db, int _driverID, PageDrivers _parent) {
             InitializeComponent();
             v = new Validate(_db);
             db = _db;
             driverID = _driverID;
+            parent = _parent;
         }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
@@ -49,6 +54,7 @@ namespace TransportationService {
 
             if (changed || licensesChanged) {
                 db.SaveChanges();
+                parent.loadDataGrid();
                 this.Close();
                 MessageBox.Show("Driver edited successfuly");
             } else {
@@ -99,7 +105,6 @@ namespace TransportationService {
                 Name = vt,
                 Owner = p == null ? false : true
             };
-
 
             var list = query.ToList();
             dataGrid.ItemsSource = null;

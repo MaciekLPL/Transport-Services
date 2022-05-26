@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TransportationService"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ap_userPage">
+      Title="ap_userPage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>

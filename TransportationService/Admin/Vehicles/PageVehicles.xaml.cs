@@ -16,10 +16,6 @@ namespace TransportationService
         public PageVehicles()
         {
             InitializeComponent();
-
-            db = new ServiceDBEntities();
-            db.Vehicles.ToList();
-            this.DataContext = db.Vehicles.Local;
         }
 
         private void AddVehicle_Click(object sender, RoutedEventArgs e) {
@@ -39,12 +35,22 @@ namespace TransportationService
                 var item = row.DataContext as Vehicles;
 
                 if (item != null) {
-                    EditVehicleWindow editVehicleWindow = new EditVehicleWindow(db, item.id);
+                    EditVehicleWindow editVehicleWindow = new EditVehicleWindow(db, item.id, this);
                     editVehicleWindow.ShowDialog();
                 }
 
             }
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
+            db = new ServiceDBEntities();
+            loadDataGrid();
+        }
+
+        public void loadDataGrid() {
+            db.Vehicles.ToList();
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = db.Vehicles.Local;
+        }
     }
 }
