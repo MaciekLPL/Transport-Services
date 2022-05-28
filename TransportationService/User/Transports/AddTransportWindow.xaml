@@ -42,6 +42,7 @@
             <DatePicker Name="startDatePicker" FontSize="14" SelectedDateChanged="startDatePicker_SelectedDateChanged" Focusable="False"/>
             <Label Content="End date"/>
             <DatePicker Name="endDatePicker" FontSize="14" SelectedDateChanged="endDatePicker_SelectedDateChanged" Focusable="False"/>
+            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
         </StackPanel>
 
         <!-- Column 1, Row 1 -->
