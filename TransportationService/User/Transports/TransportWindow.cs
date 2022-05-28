@@ -21,6 +21,9 @@ namespace TransportationService {
         public TextBox vehicleTextbox;
         public TextBox customerTextbox;
         public TextBox weightTextbox;
+        
+        public TextBox costTextbox;
+        public TextBox incomeTextbox;
 
         public DatePicker startDate;
         public DatePicker endDate;

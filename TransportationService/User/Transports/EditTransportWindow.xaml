@@ -68,7 +68,7 @@
             <Label Content="Cost"/>
             <TextBox Name="costTextBox" FontSize="18"/>
             <Label Content="Income"/>
-            <TextBox Name="incomeTextBox" FontSize="18"/>
+            <TextBox Name="incomeTextBox" FontSize="18" IsEnabled="False"/>
             <Label Content="Status"/>
             <RadioButton Content="Active" Name="activeRadio" Checked="radio_Checked"/>
             <RadioButton Content="Finished" Name="finishedRadio" Checked="radio_Checked"/>

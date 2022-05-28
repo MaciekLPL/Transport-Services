@@ -23,6 +23,9 @@ namespace TransportationService {
             driverTextbox = driverTextBox;
             vehicleTextbox = vehicleTextBox;
             weightTextbox = weightTextBox;
+            
+            costTextbox = costTextBox;
+            incomeTextbox = incomeTextBox;
 
             startDate = startDatePicker;
             endDate = endDatePicker;
@@ -73,7 +76,6 @@ namespace TransportationService {
             switch (transport.Status.name.ToLower()) {
                 case "active":
                     activeRadio.IsChecked = true;
-                    //disablePartially();
                     break;
                 case "finished":
                     finishedRadio.IsChecked = true;
@@ -193,7 +195,7 @@ namespace TransportationService {
         private void checkRadioButtons() {
 
             if(finishedRadio.IsChecked.Value || canceledRadio.IsChecked.Value) {
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Lock Transport Confirmation", System.Windows.MessageBoxButton.YesNo);
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure? This action will lock the transport.", "Lock transport confirmation", System.Windows.MessageBoxButton.YesNo);
                 if (messageBoxResult != MessageBoxResult.Yes) {
                     return;
                 }

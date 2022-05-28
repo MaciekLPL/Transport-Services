@@ -32,8 +32,13 @@
                 <DataGridTextColumn Header="To" Binding="{Binding destination}"/>
                 <DataGridTextColumn Header="Date Start" Binding="{Binding start_date, StringFormat=\{0:dd.MM.yyyy\}}"/>
                 <DataGridTextColumn Header="Date End" Binding="{Binding end_date, StringFormat=\{0:dd.MM.yyyy\}}"/>
-                <DataGridTextColumn Header="Weight" Binding="{Binding weight}"/>
+                <DataGridTextColumn Header="Vehicle" Binding="{Binding Vehicles.registration}"/>
+                <DataGridTextColumn Header="Driver" Binding="{Binding Drivers.fullname}"/>
                 <DataGridTextColumn Header="Customer" Binding="{Binding Customers.name}"/>
+                <DataGridTextColumn Header="Distance" Binding="{Binding distance}"/>
+                <DataGridTextColumn Header="Weight" Binding="{Binding weight}"/>
+                <DataGridTextColumn Header="Cost" Binding="{Binding cost}"/>
+                <DataGridTextColumn Header="Income" Binding="{Binding income}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Column="1" Grid.Row="1" Name ="AddTransport" Content="Add transport" Height="39" Width="136" Click="AddTransport_Click"/>

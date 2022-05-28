@@ -24,6 +24,10 @@ namespace TransportationService
         public int id { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
+
+        public string fullname {
+            get { return string.Format("{0} {1}", this.name, this.surname); }
+        }
         public System.DateTime birth_date { get; set; }
         public decimal hourly_rate { get; set; }
     

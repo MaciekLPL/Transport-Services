@@ -32,8 +32,13 @@
                 <DataGridTextColumn Header="To" Binding="{Binding destination}"/>
                 <DataGridTextColumn Header="Date Start" Binding="{Binding start_date, StringFormat=\{0:dd.MM.yyyy\}}"/>
                 <DataGridTextColumn Header="Date End" Binding="{Binding end_date, StringFormat=\{0:dd.MM.yyyy\}}"/>
-                <DataGridTextColumn Header="Weight" Binding="{Binding weight}"/>
+                <DataGridTextColumn Header="Vehicle" Binding="{Binding Vehicles.registration}"/>
+                <DataGridTextColumn Header="Driver" Binding="{Binding Drivers.fullname}"/>
                 <DataGridTextColumn Header="Customer" Binding="{Binding Customers.name}"/>
+                <DataGridTextColumn Header="Distance" Binding="{Binding distance}"/>
+                <DataGridTextColumn Header="Weight" Binding="{Binding weight}"/>
+                <DataGridTextColumn Header="Cost" Binding="{Binding cost}"/>
+                <DataGridTextColumn Header="Income" Binding="{Binding income}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="employeeTextBox" HorizontalAlignment="Left" Height="23" Margin="77,7,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.058,2.087" TextChanged="employeeTextBox_TextChanged"/>
