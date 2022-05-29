@@ -69,17 +69,43 @@ namespace TransportationService {
         public void weightTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             selectedVehicle = null;
             vehicleTextbox.Text = "";
+            costTextbox.Text = "";
+            incomeTextbox.Text = "";
         }
 
         public void vehicleTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             selectedDriver = null;
             driverTextbox.Text = "";
+            costTextbox.Text = "";
+            incomeTextbox.Text = "";
+        }
+
+        public void costTextBox_TextChanged(object sender, TextChangedEventArgs e) {
+
+            if (selectedDriver == null || selectedVehicle == null) {
+                costTextbox.Text = "";
+                incomeTextbox.Text = "";
+                return;
+            }
+
+            decimal cost;
+
+            if (costTextbox.Text != "" && decimal.TryParse(costTextbox.Text, out cost)) {
+                TimeSpan difference = endDate.SelectedDate.Value.Subtract(startDate.SelectedDate.Value);
+                decimal hours = (decimal)difference.TotalHours;
+                incomeTextbox.Text = (cost - (hours * selectedDriver.hourly_rate)).ToString();
+            } else {
+                costTextbox.Text = "";
+                incomeTextbox.Text = "";
+            }
         }
 
         public void validateDate() {
 
             selectedVehicle = null;
             vehicleTextbox.Text = "";
+            costTextbox.Text = "";
+            incomeTextbox.Text = "";
 
             if (startDate.SelectedDate == null || endDate.SelectedDate == null)
                 return;
