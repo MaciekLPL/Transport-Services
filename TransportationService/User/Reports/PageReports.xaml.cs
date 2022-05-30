@@ -172,27 +172,30 @@ namespace TransportationService
 
             return null;
         }
-        private void ExportToPdf(System.Windows.Controls.DataGrid grid,string path)
+        private void ExportToPdf(string path)
         {
-            PdfPTable table = new PdfPTable(grid.Columns.Count);
-            Document doc = new Document(PageSize.LETTER, 10, 10, 42, 35);
+            PdfPTable table = new PdfPTable(dataGrid.Columns.Count);
+            Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
             PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream(path, System.IO.FileMode.Create));
             doc.Open();
-            for (int j = 0; j < grid.Columns.Count; j++)
+            doc.Add(new Paragraph("Report"));
+
+            for (int j = 0; j < dataGrid.Columns.Count; j++)
             {
-                table.AddCell(new Phrase(grid.Columns[j].Header.ToString()));
+                table.AddCell(new Phrase(dataGrid.Columns[j].Header.ToString()));
             }
             table.HeaderRows = 1;
-            IEnumerable itemsSource = grid.ItemsSource as IEnumerable;
+            IEnumerable itemsSource = dataGrid.ItemsSource;
+
             if (itemsSource != null)
             {
                 foreach (var item in itemsSource)
                 {
-                    DataGridRow row = grid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                    DataGridRow row = dataGrid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
                     if (row != null)
                     {
                         DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
-                        for (int i = 0; i < grid.Columns.Count; ++i)
+                        for (int i = 0; i < dataGrid.Columns.Count; ++i)
                         {
                             System.Windows.Controls.DataGridCell cell = (System.Windows.Controls.DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
                             TextBlock txt = cell.Content as TextBlock;
@@ -204,21 +207,62 @@ namespace TransportationService
                     }
                 }
 
+                calculateSummary(table);
                 doc.Add(table);
                 doc.Close();
             }
         }
-        private void GeneratePDFButton_Click(object sender, RoutedEventArgs e)
-        {
+
+        private void GeneratePDFButton_Click(object sender, RoutedEventArgs e) {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                ExportToPdf(dataGrid,saveFileDialog1.FileName);
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
+                ExportToPdf(saveFileDialog1.FileName);
+            }
+        }
+
+
+        private void calculateSummary(PdfPTable table) {
+
+            List<decimal> sums = new List<decimal>(){ 0, 0, 0, 0 };
+            int count = dataGrid.Items.Count;
+
+            for (int i = 0; i < dataGrid.Items.Count; i++) {
+                dynamic s = dataGrid.Items[i];
+                sums[0] += s.distance;
+                sums[1] += s.weight;
+                sums[2] += s.cost;
+                sums[3] += s.income;
+            }
+
+            generateEmptyCells(table, 0);                   //One empty row
+            generateEmptyCells(table, 5);                   //Empty cells offset
+            addSummaryRow(table, "SUM", sums);
+
+            var avgs = sums.Select(i => i / count).ToList();
+            generateEmptyCells(table, 5);                   //Empty cells offset
+            addSummaryRow(table, "AVG", avgs);
+
+        }
+
+
+        private void addSummaryRow(PdfPTable table, string title, List<decimal> values) {
+            table.AddCell(title);
+            foreach (var item in values) {
+                table.AddCell(item.ToString("F"));
+            }
+        }
+
+
+        private void generateEmptyCells(PdfPTable table, int offset) {
+            for (int i = 0; i < dataGrid.Columns.Count - offset; ++i) {
+                PdfPCell empty = new PdfPCell(new Phrase(Chunk.NEWLINE));
+                empty.Border = Rectangle.NO_BORDER;
+                table.AddCell(empty);
             }
         }
     }

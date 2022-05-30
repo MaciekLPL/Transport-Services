@@ -31,6 +31,9 @@ namespace TransportationService
             vehicleTextbox = vehicleTextBox;
             weightTextbox = weightTextBox;
 
+            costTextbox = costTextBox;
+            incomeTextbox = incomeTextBox;
+
             startDate = startDatePicker;
             endDate = endDatePicker;
 
