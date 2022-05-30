@@ -73,12 +73,15 @@ namespace TransportationService
                 if (i != null)
                 {
                     bool ret = true;
+                    if ((bool)activeCheckBox.IsChecked || (bool)finishedCheckBox.IsChecked || (bool)canceledCheckBox.IsChecked)
+                    {
+                        ret = checkCheckBoxes(ref i);
+                    }
                     if (!string.IsNullOrWhiteSpace(employeeTextBox.Text))
                     {
                         if (!string.IsNullOrWhiteSpace(i.Users.login) && !i.Users.login.Contains(employeeTextBox.Text))
                             ret = false;
                     }
-                    ret = checkCheckBoxes(ref i);
                     if (!string.IsNullOrWhiteSpace(fromTextBox.Text))
                     {
                         if (!string.IsNullOrWhiteSpace(i.origin) && !i.origin.Contains(fromTextBox.Text))
