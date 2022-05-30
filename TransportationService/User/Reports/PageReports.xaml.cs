@@ -40,6 +40,30 @@ namespace TransportationService
             dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = view;
             view.Filter = null;
+            setFilters();
+        }
+
+        private bool checkCheckBoxes(ref Transports i)
+        {
+            List<System.Windows.Controls.CheckBox> list = new List<System.Windows.Controls.CheckBox>();
+            list.Add(activeCheckBox);
+            list.Add(finishedCheckBox);
+            list.Add(canceledCheckBox);
+            bool ret = false;
+            foreach(var elem in list)
+            {
+                if(elem.IsChecked==true)
+                {
+                    if(i.Status.name==elem.Content.ToString())
+                    {
+                        ret = true;
+                    }
+                }
+            }
+            list.Clear();
+            if (!(bool)activeCheckBox.IsChecked && !(bool)finishedCheckBox.IsChecked && !(bool)canceledCheckBox.IsChecked)
+                return true;
+            return ret;
         }
         private void setFilters()
         {
@@ -54,21 +78,7 @@ namespace TransportationService
                         if (!string.IsNullOrWhiteSpace(i.Users.login) && !i.Users.login.Contains(employeeTextBox.Text))
                             ret = false;
                     }
-                    if (activeCheckBox.IsChecked == true)
-                    {
-                        if (i.Status.name != "active")
-                            ret = false;
-                    }
-                    if (finishedCheckBox.IsChecked == true)
-                    {
-                        if (i.Status.name != "finished")
-                            ret = false;
-                    }
-                    if (canceledCheckBox.IsChecked == true)
-                    {
-                        if (i.Status.name != "canceled")
-                            ret = false;
-                    }
+                    ret = checkCheckBoxes(ref i);
                     if (!string.IsNullOrWhiteSpace(fromTextBox.Text))
                     {
                         if (!string.IsNullOrWhiteSpace(i.origin) && !i.origin.Contains(fromTextBox.Text))
@@ -105,7 +115,7 @@ namespace TransportationService
         {
             setFilters();
         }
-        private void status_Checked(object sender, RoutedEventArgs e)
+        private void status(object sender, RoutedEventArgs e)
         {
             setFilters();
         }

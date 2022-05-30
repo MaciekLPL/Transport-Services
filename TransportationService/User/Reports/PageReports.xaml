@@ -52,9 +52,9 @@
         <TextBox x:Name="weightMinTextBox" HorizontalAlignment="Left" Height="23" Margin="104,7,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Grid.Column="2" TextChanged="weightFilter"/>
         <TextBox x:Name="customerTextBox" HorizontalAlignment="Left" Height="23" Margin="258,67,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="customerTextBox_TextChanged" Grid.ColumnSpan="2"/>
         <Button x:Name="GeneratePDFButton" Content="Generate PDF" Grid.Column="2" HorizontalAlignment="Left" Margin="178,70,-10,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Height="30" Click="GeneratePDFButton_Click"/>
-        <CheckBox x:Name="activeCheckBox" Content="active" HorizontalAlignment="Left" Margin="77,35,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status_Checked" Foreground="White"/>
-        <CheckBox x:Name="finishedCheckBox" Content="finished" HorizontalAlignment="Left" Margin="77,55,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status_Checked" Foreground="White"/>
-        <CheckBox x:Name="canceledCheckBox" Content="canceled" HorizontalAlignment="Left" Margin="77,75,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status_Checked" Foreground="White"/>
+        <CheckBox x:Name="activeCheckBox" Content="active" HorizontalAlignment="Left" Margin="77,35,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status" Foreground="White" Unchecked="status"/>
+        <CheckBox x:Name="finishedCheckBox" Content="finished" HorizontalAlignment="Left" Margin="77,55,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status" Foreground="White" Unchecked="status"/>
+        <CheckBox x:Name="canceledCheckBox" Content="canceled" HorizontalAlignment="Left" Margin="77,75,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status" Foreground="White" Unchecked="status"/>
         <Label Content="Weight max" HorizontalAlignment="Left" Margin="24,36,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.Column="2" Foreground="White"/>
         <TextBox x:Name="weightMaxTextBox" HorizontalAlignment="Left" Height="23" Margin="104,38,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Grid.Column="2" TextChanged="weightFilter"/>
     </Grid>
