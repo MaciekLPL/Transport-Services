@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Add vehicle" Height="450" Width="300">
+        Title="Add vehicle" Height="450" Width="300"
+        Background="#223266" WindowStyle="ToolWindow" Foreground="AliceBlue" BorderBrush="AliceBlue" OpacityMask="#FF972D2D">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
-        <Label Content="Add new vehicle" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Add new vehicle" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
-        <Label Content="Make"/>
-        <TextBox Name="makeTextBox" FontSize="18"/>
-        <Label Content="Model"/>
-        <TextBox Name="modelTextBox" FontSize="18"/>
-        <Label Content="Registration"/>
-        <TextBox Name="registrationTextBox" FontSize="18"/>
-        <Label Content="Fuel consumption"/>
-        <TextBox Name="fuelTextBox" FontSize="18"/>
-        <Label Content="Vehicle type"/>
-        <ComboBox Name="vehicleTypeComboBox" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="id" HorizontalAlignment="Stretch"/>
+        <Label Content="Make" Foreground="AliceBlue"/>
+        <TextBox Name="makeTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Model" Foreground="AliceBlue"/>
+        <TextBox Name="modelTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Registration" Foreground="AliceBlue"/>
+        <TextBox Name="registrationTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Fuel consumption" Foreground="AliceBlue"/>
+        <TextBox Name="fuelTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Vehicle type" Foreground="AliceBlue"/>
+        <ComboBox Name="vehicleTypeComboBox" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="id" HorizontalAlignment="Stretch" Opacity="0.3" />
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="20 10" Click="submitBtn_Click" Height="30" Width="200"/>
     </StackPanel>
 </Window>

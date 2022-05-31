@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Add vehicle type" Height="300" Width="300">
+        Title="Add vehicle type" Height="300" Width="300"
+        Background="#223266" WindowStyle="ToolWindow">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
-        <Label Content="Add new vehicle type" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Add new vehicle type" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
-        <Label Content="Name"/>
-        <TextBox Name="nameTextBox" FontSize="18"/>
-        <Label Content="Max load"/>
-        <TextBox Name="loadTextBox" FontSize="18" PreviewTextInput="NumberValidation"/>
+        <Label Content="Name" Foreground="AliceBlue"/>
+        <TextBox Name="nameTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Max load" Foreground="AliceBlue"/>
+        <TextBox Name="loadTextBox" FontSize="18" PreviewTextInput="NumberValidation" Background="Transparent" Foreground="AliceBlue"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="0 30 0 0 " Click="submitBtn_Click" Height="30" Width="200"/>
     </StackPanel>
 </Window>

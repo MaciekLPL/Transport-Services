@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TransportationService"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ap_userPage" Loaded="Page_Loaded">
+      Title="ap_userPage" Loaded="Page_Loaded" >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,11 +21,11 @@
 
         <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}"  AutoGenerateColumns="False"
                   Background="Transparent" RowBackground="Transparent" Foreground="AliceBlue" 
-                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" >
+                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch">
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.ColumnHeaderStyle>

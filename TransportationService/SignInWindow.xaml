@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Sign in" Height="260" Width="323">
+        Title="Sign in" Height="260" Width="323"
+        Background="#223266" WindowStyle="ToolWindow">
     <StackPanel Margin="20" VerticalAlignment="Center">
-        <Label Content="Sign in" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Sign in" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
-        <Label Content="Username"/>
-        <TextBox Name="unameTextBox" FontSize="18"/>
-        <Label Content="Password"/>
-        <PasswordBox Name="passwdTextBox" FontSize="18"/>
+        <Label Content="Username" Foreground="AliceBlue"/>
+        <TextBox Name="unameTextBox" FontSize="18" Background="#223266" Foreground="AliceBlue"/>
+        <Label Content="Password" Foreground="AliceBlue"/>
+        <PasswordBox Name="passwdTextBox" FontSize="18" Background="#223266" Foreground="AliceBlue"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 10" Click="submitBtn_Click"/>
     </StackPanel>
 </Window>

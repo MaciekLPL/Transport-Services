@@ -20,11 +20,12 @@
         </Grid.RowDefinitions>
 
         <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False" 
-                  Background="Transparent" Foreground="AliceBlue" 
+                  Background="Transparent" RowBackground="Transparent" Foreground="AliceBlue" 
                   HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch">
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.ColumnHeaderStyle>
