@@ -21,6 +21,7 @@ namespace TransportationService
     public partial class AddTransportWindow : TransportWindow {
 
         int userID;
+        Validate v;
         private Users user { get; set; }
 
         public AddTransportWindow(ServiceDBEntities _db, int _userID) : base(_db) {
@@ -38,6 +39,7 @@ namespace TransportationService
             endDate = endDatePicker;
 
             userID = _userID;
+            v = new Validate(_db);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
@@ -78,6 +80,18 @@ namespace TransportationService
                 MessageBox.Show("Entered income is invalid!");
                 return;
             }
+            if (v.checkIfNull(originTextBox.Text))
+            {
+                MessageBox.Show("Origin is empty!");
+                return;
+            }
+            if (v.checkIfNull(destinationTextBox.Text))
+            {
+                MessageBox.Show("Destination is empty!");
+                return;
+            }
+            
+
 
             if (true /* TODO: Walidacja */) {
                 Transports newTransport = new Transports();
