@@ -22,12 +22,19 @@ namespace TransportationService {
 
 
             if (v.checkIfNull(nameTextBox.Text)) {
-                MessageBox.Show("Enter vehicle type name");
+                //MessageBox.Show("Enter vehicle type name");
+                MsgBox box = new MsgBox("Enter vehicle type name");
+                box.Show();
+
                 return;
             }
 
             if (v.checkIfNull(loadTextBox.Text)) {
-                MessageBox.Show("Enter vehicle type max load");
+                //MessageBox.Show("Enter vehicle type max load");
+
+                MsgBox box = new MsgBox("Enter vehicle type max load");
+                box.Show();
+
                 return;
             }
 

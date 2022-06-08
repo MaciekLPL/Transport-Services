@@ -62,23 +62,35 @@ namespace TransportationService
 
             if (!hasUpperChar.IsMatch(input))
             {
-                MessageBox.Show("Password should contain At least one upper case letter");
+                //MessageBox.Show("Password should contain At least one upper case letter");
+                var box = new MsgBox("Password should contain at least one upper case letter");
+                box.Show();
+
                 return false;
             }
             else if (!hasMinChars.IsMatch(input))
             {
-                MessageBox.Show("Password should not be less than 8 characters");
+                //MessageBox.Show("Password should not be less than 8 characters");
+                var box = new MsgBox("Password should not be less than 8 characters");
+                box.Show();
+
                 return false;
             }
             else if (!hasNumber.IsMatch(input))
             {
-                MessageBox.Show("Password should contain At least one numeric value");
+                //MessageBox.Show("Password should contain At least one numeric value");
+                var box = new MsgBox("Password should contain at least one numeric value");
+                box.Show();
+
                 return false;
             }
 
             else if (!hasSymbols.IsMatch(input))
             {
-                MessageBox.Show("Password should contain At least one special case characters");
+                //MessageBox.Show("Password should contain At least one special case characters");
+                var box = new MsgBox("Password should contain at least one special case\ncharacter");
+                box.Show();
+
                 return false;
             }
             else

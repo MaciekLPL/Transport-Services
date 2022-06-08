@@ -5,20 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Edit driver information" Height="520" Width="300" Loaded="Window_Loaded">
+        Title="Edit driver information" Height="520" Width="300" Loaded="Window_Loaded"
+        Background="#223266" WindowStyle="ToolWindow">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
-        <Label Content="Edit driver" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Edit driver" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
-        <Label Content="Name"/>
-        <TextBox Name="nameTextBox" FontSize="18"/>
-        <Label Content="Surname"/>
-        <TextBox Name="surnameTextBox" FontSize="18"/>
-        <Label Content="Birth date"/>
-        <DatePicker Name="birthDatePicker" FontSize="18"/>
-        <Label Content="Hourly rate"/>
-        <TextBox Name="hourlyRateTextBox" FontSize="18"/>
-        <Label Content="Licences" FontSize="18"/>
-        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="100" CanUserAddRows="False">
+        <Label Content="Name" Foreground="AliceBlue"/>
+        <TextBox Name="nameTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Surname" Foreground="AliceBlue"/>
+        <TextBox Name="surnameTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Birth date" Foreground="AliceBlue"/>
+        <DatePicker Name="birthDatePicker" FontSize="18" Opacity="0.3">
+            <DatePicker.Effect>
+                <DropShadowEffect Color="#FF223266"/>
+            </DatePicker.Effect>
+        </DatePicker>
+        <Label Content="Hourly rate" Foreground="AliceBlue"/>
+        <TextBox Name="hourlyRateTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Licences" FontSize="18" Foreground="AliceBlue"/>
+        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="100" CanUserAddRows="False"
+                  Background="Transparent" Foreground="AliceBlue">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Vehicle type" Binding="{Binding Name.name}" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Header="Owner" Binding="{Binding Owner, Mode=OneWay}" />

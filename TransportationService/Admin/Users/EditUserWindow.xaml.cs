@@ -63,10 +63,14 @@ namespace TransportationService {
                 db.SaveChanges();
                 parent.loadDataGrid();
                 this.Close();
-                MessageBox.Show("Account edited successfuly");
+                //MessageBox.Show("Account edited successfuly");
+                var box = new MsgBox("Account edited successfuly");
+                box.Show();
             }
             else {
-                MessageBox.Show("No changes made");
+                //MessageBox.Show("No changes made");
+                var box = new MsgBox("No changes made");
+                box.Show();
             }
             
         }

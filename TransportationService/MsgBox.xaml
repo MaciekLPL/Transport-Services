@@ -1,0 +1,17 @@
+﻿<Window x:Class="TransportationService.MsgBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportationService"
+        mc:Ignorable="d"
+        Title="MsgBox" Height="236.4" Width="348.8"
+        WindowStyle="None" Background="#223266" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="label" HorizontalAlignment="Left" Margin="23,74,0,0" VerticalAlignment="Top" Width="304" Foreground="AliceBlue"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="57"/>
+        <Button x:Name="button" Content="OK" HorizontalAlignment="Left" Margin="137,161,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.011,-0.08" Click="button_Click"/>
+
+    </Grid>
+</Window>

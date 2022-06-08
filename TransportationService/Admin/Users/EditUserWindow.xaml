@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Edit existing user" Height="420" Width="300" Loaded="Window_Loaded">
+        Title="Edit existing user" Height="420" Width="300" Loaded="Window_Loaded"
+        Background="#223266" WindowStyle="ToolWindow">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
-        <Label Content="Edit user" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Edit user" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
-        <Label Content="Username"/>
-        <TextBox Name="unameTextBox" FontSize="18"/>
-        <Label Content="Password"/>
-        <PasswordBox Name="passwdTextBox" FontSize="18"/>
-        <Label Content="Repeat password"/>
-        <PasswordBox Name="passwdRepTextBox" FontSize="18"/>
-        <RadioButton Name="userRadioBtn" Content="User" Margin="0 10 0 0"/>
-        <RadioButton Name="adminRadioBtn" Content="Administrator"/>
-        <CheckBox Name="suspendChkBox" Content="Suspend account" Margin="0 20 0 0"/>
+        <Label Content="Username" Foreground="AliceBlue"/>
+        <TextBox Name="unameTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Password" Foreground="AliceBlue"/>
+        <PasswordBox Name="passwdTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Repeat password" Foreground="AliceBlue"/>
+        <PasswordBox Name="passwdRepTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <RadioButton Name="userRadioBtn" Content="User" Margin="0 10 0 0" Foreground="AliceBlue"/>
+        <RadioButton Name="adminRadioBtn" Content="Administrator" Foreground="AliceBlue"/>
+        <CheckBox Name="suspendChkBox" Content="Suspend account" Margin="0 20 0 0" Foreground="AliceBlue"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
     </StackPanel>
 </Window>

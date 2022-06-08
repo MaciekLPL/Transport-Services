@@ -42,7 +42,10 @@ namespace TransportationService {
                         db.SaveChanges();
 
                         this.Close();
-                        MessageBox.Show("User added successfully");
+                        //MessageBox.Show("User added successfully");
+
+                        var box = new MsgBox("User added successfully");
+                        box.Show();
                     }
                     else
                     {
@@ -52,7 +55,9 @@ namespace TransportationService {
                 }
                 else
                 {
-                    MessageBox.Show("Enter all user data");
+                    //MessageBox.Show("Enter all user data");
+                    var box = new MsgBox("Enter all user data");
+                    box.Show();
                 }
                 
             }
@@ -62,7 +67,9 @@ namespace TransportationService {
                 unameTextBox.Text = "";
                 passwdTextBox.Password = "";
                 passwdRepTextBox.Password = "";
-                MessageBox.Show(msg);
+                //MessageBox.Show(msg);
+                var box = new MsgBox(msg);
+                box.Show();
             }
            
 

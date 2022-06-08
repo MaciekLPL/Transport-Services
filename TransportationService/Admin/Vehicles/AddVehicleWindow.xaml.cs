@@ -27,32 +27,50 @@ namespace TransportationService {
             decimal avgFuelConsumption;
 
             if (v.checkIfNull(makeTextBox.Text)) {
-                MessageBox.Show("Enter vehicle make");
+                //MessageBox.Show("Enter vehicle make");
+                var box = new MsgBox("Enter vehicle make");
+                box.Show();
+
                 return;
             }
 
             if (v.checkIfNull(modelTextBox.Text)) {
-                MessageBox.Show("Enter vehicle model");
+                //MessageBox.Show("Enter vehicle model");
+                var box = new MsgBox("Enter vehicle model");
+                box.Show();
+
                 return;
             }
 
             if (v.checkIfNull(registrationTextBox.Text)) {
-                MessageBox.Show("Enter vehicle registration");
+                //MessageBox.Show("Enter vehicle registration");
+                var box = new MsgBox("Enter vehicle registration");
+                box.Show();
+
                 return;
             }
 
             if (v.checkIfNull(fuelTextBox.Text)) {
-                MessageBox.Show("Enter vehicle fuel consumption");
+                //MessageBox.Show("Enter vehicle fuel consumption");
+                var box = new MsgBox("Enter vehicle fuel consumption");
+                box.Show();
+
                 return;
             }
 
             if (vehicleTypeComboBox.SelectedIndex == -1) {
-                MessageBox.Show("Select vehicle type");
+                //MessageBox.Show("Select vehicle type");
+                var box = new MsgBox("Select vehicle type");
+                box.Show();
+
                 return;
             } 
             
             if (!decimal.TryParse(fuelTextBox.Text, out avgFuelConsumption)) {
-                MessageBox.Show("Entered average fuel consumption of the vehicle is invalid!");
+                //MessageBox.Show("Entered average fuel consumption of the vehicle is invalid!");
+                var box = new MsgBox("Entered average fuel consumption of the\nvehicle is invalid!");
+                box.Show();
+
                 return;
             }
 
@@ -69,8 +87,9 @@ namespace TransportationService {
             db.SaveChanges();
 
             this.Close();
-            MessageBox.Show("Vehicle added successfuly");
-
+            //MessageBox.Show("Vehicle added successfuly");
+            var Box = new MsgBox("Vehicle added successfuly");
+            Box.Show();
         }
     }
 }

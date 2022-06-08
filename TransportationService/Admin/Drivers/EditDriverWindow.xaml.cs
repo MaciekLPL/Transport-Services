@@ -56,9 +56,13 @@ namespace TransportationService {
                 db.SaveChanges();
                 parent.loadDataGrid();
                 this.Close();
-                MessageBox.Show("Driver edited successfuly");
+                //MessageBox.Show("Driver edited successfuly");
+                var box = new MsgBox("Driver edited successfuly");
+                box.Show();
             } else {
-                MessageBox.Show("No changes made");
+                //MessageBox.Show("No changes made");
+                var box = new MsgBox("No changes made");
+                box.Show();
             }
         }
 

@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Edit vehicle informations" Height="450" Width="300" Loaded="Window_Loaded">
+        Title="Edit vehicle informations" Height="450" Width="300" Loaded="Window_Loaded"
+        Background="#223266" WindowStyle="ToolWindow">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
-        <Label Content="Edit vehicle" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Edit vehicle" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
-        <Label Content="Make"/>
-        <TextBox Name="makeTextBox" FontSize="18"/>
-        <Label Content="Model"/>
-        <TextBox Name="modelTextBox" FontSize="18"/>
-        <Label Content="Registration"/>
-        <TextBox Name="registrationTextBox" FontSize="18"/>
-        <Label Content="Fuel consumption"/>
-        <TextBox Name="fuelTextBox" FontSize="18"/>
-        <Label Content="Vehicle type"/>
-        <ComboBox Name="vehicleTypeComboBox" HorizontalAlignment="Stretch" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="id"/>
+        <Label Content="Make" Foreground="AliceBlue"/>
+        <TextBox Name="makeTextBox" FontSize="18" Background="Transparent" Foreground="AliceBlue"/>
+        <Label Content="Model" Foreground="AliceBlue"/>
+        <TextBox Name="modelTextBox" FontSize="18" Background="Transparent" Foreground="AliceBlue"/>
+        <Label Content="Registration" Foreground="AliceBlue"/>
+        <TextBox Name="registrationTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Fuel consumption" Foreground="AliceBlue"/>
+        <TextBox Name="fuelTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <Label Content="Vehicle type" Foreground="AliceBlue"/>
+        <ComboBox Name="vehicleTypeComboBox" HorizontalAlignment="Stretch" ItemsSource="{Binding}" DisplayMemberPath="name" 
+                  SelectedValuePath="id" Opacity="0.3"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="20 10" Click="submitBtn_Click" Height="30" Width="200"/>
     </StackPanel>
 </Window>
