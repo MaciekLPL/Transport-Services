@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Add vehicle" Height="450" Width="300"
-        Background="#223266" WindowStyle="ToolWindow" Foreground="AliceBlue" BorderBrush="AliceBlue" OpacityMask="#FF972D2D">
+        Background="#223266" WindowStyle="None" Foreground="AliceBlue" BorderBrush="AliceBlue"
+        AllowsTransparency="True">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Add new vehicle" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -21,5 +22,6 @@
         <Label Content="Vehicle type" Foreground="AliceBlue"/>
         <ComboBox Name="vehicleTypeComboBox" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="id" HorizontalAlignment="Stretch" Opacity="0.3" />
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="20 10" Click="submitBtn_Click" Height="30" Width="200"/>
+        <Button x:Name="quitBtn" Content="Cancel" Height="31" Margin="30,0" Click="quitBtn_Click" />
     </StackPanel>
 </Window>

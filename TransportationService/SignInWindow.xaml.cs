@@ -50,24 +50,35 @@ namespace TransportationService
                     }
                     else
                     {
-                        MessageBox.Show("Your account is suspended");
+                        //MessageBox.Show("Your account is suspended");
+                        var box = new MsgBox("Your account is suspended");
+                        box.Show();
                         passwdTextBox.Password = "";
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("Invalid password");
+                    //MessageBox.Show("Invalid password");
+                    var box = new MsgBox("Invalid password");
+                    box.Show();
                     passwdTextBox.Password = "";
                 }
 
             }
             else
             {
-                MessageBox.Show("User not found");
+                //MessageBox.Show("User not found");
+                var box = new MsgBox("User not found");
+                box.Show();
                 unameTextBox.Text = "";
                 passwdTextBox.Password = "";
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

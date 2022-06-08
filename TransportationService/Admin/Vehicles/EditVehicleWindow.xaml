@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Edit vehicle informations" Height="450" Width="300" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="ToolWindow">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Edit vehicle" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -22,5 +22,6 @@
         <ComboBox Name="vehicleTypeComboBox" HorizontalAlignment="Stretch" ItemsSource="{Binding}" DisplayMemberPath="name" 
                   SelectedValuePath="id" Opacity="0.3"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="20 10" Click="submitBtn_Click" Height="30" Width="200"/>
+        <Button Name="quitBtn" Content="Cancel" Margin="30,10,30,30" Height="30" Click="quitBtn_Click"/>
     </StackPanel>
 </Window>

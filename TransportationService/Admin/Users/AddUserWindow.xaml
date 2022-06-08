@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Add user to the system" Height="420" Width="300"
-        Background="#223266" WindowStyle="ToolWindow">
+        Title="Add user to the system" Height="405.44" Width="300"
+        Background="#223266" WindowStyle="None" AllowsTransparency="True">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Create new user" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -18,6 +18,7 @@
         <PasswordBox Name="passwdRepTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
         <RadioButton Name="userRadioBtn" Content="User" Margin="0 10 0 0" IsChecked="True" Foreground="AliceBlue"/>
         <RadioButton Name="adminRadioBtn" Content="Administrator" Foreground="AliceBlue"/>
-        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
+        <Button x:Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
+        <Button x:Name="quitBtn" Content="Cancel" Margin="60 0 60 20" Click="quitBtn_Click"/>
     </StackPanel>
 </Window>

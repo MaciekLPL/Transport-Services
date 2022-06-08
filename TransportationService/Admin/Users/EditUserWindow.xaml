@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Edit existing user" Height="420" Width="300" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="ToolWindow">
+        Title="Edit existing user" Height="433.44" Width="304.48" Loaded="Window_Loaded"
+        Background="#223266" WindowStyle="None" AllowsTransparency="True">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Edit user" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -20,5 +20,6 @@
         <RadioButton Name="adminRadioBtn" Content="Administrator" Foreground="AliceBlue"/>
         <CheckBox Name="suspendChkBox" Content="Suspend account" Margin="0 20 0 0" Foreground="AliceBlue"/>
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
+        <Button Name="quitBtn" Content="Cancel" Margin="60 0 60 20" Click="QuitBtn_Click"/>
     </StackPanel>
 </Window>

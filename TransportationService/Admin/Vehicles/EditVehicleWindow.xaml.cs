@@ -98,6 +98,11 @@ namespace TransportationService {
 
             return changed;
         }
+
+        private void quitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 
 }

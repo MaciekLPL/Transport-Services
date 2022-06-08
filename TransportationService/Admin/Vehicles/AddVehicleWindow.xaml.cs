@@ -91,5 +91,10 @@ namespace TransportationService {
             var Box = new MsgBox("Vehicle added successfuly");
             Box.Show();
         }
+
+        private void quitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

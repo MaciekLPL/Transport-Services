@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Add new driver" Height="420" Width="300"
-        Background="#223266" WindowStyle="ToolWindow">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Add new driver" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -22,6 +22,7 @@
         </DatePicker>
         <Label Content="Hourly rate" Foreground="AliceBlue"/>
         <TextBox Name="hourlyRateTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
-        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
+        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click" Height="28"/>
+        <Button Name="quitBtn" Content="Cancel" Margin="60,0" Height="28" Click="quitBtn_Click"/>
     </StackPanel>
 </Window>

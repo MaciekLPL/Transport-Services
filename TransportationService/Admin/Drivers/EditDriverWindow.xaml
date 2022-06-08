@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Edit driver information" Height="520" Width="300" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="ToolWindow">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Edit driver" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -59,5 +59,6 @@
         </DataGrid>
         
     <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 20" Click="submitBtn_Click"/>
+        <Button Name="quitBtn" Content="Cancel" Margin="60,0" Click="quitBtn_Click"/>
     </StackPanel>
 </Window>

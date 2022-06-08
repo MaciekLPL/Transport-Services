@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="Sign in" Height="260" Width="323"
-        Background="#223266" WindowStyle="ToolWindow">
-    <StackPanel Margin="20" VerticalAlignment="Center">
+        Title="Sign in" Height="285.654" Width="354.893"
+        Background="#223266"
+        WindowStyle="None" AllowsTransparency="True">
+    <StackPanel Margin="20,29,20,20" VerticalAlignment="Center" Height="254">
         <Label Content="Sign in" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
-        <Label Content="Username" Foreground="AliceBlue"/>
-        <TextBox Name="unameTextBox" FontSize="18" Background="#223266" Foreground="AliceBlue"/>
-        <Label Content="Password" Foreground="AliceBlue"/>
-        <PasswordBox Name="passwdTextBox" FontSize="18" Background="#223266" Foreground="AliceBlue"/>
-        <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="60 10" Click="submitBtn_Click"/>
+        <Label Content="Username" Foreground="AliceBlue" Margin="10,0,0,0"/>
+        <TextBox Name="unameTextBox" FontSize="18" Background="#223266" Foreground="AliceBlue" Margin="10,0"/>
+        <Label Content="Password" Foreground="AliceBlue" Margin="10,0,0,0"/>
+        <PasswordBox Name="passwdTextBox" FontSize="18" Background="#223266" Foreground="AliceBlue" Margin="10,0"/>
+        <Button x:Name="submitBtn" IsDefault="true" Content="Submit" Margin="38,10" Click="submitBtn_Click" Height="26"/>
+        <Button Content="Quit" Margin="38,10" Height="26" Click="Button_Click"/>
     </StackPanel>
 </Window>

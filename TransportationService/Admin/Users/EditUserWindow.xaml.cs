@@ -119,5 +119,10 @@ namespace TransportationService {
 
             return changed;
         }
+
+        private void QuitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
