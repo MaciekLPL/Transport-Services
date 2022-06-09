@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <DataGrid Grid.ColumnSpan="3" Grid.Row="0" Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False" 
-                  Loaded="dataGrid_Loaded" Background="Transparent" Foreground="AliceBlue">
+                  Loaded="dataGrid_Loaded" Background="Transparent" Foreground="AliceBlue" RowBackground="Transparent">
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <Setter Property="TextBlock.TextAlignment" Value="Center"/>
@@ -70,13 +70,13 @@
         <Label Content="Date End" Grid.Column="1" HorizontalAlignment="Left" Margin="122,35,0,0" Grid.Row="1" VerticalAlignment="Top" 
                Foreground="AliceBlue"/>
         <DatePicker x:Name="dateStartPicker" Grid.Column="1" Margin="191,7,0,0" Grid.Row="1" VerticalAlignment="Top" 
-                    SelectedDateChanged="dateChanged" Opacity="0.3">
+                    SelectedDateChanged="dateChanged" Opacity="0.9">
             <DatePicker.Effect>
                 <DropShadowEffect Color="#FF223266"/>
             </DatePicker.Effect>
         </DatePicker>
         <DatePicker x:Name="dateEndPicker" Grid.Column="1" Margin="191,35,0,0" Grid.Row="1" VerticalAlignment="Top" 
-                    SelectedDateChanged="dateChanged" Opacity="0.3">
+                    SelectedDateChanged="dateChanged" Opacity="0.9">
             <DatePicker.Effect>
                 <DropShadowEffect Color="#FF223266"/>
             </DatePicker.Effect>

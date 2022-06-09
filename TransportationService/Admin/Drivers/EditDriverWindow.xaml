@@ -15,7 +15,7 @@
         <Label Content="Surname" Foreground="AliceBlue"/>
         <TextBox Name="surnameTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
         <Label Content="Birth date" Foreground="AliceBlue"/>
-        <DatePicker Name="birthDatePicker" FontSize="18" Opacity="0.3">
+        <DatePicker Name="birthDatePicker" FontSize="18" Opacity="0.9">
             <DatePicker.Effect>
                 <DropShadowEffect Color="#FF223266"/>
             </DatePicker.Effect>
@@ -24,7 +24,7 @@
         <TextBox Name="hourlyRateTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
         <Label Content="Licences" FontSize="18" Foreground="AliceBlue"/>
         <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="100" CanUserAddRows="False"
-                  Background="Transparent" Foreground="AliceBlue">
+                  Background="Transparent" Foreground="AliceBlue" RowBackground="Transparent">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="Transparent" />

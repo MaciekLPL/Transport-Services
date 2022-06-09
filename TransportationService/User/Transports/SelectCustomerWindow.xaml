@@ -5,19 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
-        Title="SelectCustomerWindow" Height="420" Width="300" Loaded="Window_Loaded">
+        Title="SelectCustomerWindow" Height="420" Width="300" Loaded="Window_Loaded"
+        Background="#223266" WindowStyle="None" AllowsTransparency="True">
     
     <StackPanel Margin="20" VerticalAlignment="Stretch">
-        <Label Content="Select customer" HorizontalAlignment="Center" FontSize="25"/>
+        <Label Content="Select customer" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
         
-        <Label Content="Filter data"/>
-        <TextBox Name="filterTextBox" FontSize="18" Margin="0 0 0 15" TextChanged="filterTextBox_TextChanged"/>
+        <Label Content="Filter data" Foreground="AliceBlue"/>
+        <TextBox Name="filterTextBox" FontSize="18" Margin="0 0 0 15" TextChanged="filterTextBox_TextChanged"
+                 Foreground="AliceBlue" Background="Transparent"/>
         
-        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" CanUserAddRows="False" IsReadOnly="True">
+        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" CanUserAddRows="False" 
+                  IsReadOnly="True" Background="Transparent" Foreground="AliceBlue" RowBackground="Transparent">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>
@@ -25,11 +36,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Content="Customer not listed?" Margin="0 15 0 0"/>
+        <Label Content="Customer not listed?" Margin="0 15 0 0" Foreground="AliceBlue"/>
 
         <DockPanel LastChildFill="True">
             <Button Name="selectCustomer" Content="Add and select" DockPanel.Dock="Right" Click="addAndSelect_Click"/>
-            <TextBox Name="customerTextBox" FontSize="18"/>
+            <TextBox Name="customerTextBox" FontSize="18" Background="Transparent" Foreground="AliceBlue"/>
         </DockPanel>
+        <Button Name="quitBtn" Content="Cancel" Margin="54,18,54,15" Click="quitBtn_Click"/>
     </StackPanel>
 </Window>

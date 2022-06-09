@@ -82,5 +82,10 @@ namespace TransportationService {
                     return false;
                 };
         }
+
+        private void quitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

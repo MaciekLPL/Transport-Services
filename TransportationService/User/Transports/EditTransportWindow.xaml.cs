@@ -40,7 +40,9 @@ namespace TransportationService {
             transport = db.Transports.Where(t => t.id == transportID).FirstOrDefault();
 
             if (transport == null) {
-                MessageBox.Show("Unknown error occured");
+                //MessageBox.Show("Unknown error occured");
+                var box = new MsgBox("Unknown error occured");
+                box.Show();
                 this.Close();
             }
 
@@ -87,7 +89,9 @@ namespace TransportationService {
                     break;
                 default:
                     this.Close();
-                    MessageBox.Show("Unknown error occured");
+                    //MessageBox.Show("Unknown error occured");
+                    var box = new MsgBox("Unknown error occured");
+                    box.Show();
                     break;
             }
         }
@@ -104,9 +108,13 @@ namespace TransportationService {
                 db.SaveChanges();
                 parent.loadDataGrid();
                 this.Close();
-                MessageBox.Show("Transport edited successfuly");
+                //MessageBox.Show("Transport edited successfuly");
+                var box = new MsgBox("Transport edited successfuly");
+                box.Show();
             } else {
-                MessageBox.Show("No changes made");
+                //MessageBox.Show("No changes made");
+                var box = new MsgBox("No changes made");
+                box.Show();
             }
         }
 
@@ -208,7 +216,10 @@ namespace TransportationService {
                     transport.Status = newStatus;
                     changed = true;
                 } else {
-                    MessageBox.Show("Transport status error");
+                    //MessageBox.Show("Transport status error");
+                    var box = new MsgBox("Transport status error");
+                    box.Show();
+
                 }
             }
         }
@@ -227,6 +238,11 @@ namespace TransportationService {
             panelRight.IsEnabled = false;
             submitBtn.IsEnabled = false;
 
+        }
+
+        private void quitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

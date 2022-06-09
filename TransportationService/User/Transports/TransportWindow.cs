@@ -39,7 +39,9 @@ namespace TransportationService {
                 SelectVehicleWindow selectVehicleWindow = new SelectVehicleWindow(this, db);
                 selectVehicleWindow.ShowDialog();
             } else {
-                MessageBox.Show("Fill in the dates and weight to be able to select a vehicle");
+                //MessageBox.Show("Fill in the dates and weight to be able to select a vehicle");
+                var box = new MsgBox("Fill in the dates and weight to\nbe able to select a vehicle");
+                box.Show();
             }
         }
 
@@ -48,7 +50,9 @@ namespace TransportationService {
                 SelectDriverWindow selectDriverWindow = new SelectDriverWindow(this, db);
                 selectDriverWindow.ShowDialog();
             } else {
-                MessageBox.Show("Select a vehicle to be able to select a driver");
+                //MessageBox.Show("Select a vehicle to be able to select a driver");
+                var box = new MsgBox("Select a vehicle to be able to\nselect a driver");
+                box.Show();
             }
         }
 

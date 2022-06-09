@@ -47,7 +47,9 @@ namespace TransportationService
 
             if (user == null) {
                 this.Close();
-                MessageBox.Show("Unknown error occured");
+                //MessageBox.Show("Unknown error occured");
+                var box = new MsgBox("Unknown error occured");
+                box.Show();
             } else {
                 userTextBox.Text = user.login;
             }
@@ -65,29 +67,41 @@ namespace TransportationService
              */
 
             if (!int.TryParse(distanceTextBox.Text, out distance)) {
-                MessageBox.Show("Entered distance is invalid!");
+                //MessageBox.Show("Entered distance is invalid!");
+                var box = new MsgBox("Entered distance is invalid!");
+                box.Show();
                 return;
             }
             if (!int.TryParse(weightTextBox.Text, out weight)) {
-                MessageBox.Show("Entered weight is invalid!");
+                //MessageBox.Show("Entered weight is invalid!");
+                var box = new MsgBox("Entered weight is invalid!");
+                box.Show();
                 return;
             }
             if (!decimal.TryParse(costTextBox.Text, out cost)) {
-                MessageBox.Show("Entered cost is invalid!");
+                //MessageBox.Show("Entered cost is invalid!");
+                var box = new MsgBox("Entered cost is invalid!");
+                box.Show();
                 return;
             }
             if (!decimal.TryParse(incomeTextBox.Text, out income)) {
-                MessageBox.Show("Entered income is invalid!");
+                //MessageBox.Show("Entered income is invalid!");
+                var box = new MsgBox("Entered income is invalid!");
+                box.Show();
                 return;
             }
             if (v.checkIfNull(originTextBox.Text))
             {
-                MessageBox.Show("Origin is empty!");
+                //MessageBox.Show("Origin is empty!");
+                var box = new MsgBox("Origin is empty!");
+                box.Show();
                 return;
             }
             if (v.checkIfNull(destinationTextBox.Text))
             {
-                MessageBox.Show("Destination is empty!");
+                //MessageBox.Show("Destination is empty!");
+                var box = new MsgBox("Destination is empty!");
+                box.Show();
                 return;
             }
             
@@ -114,8 +128,15 @@ namespace TransportationService
                 db.Transports.Add(newTransport);
                 db.SaveChanges();
                 this.Close();
-                MessageBox.Show("Transport added successfuly");
+                //MessageBox.Show("Transport added successfuly");
+                var box = new MsgBox("Transport added successfuly");
+                box.Show();
             }
+        }
+
+        private void quitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
