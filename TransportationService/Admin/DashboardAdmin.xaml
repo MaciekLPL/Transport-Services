@@ -126,15 +126,6 @@
                     <TextBlock Text="Vehicles" Style="{StaticResource menuButtonText}"/>
                 </StackPanel>
             </Button>
-
-            <!--Prices Button-->
-            <Button x:Name ="PricesButton" Style="{StaticResource menuButton}" Click="PricesButton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <fa:IconImage Icon="DollarSign" Style="{StaticResource menuButtonIcon}"/>
-                    <TextBlock Text="Prices" Style="{StaticResource menuButtonText}"/>
-                </StackPanel>
-            </Button>
-
         </StackPanel>
     </Grid>
 </Window>

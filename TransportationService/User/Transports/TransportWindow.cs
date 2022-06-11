@@ -22,6 +22,8 @@ namespace TransportationService {
         public TextBox customerTextbox;
         public TextBox weightTextbox;
         
+        public TextBox distanceTextbox;
+        public TextBox fuelTextbox;
         public TextBox costTextbox;
         public TextBox incomeTextbox;
 
@@ -61,7 +63,6 @@ namespace TransportationService {
             selectCustomerWindow.ShowDialog();
         }
 
-
         public void startDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
             validateDate();
         }
@@ -73,13 +74,19 @@ namespace TransportationService {
         public void weightTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             selectedVehicle = null;
             vehicleTextbox.Text = "";
+            fuelTextbox.Text = "";
             costTextbox.Text = "";
             incomeTextbox.Text = "";
+
+            int weight;
+            if (!int.TryParse(weightTextbox.Text, out weight))
+                weightTextbox.Text = "";
         }
 
         public void vehicleTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             selectedDriver = null;
             driverTextbox.Text = "";
+            fuelTextbox.Text = "";
             costTextbox.Text = "";
             incomeTextbox.Text = "";
         }
@@ -94,10 +101,12 @@ namespace TransportationService {
 
             decimal cost;
 
-            if (costTextbox.Text != "" && decimal.TryParse(costTextbox.Text, out cost)) {
-                TimeSpan difference = endDate.SelectedDate.Value.Subtract(startDate.SelectedDate.Value);
-                decimal hours = (decimal)difference.TotalHours;
-                incomeTextbox.Text = (cost - (hours * selectedDriver.hourly_rate)).ToString();
+            if (costTextbox.Text != "" && decimal.TryParse(costTextbox.Text, out cost) && fuelTextbox.Text != "") {
+                    TimeSpan difference = endDate.SelectedDate.Value.Subtract(startDate.SelectedDate.Value);
+                    decimal hours = (decimal)difference.TotalHours;
+                    decimal fuelPrice = int.Parse(distanceTextbox.Text) / 100 * selectedVehicle.avg_fuel_consumption * decimal.Parse(fuelTextbox.Text);
+                    incomeTextbox.Text = (cost - (hours * selectedDriver.hourly_rate) - fuelPrice).ToString();
+
             } else {
                 costTextbox.Text = "";
                 incomeTextbox.Text = "";
@@ -116,6 +125,29 @@ namespace TransportationService {
 
             if (startDate.SelectedDate.Value > endDate.SelectedDate.Value)
                 endDate.SelectedDate = null;
+        }
+
+        public void distanceTextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            fuelTextbox.Text = "";
+            costTextbox.Text = "";
+            incomeTextbox.Text = "";
+
+            int distance;
+            if (!int.TryParse(distanceTextbox.Text, out distance))
+                distanceTextbox.Text = "";
+        }
+
+        public void fuelTextBox_TextChanged(object sender, TextChangedEventArgs e) {
+
+
+            costTextbox.Text = "";
+            incomeTextbox.Text = "";
+
+            decimal fuel;
+            if (selectedDriver == null || selectedVehicle == null || !decimal.TryParse(fuelTextbox.Text, out fuel)) {
+                fuelTextbox.Text = "";
+                return;
+            }
         }
 
         public void NumberValidation(object sender, TextCompositionEventArgs e) {

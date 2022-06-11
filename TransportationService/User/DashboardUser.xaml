@@ -103,22 +103,7 @@
                     <TextBlock Text="Reports" Style="{StaticResource menuButtonText}"/>
                 </StackPanel>
             </Button>
-            <Button x:Name ="B3" Style="{StaticResource menuButton}" Click="B3_Click">
-                <StackPanel Orientation="Horizontal">
-                    <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
-                    <TextBlock Text="B3" Style="{StaticResource menuButtonText}"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name ="B4" Style="{StaticResource menuButton}" Click="B4_Click">
-                <StackPanel Orientation="Horizontal">
-                    <fa:IconImage Icon="Users" Style="{StaticResource menuButtonIcon}"/>
-                    <TextBlock Text="B4" Style="{StaticResource menuButtonText}"/>
-                </StackPanel>
-            </Button>
         </StackPanel>
-
-
     </Grid>
-
 </Window>
 

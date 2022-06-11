@@ -262,12 +262,20 @@ namespace TransportationService
             Document doc = new Document(PageSize.A4.Rotate(), 0, 0, 10, 10);
             PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream(path, System.IO.FileMode.Create));
             doc.Open();
-            Font smallfont = FontFactory.GetFont("Arial", 48);
-            Paragraph title = new Paragraph("Report", smallfont);
-            Font font = FontFactory.GetFont("Arial", 9);
+
+            Font titlefont = FontFactory.GetFont("Arial", 32); 
+            Paragraph title = new Paragraph("Report", titlefont);
             title.Alignment = 1;
+
+            Font smallfont = FontFactory.GetFont("Arial", 6);
+            Paragraph generatedDate = new Paragraph($"Report generated: {DateTime.Now}", smallfont);
+            generatedDate.Alignment = 2;
+            doc.Add(generatedDate);
+
             doc.Add(title);
             doc.Add(new Paragraph("\n"));
+
+            Font font = FontFactory.GetFont("Arial", 9);
 
             for (int j = 0; j < dataGrid.Columns.Count; j++)
             {
@@ -343,7 +351,7 @@ namespace TransportationService
 
 
         private void addSummaryRow(PdfPTable table, string title, List<decimal> values) {
-            Font font = FontFactory.GetFont("Arial", 9);
+            Font font = FontFactory.GetFont("Arial", 7);
             table.AddCell(new Phrase(title,font));
             foreach (var item in values) {
                 table.AddCell(new Phrase(item.ToString("F"),font));
@@ -370,12 +378,6 @@ namespace TransportationService
             FilterDriverWindow selectDriverWindow = new FilterDriverWindow(this, db);
             selectDriverWindow.ShowDialog();
             setFilters();
-        }
-
-        private void clearFiltersButton_Click(object sender, RoutedEventArgs e)
-        {
-            view.Filter = null;
-
         }
     }
 }

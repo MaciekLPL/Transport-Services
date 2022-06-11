@@ -50,26 +50,6 @@ namespace TransportationService
                 UserPanel.Content = new PageReports();
             }
         }
-        private void B3_Click(object sender, RoutedEventArgs e)
-        {
-            //UserPanelFrame.Content = ;
-            if (activePanel != B3)
-            {
-                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
-                activePanel = B3;
-                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
-            }
-        }
-        private void B4_Click(object sender, RoutedEventArgs e)
-        {
-            //UserPanelFrame.Content = ;
-            if (activePanel != B4)
-            {
-                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
-                activePanel = B4;
-                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
-            }
-        }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {

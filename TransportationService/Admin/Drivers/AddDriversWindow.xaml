@@ -15,7 +15,7 @@
         <Label Content="Surname" Foreground="AliceBlue"/>
         <TextBox Name="surnameTextBox" FontSize="18" Background="Transparent" Foreground="AliceBlue"/>
         <Label Content="Birth date" Foreground="AliceBlue"/>
-        <DatePicker Name="birthDatePicker" FontSize="18" Opacity="0.9" Background="#FF223266">
+        <DatePicker Name="birthDatePicker" FontSize="18" Opacity="0.9" Background="#FF223266" Focusable="False">
             <DatePicker.Effect>
                 <DropShadowEffect Color="#FF223266"/>
             </DatePicker.Effect>

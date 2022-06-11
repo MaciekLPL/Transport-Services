@@ -61,28 +61,13 @@ namespace TransportationService
             }
         }
 
-        private void VehiclesButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (activePanel != VehiclesButton)
-            {
+        private void VehiclesButton_Click(object sender, RoutedEventArgs e) {
+            if (activePanel != VehiclesButton) {
                 activePanel.Style = (Style)Application.Current.Resources["menuButton"];
                 activePanel = VehiclesButton;
                 activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
                 AdminPanel.Content = new PageVehicles();
             }
         }
-
-        private void PricesButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (activePanel != PricesButton)
-            {
-                activePanel.Style = (Style)Application.Current.Resources["menuButton"];
-                activePanel = PricesButton;
-                activePanel.Style = (Style)Application.Current.Resources["menuButtonActive"];
-                AdminPanel.Content = new PagePrices();
-            }
-        }
-
-
     }
 }

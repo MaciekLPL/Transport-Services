@@ -69,13 +69,13 @@
         <Label Content="Date End" Grid.Column="1" HorizontalAlignment="Left" Margin="122,35,0,0" Grid.Row="1" VerticalAlignment="Top" 
                Foreground="AliceBlue"/>
         <DatePicker x:Name="dateStartPicker" Grid.Column="1" Margin="208,8,250,0" Grid.Row="1" VerticalAlignment="Top" 
-                    SelectedDateChanged="dateChanged" Opacity="0.9" Grid.ColumnSpan="2">
+                    SelectedDateChanged="dateChanged" Opacity="0.9" Grid.ColumnSpan="2" Focusable="False">
             <DatePicker.Effect>
                 <DropShadowEffect Color="#FF223266"/>
             </DatePicker.Effect>
         </DatePicker>
         <DatePicker x:Name="dateEndPicker" Grid.Column="1" Margin="208,36,250,0" Grid.Row="1" VerticalAlignment="Top" 
-                    SelectedDateChanged="dateChanged" Opacity="0.9" Grid.ColumnSpan="2">
+                    SelectedDateChanged="dateChanged" Opacity="0.9" Grid.ColumnSpan="2" Focusable="False">
             <DatePicker.Effect>
                 <DropShadowEffect Color="#FF223266"/>
             </DatePicker.Effect>

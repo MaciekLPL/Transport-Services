@@ -24,6 +24,8 @@ namespace TransportationService {
             vehicleTextbox = vehicleTextBox;
             weightTextbox = weightTextBox;
             
+            distanceTextbox = distanceTextBox;
+            fuelTextbox = fuelTextBox;
             costTextbox = costTextBox;
             incomeTextbox = incomeTextBox;
 
@@ -244,5 +246,6 @@ namespace TransportationService {
         {
             this.Close();
         }
+
     }
 }
