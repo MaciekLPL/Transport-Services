@@ -12,6 +12,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Font = iTextSharp.text.Font;
 
 namespace TransportationService
 {
@@ -22,6 +23,7 @@ namespace TransportationService
     {
         ServiceDBEntities db;
         ICollectionView view;
+        public Drivers selectedDriver { get; set; }
         public PageReports()
         {
             InitializeComponent();
@@ -76,6 +78,16 @@ namespace TransportationService
                     if ((bool)activeCheckBox.IsChecked || (bool)finishedCheckBox.IsChecked || (bool)canceledCheckBox.IsChecked)
                     {
                         ret = checkCheckBoxes(ref i);
+                    }
+                    if (!string.IsNullOrWhiteSpace(licenseTextBox.Text))
+                    {
+                        if (!string.IsNullOrWhiteSpace(i.Vehicles.registration) && !i.Vehicles.registration.Contains(licenseTextBox.Text))
+                            ret = false;
+                    }
+                    if (selectedDriver!=null)
+                    {
+                        if (selectedDriver.id!=i.Drivers.id)
+                            ret = false;
                     }
                     if (!string.IsNullOrWhiteSpace(employeeTextBox.Text))
                     {
@@ -175,21 +187,45 @@ namespace TransportationService
 
             return null;
         }
-        private void ExportToPdf(string path)
+        public string RemoveWhitespace(string input)
         {
-            PdfPTable table = new PdfPTable(dataGrid.Columns.Count);
-            Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
-            PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream(path, System.IO.FileMode.Create));
-            doc.Open();
-            doc.Add(new Paragraph("Report"));
-
+            return new string(input.ToCharArray()
+                .Where(c => !Char.IsWhiteSpace(c))
+                .ToArray());
+        }
+        public float[] GetHeaderWidths(Font font, params string[] headers)
+        {
+            var total = 0;
+            var columns = headers.Length;
+            var widths = new int[columns];
+            for (var i = 0; i < columns; ++i)
+            {
+                var w = font.GetCalculatedBaseFont(true).GetWidth(headers[i]);
+                total += w;
+                widths[i] = w;
+            }
+            var result = new float[columns];
+            for (var i = 0; i < columns; ++i)
+            {
+                result[i] = (float)widths[i] / total * 100;
+            }
+            return result;
+        }
+        private float[] CalcualteWidths(IEnumerable itemsSource)
+        {
+            float[] max = new float[dataGrid.Columns.Count];
+            string[] headers = new string[dataGrid.Columns.Count];
+            
             for (int j = 0; j < dataGrid.Columns.Count; j++)
             {
-                table.AddCell(new Phrase(dataGrid.Columns[j].Header.ToString()));
+                headers[j] = dataGrid.Columns[j].Header.ToString();
             }
-            table.HeaderRows = 1;
-            IEnumerable itemsSource = dataGrid.ItemsSource;
-
+            Font smallfont = FontFactory.GetFont("Arial", 9);
+            var tab = GetHeaderWidths(smallfont, headers);
+            for (int i = 0; i < dataGrid.Columns.Count; ++i)
+            {
+                max[i] = tab[i];
+            }
             if (itemsSource != null)
             {
                 foreach (var item in itemsSource)
@@ -198,13 +234,66 @@ namespace TransportationService
                     if (row != null)
                     {
                         DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+                        string[] strings = new string[dataGrid.Columns.Count];
+                        for (int i = 0; i < dataGrid.Columns.Count; ++i)
+                        {
+                            System.Windows.Controls.DataGridCell cell = (System.Windows.Controls.DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
+                            TextBlock txt = cell.Content as TextBlock;
+                            strings[i] = txt.Text;
+
+                        }
+                        smallfont = FontFactory.GetFont("Arial", 9);
+                        tab = GetHeaderWidths(smallfont, strings);
+                        if(max==null)
+                            max = new float[dataGrid.Columns.Count];
+                        for(int i=0;i<dataGrid.Columns.Count; ++i)
+                        {
+                            if (max[i] < tab[i])
+                                max[i] = tab[i]+2;
+                        }
+                    }
+                }
+            }
+            return max;
+        }
+        private void ExportToPdf(string path)
+        {
+            PdfPTable table = new PdfPTable(dataGrid.Columns.Count);
+            Document doc = new Document(PageSize.A4.Rotate(), 0, 0, 10, 10);
+            PdfWriter writer = PdfWriter.GetInstance(doc, new System.IO.FileStream(path, System.IO.FileMode.Create));
+            doc.Open();
+            Font smallfont = FontFactory.GetFont("Arial", 48);
+            Paragraph title = new Paragraph("Report", smallfont);
+            Font font = FontFactory.GetFont("Arial", 9);
+            title.Alignment = 1;
+            doc.Add(title);
+            doc.Add(new Paragraph("\n"));
+
+            for (int j = 0; j < dataGrid.Columns.Count; j++)
+            {
+                table.AddCell(new Phrase(dataGrid.Columns[j].Header.ToString(),font));
+            }
+            table.HeaderRows = 1;
+            IEnumerable itemsSource = dataGrid.ItemsSource;
+
+            table.SetWidths(CalcualteWidths(itemsSource));
+            if (itemsSource != null)
+            {
+                foreach (var item in itemsSource)
+                {
+                    DataGridRow row = dataGrid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                    if (row != null)
+                    {
+                        DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+                       
                         for (int i = 0; i < dataGrid.Columns.Count; ++i)
                         {
                             System.Windows.Controls.DataGridCell cell = (System.Windows.Controls.DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(i);
                             TextBlock txt = cell.Content as TextBlock;
                             if (txt != null)
                             {
-                                table.AddCell(new Phrase(txt.Text));
+                               
+                                table.AddCell(new Phrase(txt.Text, font));
                             }
                         }
                     }
@@ -254,9 +343,10 @@ namespace TransportationService
 
 
         private void addSummaryRow(PdfPTable table, string title, List<decimal> values) {
-            table.AddCell(title);
+            Font font = FontFactory.GetFont("Arial", 9);
+            table.AddCell(new Phrase(title,font));
             foreach (var item in values) {
-                table.AddCell(item.ToString("F"));
+                table.AddCell(new Phrase(item.ToString("F"),font));
             }
         }
 
@@ -265,8 +355,27 @@ namespace TransportationService
             for (int i = 0; i < dataGrid.Columns.Count - offset; ++i) {
                 PdfPCell empty = new PdfPCell(new Phrase(Chunk.NEWLINE));
                 empty.Border = Rectangle.NO_BORDER;
+                
                 table.AddCell(empty);
             }
+        }
+
+        private void licenseTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            setFilters();
+        }
+
+        private void filterDriverButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterDriverWindow selectDriverWindow = new FilterDriverWindow(this, db);
+            selectDriverWindow.ShowDialog();
+            setFilters();
+        }
+
+        private void clearFiltersButton_Click(object sender, RoutedEventArgs e)
+        {
+            view.Filter = null;
+
         }
     }
 }

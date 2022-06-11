@@ -1,0 +1,41 @@
+﻿<Window x:Class="TransportationService.FilterDriverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportationService"
+        mc:Ignorable="d"
+        Title="SelectDriverWindow" Height="420" Width="300" Loaded="Window_Loaded"
+        Background="#223266" WindowStyle="None" AllowsTransparency="True">
+
+    <StackPanel Margin="20" VerticalAlignment="Stretch">
+        <Label Content="Select driver" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
+        <Separator></Separator>
+
+        <Label Content="Filter data" Foreground="AliceBlue"/>
+        <TextBox Name="filterTextBox" FontSize="18" Margin="0 0 0 15" TextChanged="filterTextBox_TextChanged"
+                 Foreground="AliceBlue" Background="Transparent"/>
+
+        <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" CanUserAddRows="False" 
+                  IsReadOnly="True" Background="Transparent" Foreground="AliceBlue" RowBackground="Transparent">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <EventSetter Event="MouseDoubleClick" Handler="dataGridRow_MouseDoubleClick"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Surnme" Binding="{Binding surname}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="quitBtn" Content="Cancel" Margin="50" Click="quitBtn_Click"/>
+    </StackPanel>
+</Window>
