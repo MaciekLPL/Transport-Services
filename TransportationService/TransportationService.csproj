@@ -103,9 +103,6 @@
     <Compile Include="Admin\Drivers\AddDriversWindow.xaml.cs">
       <DependentUpon>AddDriversWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Prices\PagePrices.xaml.cs">
-      <DependentUpon>PagePrices.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Vehicles\AddVehicleTypeWindow.xaml.cs">
       <DependentUpon>AddVehicleTypeWindow.xaml</DependentUpon>
     </Compile>
@@ -223,10 +220,6 @@
     <Page Include="Admin\Drivers\AddDriversWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Admin\Prices\PagePrices.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Admin\Vehicles\AddVehicleTypeWindow.xaml">
       <SubType>Designer</SubType>

@@ -97,9 +97,9 @@
             <TextBox x:Name="licenseTextBox" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center" TextChanged="licenseTextBox_TextChanged" Background="Transparent" Foreground="AliceBlue"/>
 
             <Label Content="Weight min" Grid.Row="0" Grid.Column="6" Foreground="AliceBlue" VerticalAlignment="Center"/>
-            <TextBox x:Name="weightMinTextBox" Grid.Row="0" Grid.Column="7" VerticalAlignment="Center" TextChanged="weightFilter" Foreground="AliceBlue" Background="Transparent"/>
+            <TextBox x:Name="weightMinTextBox" Grid.Row="0" Grid.Column="7" VerticalAlignment="Center" TextChanged="weightFilter" Foreground="AliceBlue" Background="Transparent" PreviewTextInput="intValidation"/>
             <Label Content="Weight max" Grid.Row="1" Grid.Column="6" Foreground="AliceBlue" VerticalAlignment="Center"/>
-            <TextBox x:Name="weightMaxTextBox" Grid.Row="1" Grid.Column="7" VerticalAlignment="Center" TextChanged="weightFilter" Background="Transparent" Foreground="AliceBlue"/>
+            <TextBox x:Name="weightMaxTextBox" Grid.Row="1" Grid.Column="7" VerticalAlignment="Center" TextChanged="weightFilter" Background="Transparent" Foreground="AliceBlue" PreviewTextInput="intValidation"/>
             
             <Button x:Name="resetButton" Grid.Row="0" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Reset filter" Click="resetFilterButton_Click"/>
             <Button x:Name="filterDriverButton" Grid.Row="1" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Filter by driver" Click="filterDriverButton_Click"/>

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Edit driver information" Height="520" Width="300" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="None" AllowsTransparency="True">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
+    
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Edit driver" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -21,7 +22,7 @@
             </DatePicker.Effect>
         </DatePicker>
         <Label Content="Hourly rate" Foreground="AliceBlue"/>
-        <TextBox Name="hourlyRateTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <TextBox Name="hourlyRateTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"  PreviewTextInput="decimalValidation"/>
         <Label Content="Licences" FontSize="18" Foreground="AliceBlue"/>
         <DataGrid Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="100" CanUserAddRows="False"
                   Background="Transparent" Foreground="AliceBlue" RowBackground="Transparent">

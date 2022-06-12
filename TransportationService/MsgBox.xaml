@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MsgBox" Height="236.4" Width="348.8"
         WindowStyle="None" Background="#223266" AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Grid>
         <Label x:Name="label" HorizontalAlignment="Left" Margin="23,74,0,0" VerticalAlignment="Top" Width="304" Foreground="AliceBlue"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="57"/>

@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
-
+using System.Windows.Input;
 
 namespace TransportationService
 {
@@ -74,6 +74,11 @@ namespace TransportationService
                 unameTextBox.Text = "";
                 passwdTextBox.Password = "";
             }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

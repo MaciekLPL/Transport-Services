@@ -7,8 +7,8 @@
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Height="720" Width="1280" WindowStartupLocation="CenterScreen"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown"
->
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>

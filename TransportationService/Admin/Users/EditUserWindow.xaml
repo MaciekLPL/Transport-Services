@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Edit existing user" Height="433.44" Width="304.48" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="None" AllowsTransparency="True">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Edit user" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>

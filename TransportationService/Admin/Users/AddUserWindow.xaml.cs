@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
-
+using System.Windows.Input;
 
 namespace TransportationService {
     /// <summary>
@@ -71,11 +71,12 @@ namespace TransportationService {
                 var box = new MsgBox(msg);
                 box.Show();
             }
-           
 
+        }
 
-            
-
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
         }
 
         private void quitBtn_Click(object sender, RoutedEventArgs e)

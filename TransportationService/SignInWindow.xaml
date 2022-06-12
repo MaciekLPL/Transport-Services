@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Sign in" Height="280.321" Width="265.007"
         Background="#223266"
-        WindowStyle="None" AllowsTransparency="True">
+        WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
     <StackPanel Margin="20,29,20,20" VerticalAlignment="Center" Height="254">
         <Label Content="Sign in" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>

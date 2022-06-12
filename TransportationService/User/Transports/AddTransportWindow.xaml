@@ -7,7 +7,7 @@
         xmlns:base="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Add Transport" Height="450" Width="650" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="None" AllowsTransparency="True">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
 
     <Grid VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
@@ -35,10 +35,10 @@
             <Label Content="To" Foreground="AliceBlue"/>
             <TextBox Name="destinationTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
             <Label Content="Distance" Foreground="AliceBlue"/>
-            <TextBox Name="distanceTextBox" FontSize="18" PreviewTextInput="NumberValidation" Foreground="AliceBlue" 
+            <TextBox Name="distanceTextBox" FontSize="18" PreviewTextInput="intValidation" Foreground="AliceBlue" 
                      Background="Transparent" TextChanged="distanceTextBox_TextChanged"/>
             <Label Content="Weight" Foreground="AliceBlue"/>
-            <TextBox Name="weightTextBox" FontSize="18" PreviewTextInput="NumberValidation" 
+            <TextBox Name="weightTextBox" FontSize="18" PreviewTextInput="intValidation" 
                      TextChanged="weightTextBox_TextChanged" Foreground="AliceBlue" Background="Transparent"/>
             <Label Content="Start date" Foreground="AliceBlue"/>
             <DatePicker Name="startDatePicker" FontSize="14" SelectedDateChanged="startDatePicker_SelectedDateChanged" 
@@ -81,9 +81,9 @@
         <!-- Column 2, Row 1 -->
         <StackPanel Margin="20 0" Grid.Column="2" Grid.Row="1" >
             <Label Content="Fuel price" Foreground="AliceBlue"/>
-            <TextBox Name="fuelTextBox" FontSize="18" TextChanged="fuelTextBox_TextChanged" Foreground="AliceBlue" Background="Transparent"/>
+            <TextBox Name="fuelTextBox" FontSize="18" TextChanged="fuelTextBox_TextChanged" Foreground="AliceBlue" Background="Transparent" PreviewTextInput="decimalValidation"/>
             <Label Content="Cost" Foreground="AliceBlue"/>
-            <TextBox Name="costTextBox" FontSize="18" TextChanged="costTextBox_TextChanged" Foreground="AliceBlue" Background="Transparent"/>
+            <TextBox Name="costTextBox" FontSize="18" TextChanged="costTextBox_TextChanged" Foreground="AliceBlue" Background="Transparent" PreviewTextInput="decimalValidation"/>
             <Label Content="Income" Foreground="AliceBlue"/>
             <TextBox Name="incomeTextBox" FontSize="18" IsEnabled="False" Foreground="AliceBlue" Background="Transparent"/>
         </StackPanel>

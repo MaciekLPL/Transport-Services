@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace TransportationService {
     /// <summary>
@@ -155,6 +157,16 @@ namespace TransportationService {
                     licensesChanged = true;
                 }
             }
+        }
+
+        public void decimalValidation(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^,0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
         }
 
         private void quitBtn_Click(object sender, RoutedEventArgs e)

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Edit vehicle informations" Height="450" Width="300" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="None" AllowsTransparency="True">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Edit vehicle" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -17,7 +17,7 @@
         <Label Content="Registration" Foreground="AliceBlue"/>
         <TextBox Name="registrationTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
         <Label Content="Fuel consumption" Foreground="AliceBlue"/>
-        <TextBox Name="fuelTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <TextBox Name="fuelTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent" PreviewTextInput="decimalValidation"/>
         <Label Content="Vehicle type" Foreground="AliceBlue"/>
         <ComboBox Name="vehicleTypeComboBox" HorizontalAlignment="Stretch" ItemsSource="{Binding}" DisplayMemberPath="name" 
                   SelectedValuePath="id" Opacity="0.9"/>

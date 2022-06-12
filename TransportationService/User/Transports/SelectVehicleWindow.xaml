@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="SelectVehicleWindow" Height="420" Width="300" Loaded="Window_Loaded"
-        Background="#223266" WindowStyle="None" AllowsTransparency="True">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
 
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Select vehicle" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>

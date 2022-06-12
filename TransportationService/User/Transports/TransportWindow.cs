@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -104,7 +100,7 @@ namespace TransportationService {
 
             decimal cost;
 
-            if (costTextbox.Text != "" && decimal.TryParse(costTextbox.Text, out cost) && fuelTextbox.Text != "") {
+            if (decimal.TryParse(costTextbox.Text, out cost) && distanceTextbox.Text != "" && fuelTextbox.Text != "" && costTextbox.Text != "") {
                     TimeSpan difference = endDate.SelectedDate.Value.Subtract(startDate.SelectedDate.Value);
                     decimal hours = (decimal)difference.TotalHours;
                     decimal fuelPrice = int.Parse(distanceTextbox.Text) / 100 * selectedVehicle.avg_fuel_consumption * decimal.Parse(fuelTextbox.Text);
@@ -153,9 +149,19 @@ namespace TransportationService {
             }
         }
 
-        public void NumberValidation(object sender, TextCompositionEventArgs e) {
+        public void intValidation(object sender, TextCompositionEventArgs e) {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        public void decimalValidation(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^,0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        public void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
         }
     }
 }

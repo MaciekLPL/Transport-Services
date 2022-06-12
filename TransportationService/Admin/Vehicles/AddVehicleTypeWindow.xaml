@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TransportationService"
         mc:Ignorable="d"
         Title="Add vehicle type" Height="288" Width="303.2"
-        Background="#223266" WindowStyle="None" AllowsTransparency="True">
+        Background="#223266" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Add new vehicle type" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>

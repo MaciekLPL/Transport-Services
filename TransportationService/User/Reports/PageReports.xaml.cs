@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Font = iTextSharp.text.Font;
+using System.Windows.Input;
+using System.Text.RegularExpressions;
 
 namespace TransportationService
 {
@@ -399,6 +401,11 @@ namespace TransportationService
             selectedDriver = null;
             view.Filter = null;
 
+        }
+
+        public void intValidation(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

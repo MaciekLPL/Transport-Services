@@ -24,6 +24,12 @@ namespace TransportationService
             InitializeComponent();
             label.Content = message;
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

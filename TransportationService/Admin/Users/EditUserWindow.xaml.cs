@@ -120,6 +120,11 @@ namespace TransportationService {
             return changed;
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
         private void QuitBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Add vehicle" Height="450" Width="300"
         Background="#223266" WindowStyle="None" Foreground="AliceBlue" BorderBrush="AliceBlue"
-        AllowsTransparency="True">
+        AllowsTransparency="True" MouseDown="Window_MouseDown">
     <StackPanel Margin="20" VerticalAlignment="Stretch">
         <Label Content="Add new vehicle" HorizontalAlignment="Center" FontSize="25" Foreground="AliceBlue"/>
         <Separator></Separator>
@@ -18,7 +18,7 @@
         <Label Content="Registration" Foreground="AliceBlue"/>
         <TextBox Name="registrationTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
         <Label Content="Fuel consumption" Foreground="AliceBlue"/>
-        <TextBox Name="fuelTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent"/>
+        <TextBox Name="fuelTextBox" FontSize="18" Foreground="AliceBlue" Background="Transparent" PreviewTextInput="decimalValidation"/>
         <Label Content="Vehicle type" Foreground="AliceBlue"/>
         <ComboBox Name="vehicleTypeComboBox" ItemsSource="{Binding}" DisplayMemberPath="name" SelectedValuePath="id" HorizontalAlignment="Stretch" Opacity="0.9" />
         <Button Name="submitBtn" IsDefault="true" Content="Submit" Margin="20 10" Click="submitBtn_Click" Height="30" Width="200"/>
