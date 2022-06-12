@@ -101,7 +101,7 @@ namespace TransportationService
                     }
                     if (!string.IsNullOrWhiteSpace(toTextBox.Text))
                     {
-                        if (!string.IsNullOrWhiteSpace(i.destination) && !i.destination.Contains(fromTextBox.Text))
+                        if (!string.IsNullOrWhiteSpace(i.destination) && !i.destination.Contains(toTextBox.Text))
                             ret = false;
                     }
                     if (dateStartPicker.SelectedDate != null && dateEndPicker.SelectedDate != null)
@@ -331,6 +331,8 @@ namespace TransportationService
             List<decimal> sums = new List<decimal>(){ 0, 0, 0, 0 };
             int count = dataGrid.Items.Count;
 
+            if (count == 0) return;
+
             for (int i = 0; i < dataGrid.Items.Count; i++) {
                 dynamic s = dataGrid.Items[i];
                 sums[0] += s.distance;
@@ -378,6 +380,25 @@ namespace TransportationService
             FilterDriverWindow selectDriverWindow = new FilterDriverWindow(this, db);
             selectDriverWindow.ShowDialog();
             setFilters();
+        }
+
+        private void resetFilterButton_Click(object sender, RoutedEventArgs e) {
+
+            employeeTextBox.Text = "";
+            activeCheckBox.IsChecked = false;
+            finishedCheckBox.IsChecked = false;
+            canceledCheckBox.IsChecked = false;
+            fromTextBox.Text = "";
+            toTextBox.Text = "";
+            customerTextBox.Text = "";
+            dateStartPicker.SelectedDate = null;
+            dateEndPicker.SelectedDate = null;
+            licenseTextBox.Text = "";
+            weightMinTextBox.Text = "";
+            weightMaxTextBox.Text = "";
+            selectedDriver = null;
+            view.Filter = null;
+
         }
     }
 }

@@ -30,6 +30,7 @@ namespace TransportationService {
         public DatePicker startDate;
         public DatePicker endDate;
 
+        public bool skipCalculation = false;
 
         public TransportWindow(ServiceDBEntities _db) {
             db = _db;
@@ -93,6 +94,8 @@ namespace TransportationService {
 
         public void costTextBox_TextChanged(object sender, TextChangedEventArgs e) {
 
+            if (skipCalculation) return;
+
             if (selectedDriver == null || selectedVehicle == null) {
                 costTextbox.Text = "";
                 incomeTextbox.Text = "";
@@ -105,7 +108,7 @@ namespace TransportationService {
                     TimeSpan difference = endDate.SelectedDate.Value.Subtract(startDate.SelectedDate.Value);
                     decimal hours = (decimal)difference.TotalHours;
                     decimal fuelPrice = int.Parse(distanceTextbox.Text) / 100 * selectedVehicle.avg_fuel_consumption * decimal.Parse(fuelTextbox.Text);
-                    incomeTextbox.Text = (cost - (hours * selectedDriver.hourly_rate) - fuelPrice).ToString();
+                    incomeTextbox.Text = (cost - (hours * selectedDriver.hourly_rate) - fuelPrice).ToString("F");
 
             } else {
                 costTextbox.Text = "";

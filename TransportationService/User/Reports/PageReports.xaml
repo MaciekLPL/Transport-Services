@@ -4,13 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TransportationService"
-      mc:Ignorable="d" d:DesignWidth="804"
-      Title="PageReports" Height="456">
+      mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageTransports">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -48,59 +46,64 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
         </DataGrid>
-        <TextBox x:Name="employeeTextBox" HorizontalAlignment="Left" Height="23" Margin="77,7,0,0" Grid.Row="1" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.058,2.087" 
-                 TextChanged="employeeTextBox_TextChanged" Background="Transparent" Foreground="AliceBlue"/>
-        <Label Content="Employee" HorizontalAlignment="Left" Margin="10,7,0,0" Grid.Row="1" VerticalAlignment="Top" 
-               Width="62" Foreground="AliceBlue"/>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="10,38,0,0" Grid.Row="1" VerticalAlignment="Top" Width="51" 
-               Foreground="AliceBlue"/>
-        <Label Content="From" HorizontalAlignment="Left" Margin="209,7,0,0" Grid.Row="1" VerticalAlignment="Top" 
-               Width="39" Foreground="AliceBlue"/>
-        <Label Content="To" HorizontalAlignment="Left" Margin="209,35,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="AliceBlue"/>
-        <TextBox x:Name="fromTextBox" HorizontalAlignment="Left" Height="23" Margin="258,7,0,0" Grid.Row="1" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" TextChanged="fromTextBox_TextChanged"
-                 Background="Transparent" Foreground="AliceBlue"/>
-        <TextBox x:Name="toTextBox" HorizontalAlignment="Left" Height="23" Margin="258,35,0,0" Grid.Row="1" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" TextChanged="toTextBox_TextChanged"
-                 Foreground="AliceBlue" Background="Transparent"/>
-        <Label Content="Date Start" HorizontalAlignment="Left" Margin="122,7,0,0" Grid.Row="1" VerticalAlignment="Top" Width="64"
-               Grid.Column="1" Foreground="AliceBlue"/>
-        <Label Content="Date End" Grid.Column="1" HorizontalAlignment="Left" Margin="122,35,0,0" Grid.Row="1" VerticalAlignment="Top" 
-               Foreground="AliceBlue"/>
-        <DatePicker x:Name="dateStartPicker" Grid.Column="1" Margin="208,8,250,0" Grid.Row="1" VerticalAlignment="Top" 
-                    SelectedDateChanged="dateChanged" Opacity="0.9" Grid.ColumnSpan="2" Focusable="False">
-            <DatePicker.Effect>
-                <DropShadowEffect Color="#FF223266"/>
-            </DatePicker.Effect>
-        </DatePicker>
-        <DatePicker x:Name="dateEndPicker" Grid.Column="1" Margin="208,36,250,0" Grid.Row="1" VerticalAlignment="Top" 
-                    SelectedDateChanged="dateChanged" Opacity="0.9" Grid.ColumnSpan="2" Focusable="False">
-            <DatePicker.Effect>
-                <DropShadowEffect Color="#FF223266"/>
-            </DatePicker.Effect>
-        </DatePicker>
-        <Label Content="Weight min" HorizontalAlignment="Left" Margin="73,6,0,0" Grid.Row="1" VerticalAlignment="Top" 
-               Width="75" Grid.Column="2" Foreground="AliceBlue"/>
-        <Label Content="Customer" HorizontalAlignment="Left" Margin="181,67,0,0" Grid.Row="1" VerticalAlignment="Top" Width="63" 
-               RenderTransformOrigin="0.656,0.526" Foreground="AliceBlue"/>
-        <TextBox x:Name="weightMinTextBox" HorizontalAlignment="Left" Height="22" Margin="153,8,0,0" Grid.Row="1" 
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Grid.Column="2" TextChanged="weightFilter"
-                 Foreground="AliceBlue" Background="Transparent"/>
-        <TextBox x:Name="customerTextBox" HorizontalAlignment="Left" Height="23" Margin="258,67,0,0" Grid.Row="1" TextWrapping="Wrap" 
-                 VerticalAlignment="Top" Width="120" TextChanged="customerTextBox_TextChanged" Grid.ColumnSpan="2"
-                 Foreground="AliceBlue" Background="Transparent"/>
-        <Button x:Name="GeneratePDFButton" Content="Generate PDF" Grid.Column="2" HorizontalAlignment="Left" Margin="205,70,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Height="30" Click="GeneratePDFButton_Click"/>
-        <CheckBox x:Name="activeCheckBox" Content="active" HorizontalAlignment="Left" Margin="77,35,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status" Foreground="White" Unchecked="status"/>
-        <CheckBox x:Name="finishedCheckBox" Content="finished" HorizontalAlignment="Left" Margin="77,55,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status" Foreground="White" Unchecked="status"/>
-        <CheckBox x:Name="canceledCheckBox" Content="canceled" HorizontalAlignment="Left" Margin="77,75,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="status" Foreground="White" Unchecked="status"/>
-        <Label Content="Weight max" HorizontalAlignment="Left" Margin="73,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="75" 
-               Grid.Column="2" Foreground="AliceBlue"/>
-        <TextBox x:Name="weightMaxTextBox" HorizontalAlignment="Left" Height="23" Margin="153,0,0,0" Grid.Row="1" 
-                 TextWrapping="Wrap" VerticalAlignment="Center" Width="63" Grid.Column="2" TextChanged="weightFilter"
-                 Background="Transparent" Foreground="AliceBlue"/>
-        <TextBox x:Name="licenseTextBox" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="208,71,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" TextChanged="licenseTextBox_TextChanged"/>
-        <Label Grid.Column="1" Content="License plate" HorizontalAlignment="Left" Margin="122,65,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
-        <Button x:Name="filterDriverButton" Grid.Column="2" Content="Filter by Driver" HorizontalAlignment="Left" Margin="73,71,0,0" Grid.Row="1" VerticalAlignment="Top" Width="88" Click="filterDriverButton_Click"/>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Employee" Grid.Row="0" Grid.Column="0" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <TextBox Name="employeeTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextChanged="employeeTextBox_TextChanged" Background="Transparent" Foreground="AliceBlue"/>
+            <Label Content="Status" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
+                <CheckBox x:Name="activeCheckBox" Content="active" Grid.Row="1" Checked="status" Foreground="White" Unchecked="status"/>
+                <CheckBox x:Name="finishedCheckBox" Content="finished" Grid.Row="1" Checked="status" Foreground="White" Unchecked="status"/>
+                <CheckBox x:Name="canceledCheckBox" Content="canceled" Grid.Row="1" Checked="status" Foreground="White" Unchecked="status"/>
+            </StackPanel>
+
+            <Label Content="From" Grid.Row="0" Grid.Column="2" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <TextBox x:Name="fromTextBox" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" TextChanged="fromTextBox_TextChanged" Background="Transparent" Foreground="AliceBlue"/>
+            <Label Content="To" Grid.Row="1" Grid.Column="2" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <TextBox x:Name="toTextBox" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" TextChanged="toTextBox_TextChanged" Foreground="AliceBlue" Background="Transparent"/>
+            <Label Content="Customer" Grid.Row="2" Grid.Column="2" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <TextBox x:Name="customerTextBox" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" TextChanged="customerTextBox_TextChanged" Foreground="AliceBlue" Background="Transparent"/>
+
+            <Label Content="Date Start" Grid.Row="0" Grid.Column="4" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dateStartPicker" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDateChanged="dateChanged" Opacity="0.9" Focusable="False">
+                <DatePicker.Effect>
+                    <DropShadowEffect Color="#FF223266"/>
+                </DatePicker.Effect>
+            </DatePicker>
+            <Label Content="Date End" Grid.Row="1" Grid.Column="4" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dateEndPicker" Grid.Row="1" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDateChanged="dateChanged" Opacity="0.9" Focusable="False">
+                <DatePicker.Effect>
+                    <DropShadowEffect Color="#FF223266"/>
+                </DatePicker.Effect>
+            </DatePicker>
+            <Label Content="License plate" Grid.Row="2" Grid.Column="4" Foreground="White" VerticalAlignment="Center"/>
+            <TextBox x:Name="licenseTextBox" Grid.Row="2" Grid.Column="5" VerticalAlignment="Center" TextChanged="licenseTextBox_TextChanged" Background="Transparent" Foreground="AliceBlue"/>
+
+            <Label Content="Weight min" Grid.Row="0" Grid.Column="6" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <TextBox x:Name="weightMinTextBox" Grid.Row="0" Grid.Column="7" VerticalAlignment="Center" TextChanged="weightFilter" Foreground="AliceBlue" Background="Transparent"/>
+            <Label Content="Weight max" Grid.Row="1" Grid.Column="6" Foreground="AliceBlue" VerticalAlignment="Center"/>
+            <TextBox x:Name="weightMaxTextBox" Grid.Row="1" Grid.Column="7" VerticalAlignment="Center" TextChanged="weightFilter" Background="Transparent" Foreground="AliceBlue"/>
+            
+            <Button x:Name="resetButton" Grid.Row="0" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Reset filter" Click="resetFilterButton_Click"/>
+            <Button x:Name="filterDriverButton" Grid.Row="1" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Filter by driver" Click="filterDriverButton_Click"/>
+            <Button x:Name="GeneratePDFButton" Grid.Row="2" Grid.Column="8"  VerticalAlignment="Center" HorizontalAlignment="Center" Content="Generate PDF" Click="GeneratePDFButton_Click"/>
+        </Grid>
     </Grid>
 </Page>

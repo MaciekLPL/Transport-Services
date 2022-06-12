@@ -72,8 +72,10 @@ namespace TransportationService {
             selectedCustomer = transport.Customers;
             customerTextBox.Text = $"{selectedCustomer.name}";
 
+            skipCalculation = true;
             costTextBox.Text = transport.cost.ToString();
             incomeTextBox.Text = transport.income.ToString();
+            skipCalculation = false;
         }
 
         private void setRadioButton() {
