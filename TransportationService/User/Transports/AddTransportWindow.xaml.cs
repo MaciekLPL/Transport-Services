@@ -79,7 +79,7 @@ namespace TransportationService {
             }
             if (!decimal.TryParse(fuelTextBox.Text, out fuel)) {
                 //MessageBox.Show("Entered fuel price is invalid!");
-                var box = new MsgBox("Entered cost is invalid!");
+                var box = new MsgBox("Entered fuel price is invalid!");
                 box.Show();
                 return;
             }
