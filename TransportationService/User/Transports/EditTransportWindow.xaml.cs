@@ -64,7 +64,7 @@ namespace TransportationService {
             userTextBox.Text = transport.Users.login;
 
             selectedVehicle = transport.Vehicles;
-            vehicleTextBox.Text = $"{selectedVehicle.registration} {selectedVehicle.Vehicle_types.name}";
+            vehicleTextBox.Text = $"{selectedVehicle.registration}";
 
             selectedDriver = transport.Drivers;
             driverTextBox.Text = $"{selectedDriver.name} {selectedDriver.surname}";
@@ -143,14 +143,14 @@ namespace TransportationService {
 
             //Distance
             if (!v.checkIfNull(distanceTextBox.Text) && distanceTextBox.Text != transport.distance.ToString()) {
-                if (int.TryParse(distanceTextBox.Text, out distance)) {
+                if (int.TryParse(distanceTextBox.Text, out distance) && costTextBox.Text != "") {
                     transport.distance = distance;
                     changed = true;
                 }
             }
             //Weight
             if (!v.checkIfNull(weightTextBox.Text) && weightTextBox.Text != transport.weight.ToString()) {
-                if (int.TryParse(weightTextBox.Text, out weight)) {
+                if (int.TryParse(weightTextBox.Text, out weight) && vehicleTextbox.Text != "") {
                     transport.weight = weight;
                     changed = true;
                 }
@@ -189,13 +189,17 @@ namespace TransportationService {
         private void checkSelectors() {
             //Vehicle
             if (selectedVehicle != null && selectedVehicle.id != transport.vehicle_id) {
-                transport.Vehicles = selectedVehicle;
-                changed = true;
+                if (costTextBox.Text != "") {
+                    transport.Vehicles = selectedVehicle;
+                    changed = true;
+                }
             }
             //Driver
             if (selectedDriver != null && selectedDriver.id != transport.driver_id) {
-                transport.Drivers = selectedDriver;
-                changed = true;
+                if (costTextBox.Text != "") {
+                    transport.Drivers = selectedDriver;
+                    changed = true;
+                }
             }
             //Customer
             if (selectedCustomer != null && selectedCustomer.id != transport.customer_id) {
@@ -223,7 +227,6 @@ namespace TransportationService {
                     //MessageBox.Show("Transport status error");
                     var box = new MsgBox("Transport status error");
                     box.Show();
-
                 }
             }
         }

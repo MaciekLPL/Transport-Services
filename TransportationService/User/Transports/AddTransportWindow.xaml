@@ -69,7 +69,7 @@
             <Label Content="Driver's name" Foreground="AliceBlue"/>
             <DockPanel LastChildFill="True" Opacity="0.9">
                 <Button Name="selectDriver" Content="Select" DockPanel.Dock="Right" Click="selectDriver_Click"/>
-                <TextBox Name="driverTextBox" FontSize="18" IsReadOnly="True" Background="Transparent" Foreground="AliceBlue"/>
+                <TextBox Name="driverTextBox" FontSize="18" IsReadOnly="True" Background="Transparent" Foreground="AliceBlue" TextChanged="driverTextBox_TextChanged"/>
             </DockPanel>
             <Label Content="Customer" Foreground="AliceBlue"/>
             <DockPanel LastChildFill="True">

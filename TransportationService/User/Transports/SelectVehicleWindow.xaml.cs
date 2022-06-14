@@ -36,19 +36,18 @@ namespace TransportationService {
                 this.Close();
             }
 
+            if (parent.startDate.SelectedDate == null || parent.endDate.SelectedDate == null) {
+                this.Close();
+            }
+
             DateTime start = parent.startDate.SelectedDate.Value;
             DateTime end = parent.endDate.SelectedDate.Value;
-
-            /*
-             * TODO: Walidacja czy waga i daty są ustawione
-             */
 
             IQueryable<Vehicles> query;
 
             if (parent.transport != null) {
                 query = from v in db.Vehicles
                             where (v.Vehicle_types.max_load > weight)
-                            //&& (v.id == parent.transport.vehicle_id && parent.transport.start_date == start && parent.transport.end_date == end)
                             && (!db.Transports.Any(t => (t.vehicle_id == v.id) && (t.id != parent.transport.id) && (t.start_date <= end) && (start <= t.end_date) && t.Status.name == "active"))
                             select v;
             }
@@ -73,7 +72,7 @@ namespace TransportationService {
 
                 if (item != null) {
                     parent.selectedVehicle = item;
-                    parent.vehicleTextbox.Text = $"{item.registration} {item.Vehicle_types.name}";
+                    parent.vehicleTextbox.Text = $"{item.registration}";
                     this.Close();
                 }
             }

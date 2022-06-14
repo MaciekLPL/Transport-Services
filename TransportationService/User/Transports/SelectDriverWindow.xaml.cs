@@ -31,15 +31,13 @@ namespace TransportationService {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
-            Vehicles choosenVehicle = parent.selectedVehicle;
-            
+            if (parent == null || parent.selectedVehicle == null || parent.startDate.SelectedDate == null || parent.endDate.SelectedDate == null) {
+                this.Close();
+            }
+
+            Vehicles choosenVehicle = parent.selectedVehicle;      
             DateTime start = parent.startDate.SelectedDate.Value;
             DateTime end = parent.endDate.SelectedDate.Value;
-
-            /*
-             * TODO: Walidacja czy wszystko ustawione
-             */
-
 
             IQueryable<Drivers> query;
 

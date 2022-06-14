@@ -88,6 +88,12 @@ namespace TransportationService {
             incomeTextbox.Text = "";
         }
 
+        public void driverTextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            fuelTextbox.Text = "";
+            costTextbox.Text = "";
+            incomeTextbox.Text = "";
+        }
+
         public void costTextBox_TextChanged(object sender, TextChangedEventArgs e) {
 
             if (skipCalculation) return;

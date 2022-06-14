@@ -13,8 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TransportationService
-{
+namespace TransportationService {
     /// <summary>
     /// Interaction logic for AddTransportWindow.xaml
     /// </summary>
@@ -61,12 +60,10 @@ namespace TransportationService
 
             int distance;
             int weight;
+            decimal fuel;
             decimal cost;
             decimal income;
 
-            /*
-             * TODO: Walidacja
-             */
 
             if (!int.TryParse(distanceTextBox.Text, out distance)) {
                 //MessageBox.Show("Entered distance is invalid!");
@@ -77,6 +74,12 @@ namespace TransportationService
             if (!int.TryParse(weightTextBox.Text, out weight)) {
                 //MessageBox.Show("Entered weight is invalid!");
                 var box = new MsgBox("Entered weight is invalid!");
+                box.Show();
+                return;
+            }
+            if (!decimal.TryParse(fuelTextBox.Text, out fuel)) {
+                //MessageBox.Show("Entered fuel price is invalid!");
+                var box = new MsgBox("Entered cost is invalid!");
                 box.Show();
                 return;
             }
@@ -92,52 +95,66 @@ namespace TransportationService
                 box.Show();
                 return;
             }
-            if (v.checkIfNull(originTextBox.Text))
-            {
+            if (v.checkIfNull(originTextBox.Text)) {
                 //MessageBox.Show("Origin is empty!");
                 var box = new MsgBox("Origin is empty!");
                 box.Show();
                 return;
             }
-            if (v.checkIfNull(destinationTextBox.Text))
-            {
+            if (v.checkIfNull(destinationTextBox.Text)) {
                 //MessageBox.Show("Destination is empty!");
                 var box = new MsgBox("Destination is empty!");
                 box.Show();
                 return;
             }
-            
-
-
-            if (true /* TODO: Walidacja */) {
-                Transports newTransport = new Transports();
-                Status status = db.Status.Where(i => i.name.Equals("active")).FirstOrDefault();
-
-                newTransport.Status = status;
-                newTransport.origin = originTextBox.Text;
-                newTransport.destination = destinationTextBox.Text;
-                newTransport.distance = distance;
-                newTransport.weight = weight;
-                newTransport.start_date = startDatePicker.SelectedDate.Value;
-                newTransport.end_date = endDatePicker.SelectedDate.Value;
-                newTransport.Users = user;
-                newTransport.Customers = selectedCustomer;
-                newTransport.Vehicles = selectedVehicle;
-                newTransport.Drivers = selectedDriver;
-                newTransport.cost = cost;
-                newTransport.income = income;
-
-                db.Transports.Add(newTransport);
-                db.SaveChanges();
-                this.Close();
-                //MessageBox.Show("Transport added successfuly");
-                var box = new MsgBox("Transport added successfuly");
+            if (startDatePicker.SelectedDate == null || endDatePicker.SelectedDate == null) {
+                var box = new MsgBox("Selected dates are invalid!");
                 box.Show();
+                return;
             }
+            if (selectedVehicle == null) {
+                var box = new MsgBox("Selected vehicle is invalid!");
+                box.Show();
+                return;
+            }
+            if (selectedDriver == null) {
+                var box = new MsgBox("Selected driver is invalid!");
+                box.Show();
+                return;
+            }
+            if (selectedCustomer == null) {
+                var box = new MsgBox("Selected dates are invalid!");
+                box.Show();
+                return;
+            }
+
+
+            Transports newTransport = new Transports();
+            Status status = db.Status.Where(i => i.name.Equals("active")).FirstOrDefault();
+
+            newTransport.Status = status;
+            newTransport.origin = originTextBox.Text;
+            newTransport.destination = destinationTextBox.Text;
+            newTransport.distance = distance;
+            newTransport.weight = weight;
+            newTransport.start_date = startDatePicker.SelectedDate.Value;
+            newTransport.end_date = endDatePicker.SelectedDate.Value;
+            newTransport.Users = user;
+            newTransport.Customers = selectedCustomer;
+            newTransport.Vehicles = selectedVehicle;
+            newTransport.Drivers = selectedDriver;
+            newTransport.cost = cost;
+            newTransport.income = income;
+
+            db.Transports.Add(newTransport);
+            db.SaveChanges();
+            this.Close();
+            //MessageBox.Show("Transport added successfuly");
+            var completeBox = new MsgBox("Transport added successfuly");
+            completeBox.Show();
         }
 
-        private void quitBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void quitBtn_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
     }
