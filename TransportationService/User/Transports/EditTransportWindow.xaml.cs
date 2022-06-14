@@ -150,7 +150,7 @@ namespace TransportationService {
             }
             //Weight
             if (!v.checkIfNull(weightTextBox.Text) && weightTextBox.Text != transport.weight.ToString()) {
-                if (int.TryParse(weightTextBox.Text, out weight) && vehicleTextbox.Text != "") {
+                if (int.TryParse(weightTextBox.Text, out weight) && costTextbox.Text != "") {
                     transport.weight = weight;
                     changed = true;
                 }
